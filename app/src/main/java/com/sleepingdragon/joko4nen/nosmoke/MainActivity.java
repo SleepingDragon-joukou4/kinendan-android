@@ -24,8 +24,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // 追加：画面のアイテムと紐付け
-        counter_text = (TextView)findViewById(R.id.txt_counter);
-        push_btn = (Button)findViewById(R.id.btn_push);
+
 
         // 追加：クリック
         push_btn.setOnClickListener(new View.OnClickListener() {

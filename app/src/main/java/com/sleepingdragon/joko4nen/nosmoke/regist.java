@@ -19,8 +19,7 @@ import java.util.ArrayList;
 public class regist extends Activity implements OnClickListener {
 
     private Button inext;
-    private Spinner rspn;
-    private String rspnitem[] = {"Spinner", "Spinner 1", "Spinner 2", "Spinner 3"};
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
