@@ -1,0 +1,58 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#ffffff"
+    tools:context=".FullscreenActivity"
+    android:id="@+id/body">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b0c4de"
+        android:id="@+id/regsuccess_body">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="登録完了"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textColor="#000"
+            android:id="@+id/reg_success" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:id="@+id/invite_button"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="取消"
+            android:id="@+id/regsuccess_back"
+            android:layout_gravity="left" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="次へ"
+            android:id="@+id/regsuccess_next"
+            android:layout_gravity="right" />
+
+    </LinearLayout>
+    </FrameLayout>

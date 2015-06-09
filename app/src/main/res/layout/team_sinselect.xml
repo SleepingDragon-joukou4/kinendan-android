@@ -1,0 +1,200 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#ffffff"
+    tools:context=".FullscreenActivity"
+    android:id="@+id/body">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b0c4de"
+        android:id="@+id/sinselect_body">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="罰ゲームを登録してください"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:id="@+id/sin_text" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="1回目"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/sin_1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/sin_edit1"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:layout_marginRight="30dp" />
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="2回目"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/sin_2" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/sin_edit2"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:layout_marginRight="30dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="3回目"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/sin_3" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/sin_edit3"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:layout_marginRight="30dp" />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="4回目"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/sin_4" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/sin_edit4"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:layout_marginRight="30dp" />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="5回目"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/sin_5" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/sin_edit5"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:layout_marginRight="30dp" />
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:id="@+id/invite_button"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="戻る"
+            android:id="@+id/sin_back"
+             />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="次へ"
+            android:id="@+id/sin_next" />
+
+    </LinearLayout>
+    </FrameLayout>
