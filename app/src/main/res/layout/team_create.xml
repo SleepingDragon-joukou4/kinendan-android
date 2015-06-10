@@ -1,8 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="#ffffff"
-    tools:context=".FullscreenActivity"
-    android:id="@+id/body">
+    tools:context="com.sleepingdragon.joko4nen.nosmoke.team_create.team_create">
+android:id="@+id/body">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
