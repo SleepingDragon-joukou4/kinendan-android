@@ -8,8 +8,15 @@ import android.content.Intent;
 import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import android.widget.EditText;
+import java.net.MalformedURLException;
 
 public class regist extends Activity implements OnClickListener {
 
@@ -68,12 +75,15 @@ public class regist extends Activity implements OnClickListener {
 
                 if (v == inext) {
                     //Ÿ‚Öƒ{ƒ^ƒ“‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—@‚½‚Ô‚ñDB‚Ö‘}“ü‚·‚éSQL‚à‚±‚±
+
                     Intent intent = new Intent(this, team_create.class);
                     startActivityForResult(intent, 0);
 
 
+
                 }
             }
+
 
 
 
