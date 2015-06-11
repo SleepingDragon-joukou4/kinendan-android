@@ -10,31 +10,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class team_create extends Activity implements OnClickListener {
+public class team_create extends Activity{
+        /** Called when the activity is first created. */
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.team_create);
 
-    private Button inext;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.regist);
-
-        inext = (Button) findViewById(R.id.invite_next);
-        inext.setOnClickListener(this);
-
-    }
-
-            public void onClick(View v) {
-
-                if (v == inext) {
-                    Intent intent = new Intent(this, team_create.class);
-                    startActivityForResult(intent,0);
-
-
-            }
+            Button btnDisp = (Button)findViewById(R.id.createteam);
+            btnDisp.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    // Sub 画面を起動
+                    Intent intent = new Intent(team_create.this,teamsetting.class);
+                    startActivity(intent);
+                }
+            });
         }
-
-
 }
-
 
