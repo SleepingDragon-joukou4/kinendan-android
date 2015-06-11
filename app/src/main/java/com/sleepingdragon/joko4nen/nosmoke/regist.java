@@ -92,3 +92,8 @@ public class regist extends Activity implements OnClickListener {
         }
 
 
+
+
+
+
+
