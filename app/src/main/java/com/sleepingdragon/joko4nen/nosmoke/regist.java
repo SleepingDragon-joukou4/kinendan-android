@@ -10,16 +10,14 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import android.widget.EditText;
-import java.net.MalformedURLException;
+
+import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
 
 public class regist extends Activity implements OnClickListener {
 
@@ -33,38 +31,38 @@ public class regist extends Activity implements OnClickListener {
 
 
 
-        //‚·‚Ò‚È[‚Ì’†gƒZƒbƒg@–{—ˆ‚ÍDB‚©‚çæ“¾
+        //ï¿½ï¿½ï¿½Ò‚È[ï¿½Ì’ï¿½ï¿½gï¿½Zï¿½bï¿½gï¿½@ï¿½{ï¿½ï¿½ï¿½ï¿½DBï¿½ï¿½ï¿½ï¿½æ“¾
         ArrayList<String> list = new ArrayList<String>();
-        list.add("‚è‚ã‚¤");
-        list.add("‚Ö‚Ñ");
-        list.add("‚¤‚Ü");
-        list.add("‚Ğ‚Â‚¶");
+        list.add("ï¿½ï¿½ã‚¤");
+        list.add("ï¿½Ö‚ï¿½");
+        list.add("ï¿½ï¿½ï¿½ï¿½");
+        list.add("ï¿½Ğ‚Â‚ï¿½");
 
 
-        //ƒXƒsƒi[‚ÌƒfƒUƒCƒ“w’è
+        //ï¿½Xï¿½sï¿½iï¿½[ï¿½Ìƒfï¿½Uï¿½Cï¿½ï¿½ï¿½wï¿½ï¿½
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner tabakosyurui = (Spinner) findViewById(R.id.tabakospn);
         tabakosyurui.setAdapter(adapter);
 
-        //‚·‚Ò‚È[‚Å‘I‘ğ‚³‚ê‚½ƒAƒCƒeƒ€‚ğæ“¾
+        //ï¿½ï¿½ï¿½Ò‚È[ï¿½Å‘Iï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
         //int idx = tabakosyurui.getSelectedItemPosition();
-        //tabakodb‚ğDB‚Ö“o˜^
+        //tabakodbï¿½ï¿½DBï¿½Ö“oï¿½^
         String tabakodb = (String)tabakosyurui.getSelectedItem();
 
 
-        //ƒeƒLƒXƒgƒ{ƒbƒNƒXw’è
+        //ï¿½eï¿½Lï¿½Xï¿½gï¿½{ï¿½bï¿½Nï¿½Xï¿½wï¿½ï¿½
         EditText regnametxt = (EditText) findViewById(R.id.reg_nametext);
-        //ƒeƒLƒXƒgƒ{ƒbƒNƒXreg_nametext‚Ì’†g‚ªstr‚Ì’†‚Ö
-        //Ÿ‚Öƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚çAusername‚ğDB‚Ö“o˜^
+        //ï¿½eï¿½Lï¿½Xï¿½gï¿½{ï¿½bï¿½Nï¿½Xreg_nametextï¿½Ì’ï¿½ï¿½gï¿½ï¿½strï¿½Ì’ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½Öƒ{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½Ausernameï¿½ï¿½DBï¿½Ö“oï¿½^
         String username = regnametxt.getText().toString();
 
-        //‚à‚¤ˆê‚Â‚ÌƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ìæ“¾
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚Ìƒeï¿½Lï¿½Xï¿½gï¿½{ï¿½bï¿½Nï¿½Xï¿½Ìæ“¾
         EditText tabakohonsu = (EditText)findViewById(R.id.reg_tabakotext);
         String syokihonsu = tabakohonsu.getText().toString();
 
 
-        //i‚Şƒ{ƒ^ƒ“
+        //ï¿½iï¿½Şƒ{ï¿½^ï¿½ï¿½
         inext = (Button) findViewById(R.id.invite_next);
         inext.setOnClickListener(this);
 
@@ -77,9 +75,9 @@ public class regist extends Activity implements OnClickListener {
             public void onClick(View v) {
 
                 if (v == inext) {
-                    //Ÿ‚Öƒ{ƒ^ƒ“‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—@‚½‚Ô‚ñDB‚Ö‘}“ü‚·‚éSQL‚à‚±‚±
+                    //ï¿½ï¿½ï¿½Öƒ{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½Ô‚ï¿½DBï¿½Ö‘}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-                    Intent intent = new Intent(this, team_create.class);
+                    Intent intent = new Intent(this, Team_createActivity.class);
                     startActivityForResult(intent, 0);
 
                     connect("http://mixi.jp");
@@ -93,28 +91,28 @@ public class regist extends Activity implements OnClickListener {
 
 
     public static String connect(String strURL) {
-        // (1)try-catch‚É‚æ‚éƒGƒ‰[ˆ—
+        // (1)try-catchï¿½É‚ï¿½ï¿½Gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
         try {
-            // (2)URLƒNƒ‰ƒX‚ğg—p‚µ‚Ä’ÊM‚ğs‚¤
+            // (2)URLï¿½Nï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½Ä’ÊMï¿½ï¿½ï¿½sï¿½ï¿½
             URL url = new URL(strURL);
             URLConnection connection = url.openConnection();
-            // “®ì‚ğ“ü—Í‚Éİ’è
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í‚Éİ’ï¿½
             connection.setDoInput(true);
             InputStream stream = connection.getInputStream();
             BufferedReader input = new BufferedReader(new InputStreamReader(
                     stream));
-            // (3)ƒf[ƒ^‚Ìæ“¾
+            // (3)ï¿½fï¿½[ï¿½^ï¿½Ìæ“¾
             String data = "";
             String tmp = "";
             while ((tmp = input.readLine()) != null) {
                 data += tmp;
             }
-            // (4)I—¹ˆ—
+            // (4)ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             stream.close();
             input.close();
             return data;
         } catch (Exception e) {
-            // (5)ƒGƒ‰[ˆ—
+            // (5)ï¿½Gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
             return e.toString();
         }
     }
