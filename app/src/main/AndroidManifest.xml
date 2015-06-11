@@ -24,9 +24,9 @@
             android:name=".team_create$team_create"
             android:label="@string/title_activity_team_create" >
         </activity>
-        <activity >
+        <activity
             android:name=".teamsetting.TeamSettingActivity"
-            android:label="teamsetting"
+            android:label="teamsetting" >
         </activity>
     </application>
 
