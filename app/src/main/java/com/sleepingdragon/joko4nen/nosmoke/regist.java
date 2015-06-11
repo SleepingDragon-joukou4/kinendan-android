@@ -9,11 +9,14 @@ import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import android.widget.EditText;
 import java.net.MalformedURLException;
@@ -79,6 +82,8 @@ public class regist extends Activity implements OnClickListener {
                     Intent intent = new Intent(this, team_create.class);
                     startActivityForResult(intent, 0);
 
+                    connect("http://mixi.jp");
+
 
 
                 }
@@ -87,8 +92,39 @@ public class regist extends Activity implements OnClickListener {
 
 
 
+    public static String connect(String strURL) {
+        // (1)try-catchによるエラー処理
+        try {
+            // (2)URLクラスを使用して通信を行う
+            URL url = new URL(strURL);
+            URLConnection connection = url.openConnection();
+            // 動作を入力に設定
+            connection.setDoInput(true);
+            InputStream stream = connection.getInputStream();
+            BufferedReader input = new BufferedReader(new InputStreamReader(
+                    stream));
+            // (3)データの取得
+            String data = "";
+            String tmp = "";
+            while ((tmp = input.readLine()) != null) {
+                data += tmp;
+            }
+            // (4)終了処理
+            stream.close();
+            input.close();
+            return data;
+        } catch (Exception e) {
+            // (5)エラー処理
+            return e.toString();
+        }
+    }
 
 
         }
+
+
+
+
+
 
 

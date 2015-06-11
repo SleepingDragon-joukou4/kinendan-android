@@ -21,8 +21,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".team_create$team_create"
-            android:label="@string/title_activity_team_create" >
+            android:name=".regist"
+            android:label="nosmoke" >
+        </activity>
+        <activity
+            android:name=".teamsetting.TeamSettingActivity"
+            android:label="teamsetting" >
         </activity>
     </application>
 
