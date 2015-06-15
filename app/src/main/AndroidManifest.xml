@@ -29,5 +29,5 @@
             android:label="teamsetting" >
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
