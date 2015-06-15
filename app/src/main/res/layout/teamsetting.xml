@@ -52,6 +52,7 @@
             android:layout_height="50dp"
             android:id="@+id/team_kikanselect"
             android:layout_gravity="center_horizontal"
+            android:entries="@array/spnKinkan"
             android:spinnerMode="dialog"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp" />
@@ -73,6 +74,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:entries="@array/spnSinNum"
             android:spinnerMode="dialog" />
 
 
