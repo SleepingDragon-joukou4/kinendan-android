@@ -7,10 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
+import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Team_createActivity extends Activity{
         /** Called when the activity is first created. */
@@ -19,30 +26,55 @@ public class Team_createActivity extends Activity{
             super.onCreate(savedInstanceState);
             setContentView(R.layout.team_create);
 
-            Button createteam = (Button)findViewById(R.id.createteam);
+            final Button createteam = (Button) findViewById(R.id.createteam);
             createteam.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     // TeamSetting画面に遷移
-                    Intent intent = new Intent(Team_createActivity.this,TeamSettingActivity.class);
-                    startActivity(intent);
-                }
+                    Intent intent = new Intent(Team_createActivity.this, TeamSettingActivity.class);
+                startActivity(intent);
+            }
 
-
-
-
-
-
-
-            });
-
+        });
 
             Button createteam_join =(Button)findViewById(R.id.createteam_join);
             createteam_join.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
-                    //Team_invite画面に遷移
-                    Log.d("onclick", "aa");
-                    Intent intent = new Intent(Team_createActivity.this,TeamInviteActivity.class);
-                    startActivity(intent);
+                    TextView input = (TextView) findViewById(R.id.createteam_id);
+                    String text = input.getText().toString();
+
+                    URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+                        @Override
+                        protected void onPostExecute(JSONObject result) {
+                            //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
+                            //try/catchしないと駄目っぽい
+                            String Invite_TeamName = null;
+                            try {
+                                // TeamNameを取得
+                                Invite_TeamName = result.has("TeamId")?result.getString("TeamId"):null;
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            if (Invite_TeamName!=null) {
+                                // 取得した結果をテキストビューに入れるよ
+                                TextView TeamName = (TextView) Team_createActivity.this.findViewById(R.id.createteam_text);
+                                TeamName.setText(Invite_TeamName);
+                                //Team_invite画面に遷移
+                                Log.d("onclick", "aa");
+                                Intent intent = new Intent(Team_createActivity.this,TeamInviteActivity.class);
+                                startActivity(intent);
+
+                                //これで、表示されてるはず！
+                               // return;
+                            }else
+                            {
+                                Toast.makeText(Team_createActivity.this, "チームIDが見つかりません", Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                    };
+                    //executeで非同期処理開始
+                    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
+                            "get=teamselect&TeamId="+text);
 
 
 
@@ -53,4 +85,3 @@ public class Team_createActivity extends Activity{
 
         }
 }
-
