@@ -36,7 +36,8 @@ public class regist extends Activity implements OnClickListener {
         setContentView(R.layout.regist);
 
 
-ArrayList<String> list = new ArrayList<String>();
+
+        ArrayList<String> list = new ArrayList<String>();
         list.add("a");
         list.add("s");
         list.add("d");
@@ -90,9 +91,17 @@ ArrayList<String> list = new ArrayList<String>();
                             "\t\t&UserId=0000&Name=\n" + username + "\t\t&CigarreteBrandNo=\n" + sigarettebrand + "\t\t&\n" +
                             "TeamId=0000&CigaretteNumber=\n" + syokihonsu);
 
+                    nextpage();
+
                 }
             }
 
+        public void nextpage(){
+
+            Intent goTeamCreate = new Intent(this,Team_createActivity.class);
+            startActivityForResult(goTeamCreate,0);
+
+        }
 
 
 

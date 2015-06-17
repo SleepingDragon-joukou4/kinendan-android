@@ -9,18 +9,19 @@ import android.view.View;
 import android.widget.EditText;
 
 
+
 /**
  * Created by ryu on 15/06/11.
  */
 public class TeamSettingActivity extends Activity {
 
+
+
      private EditText teamNameText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.teamsetting);
 
-        teamNameText = (EditText)findViewById(R.id.team_nametext);
 
 
     }
