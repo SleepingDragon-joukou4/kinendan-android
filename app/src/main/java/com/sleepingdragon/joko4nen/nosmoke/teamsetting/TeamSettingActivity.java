@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 
@@ -14,14 +15,24 @@ import android.widget.EditText;
  */
 public class TeamSettingActivity extends Activity {
 
+     String insertteamname;
      private EditText teamNameText;
+     private Button back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teamsetting);
 
         teamNameText = (EditText)findViewById(R.id.team_nametext);
+        insertteamname = teamNameText.getText().toString();
+
+        back = (Button)findViewById(R.id.teamset_back );
+        back.setOnClickListener(this);
 
 
+    }
+    public void onClick(View v){
+        if (v == back) {
     }
 }
