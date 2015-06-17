@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
@@ -31,7 +30,7 @@ public class Team_createActivity extends Activity{
                 public void onClick(View v) {
                     // TeamSetting画面に遷移
                     Intent intent = new Intent(Team_createActivity.this, TeamSettingActivity.class);
-                startActivity(intent);
+                    startActivity(intent);
             }
 
         });
@@ -49,27 +48,30 @@ public class Team_createActivity extends Activity{
                             //try/catchしないと駄目っぽい
                             String Invite_TeamName = null;
                             try {
-                                // TeamNameを取得
+                                // TeamNameを取得　無かったらnul入れるよ
                                 Invite_TeamName = result.has("TeamId")?result.getString("TeamId"):null;
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            if (Invite_TeamName!=null) {
+                            //ユーザーが入力した情報が
+                            if (Invite_TeamName != null) {
                                 // 取得した結果をテキストビューに入れるよ
-                                TextView TeamName = (TextView) Team_createActivity.this.findViewById(R.id.createteam_text);
-                                TeamName.setText(Invite_TeamName);
+                                //TextView TeamName = (TextView) Team_createActivity.this.findViewById(R.id.createteam_text);
+                                //TeamName.setText(Invite_TeamName);
                                 //Team_invite画面に遷移
-                                Log.d("onclick", "aa");
-                                Intent intent = new Intent(Team_createActivity.this,TeamInviteActivity.class);
+                                //Log.d("onclick", "aa");
+                                /**Intent intent = new Intent(Team_createActivity.this,TeamInviteActivity.class);
                                 startActivity(intent);
-
+                                **/
+                                Toast.makeText(Team_createActivity.this, "チームIDが見つかりました", Toast.LENGTH_LONG).show();
                                 //これで、表示されてるはず！
-                               // return;
+                                //return;
                             }else
                             {
                                 Toast.makeText(Team_createActivity.this, "チームIDが見つかりません", Toast.LENGTH_LONG).show();
 
                             }
+
                         }
                     };
                     //executeで非同期処理開始

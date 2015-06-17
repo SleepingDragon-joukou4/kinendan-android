@@ -1,6 +1,8 @@
 package com.sleepingdragon.joko4nen.nosmoke;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,9 +12,62 @@ import android.view.View;
 // 追加
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MainActivity extends Activity {
+    // TeamSetting画面に遷移
+    URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+        @Override
+        protected void onPostExecute(JSONObject result) {
+
+            String Invite_UserName = null;
+            try {
+                // TeamNameを取得　無かったらnul入れるよ
+                Invite_UserName = result.has("TeamId")?result.getString("TeamId"):null;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            //ユーザーが入力した情報が
+            if (Invite_TeamName != null) {
+                // 取得した結果をテキストビューに入れるよ
+                //TextView TeamName = (TextView) Team_createActivity.this.findViewById(R.id.createteam_text);
+                //TeamName.setText(Invite_TeamName);
+                //Team_invite画面に遷移
+                //Log.d("onclick", "aa");
+                /**Intent intent = new Intent(Team_createActivity.this,TeamInviteActivity.class);
+                 startActivity(intent);
+                 **/
+                Toast.makeText(Team_createActivity.this, "チームIDが見つかりました", Toast.LENGTH_LONG).show();
+                //これで、表示されてるはず！
+                //return;
+            }else
+            {
+                Toast.makeText(Team_createActivity.this, "チームIDが見つかりません", Toast.LENGTH_LONG).show();
+
+            }
+
+        }
+    };
+    //executeで非同期処理開始
+    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
+            "get=userupsert&UserId="+  +"&TeamId" + );
+
+
+
+
+
+
+
+
+
+
+
+/**
     // 追加
     int count = 0;
     private TextView counter_text;
@@ -22,9 +77,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // 追加：画面のアイテムと紐付け
-
 
         // 追加：クリック
         push_btn.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +110,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }**/
 }
