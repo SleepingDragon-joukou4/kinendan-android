@@ -14,15 +14,16 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme" >
+
+        </activity>
+        <activity
+            android:name=".regist"
+            android:label="nosmoke" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".regist"
-            android:label="nosmoke" >
         </activity>
         <activity
             android:name=".teamsetting.TeamSettingActivity"
@@ -33,5 +34,5 @@
             android:label="team_invite" >
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
