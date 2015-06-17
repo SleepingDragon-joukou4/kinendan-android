@@ -17,7 +17,7 @@
 
         </activity>
         <activity
-            android:name=".regist"
+            android:name=".RegistActivity.regist"
             android:label="nosmoke" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

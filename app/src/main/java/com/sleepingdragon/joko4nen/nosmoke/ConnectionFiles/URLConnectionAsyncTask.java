@@ -1,4 +1,4 @@
-package com.sleepingdragon.joko4nen.nosmoke;
+package com.sleepingdragon.joko4nen.nosmoke.ConnectionFiles;
 
 import java.io.IOException;
 import java.io.InputStream;
