@@ -2,28 +2,19 @@ package com.sleepingdragon.joko4nen.nosmoke;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
-import android.content.Intent;
-import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
+import android.widget.Spinner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class regist extends Activity implements OnClickListener {
+import java.util.ArrayList;
+
+public class a extends Activity implements OnClickListener {
 
     private Button inext;
     String username;
@@ -36,8 +27,7 @@ public class regist extends Activity implements OnClickListener {
         setContentView(R.layout.regist);
 
 
-
-        ArrayList<String> list = new ArrayList<String>();
+ArrayList<String> list = new ArrayList<String>();
         list.add("a");
         list.add("s");
         list.add("d");
@@ -91,17 +81,9 @@ public class regist extends Activity implements OnClickListener {
                             "\t\t&UserId=0000&Name=\n" + username + "\t\t&CigarreteBrandNo=\n" + sigarettebrand + "\t\t&\n" +
                             "TeamId=0000&CigaretteNumber=\n" + syokihonsu);
 
-                    nextpage();
-
                 }
             }
 
-        public void nextpage(){
-
-            Intent goTeamCreate = new Intent(this,Team_createActivity.class);
-            startActivityForResult(goTeamCreate,0);
-
-        }
 
 
 
