@@ -1,7 +1,10 @@
 package com.sleepingdragon.joko4nen.nosmoke.teamsetting;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
+import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,10 +34,5 @@ public class TeamSettingActivity extends Activity {
         //back.setOnClickListener(this);
 
 
-    }
-
-    public void onClick(View v) {
-        if (v == back) {
-        }
     }
 }
