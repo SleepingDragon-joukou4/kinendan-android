@@ -15,24 +15,31 @@ import android.widget.EditText;
  */
 public class TeamSettingActivity extends Activity {
 
-     String insertteamname;
-     private EditText teamNameText;
-     private Button back;
+    String insertteamname;
+    private EditText teamNameText;
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teamsetting);
 
-        teamNameText = (EditText)findViewById(R.id.team_nametext);
+        teamNameText = (EditText) findViewById(R.id.team_nametext);
         insertteamname = teamNameText.getText().toString();
 
-        back = (Button)findViewById(R.id.teamset_back );
-        back.setOnClickListener(this);
+        back = (Button) findViewById(R.id.teamset_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }
-    public void onClick(View v){
+
+    public void onClick(View v) {
         if (v == back) {
+        }
     }
 }
