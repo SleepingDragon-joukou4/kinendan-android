@@ -33,6 +33,13 @@
             android:name=".team_invite.TeamInviteActivity"
             android:label="team_invite" >
         </activity>
+        <activity
+            android:name=".MainActivity.Home"
+            android:label="MainActivity" >
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
     </application>
 
 </manifest>
