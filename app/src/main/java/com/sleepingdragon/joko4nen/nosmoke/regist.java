@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
+import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -87,9 +88,9 @@ public class regist extends Activity implements OnClickListener {
                         }
                     };
                     //executeで非同期処理開始
-                    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=userupsert\n" +
-                            "\t\t&UserId=0000&Name=\n" + username + "\t\t&CigarreteBrandNo=\n" + sigarettebrand + "\t\t&\n" +
-                            "TeamId=0000&CigaretteNumber=\n" + syokihonsu);
+                    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=userupsert" +
+                            "&UserId=0000&Name=" + username + "&CigarreteBrandNo=" + sigarettebrand + "&" +
+                            "TeamId=0000&CigaretteNumber=" + syokihonsu);
 
                     nextpage();
 
@@ -98,9 +99,10 @@ public class regist extends Activity implements OnClickListener {
 
         public void nextpage(){
 
-            Intent goTeamCreate = new Intent(this,Team_createActivity.class);
-            startActivityForResult(goTeamCreate,0);
-
+             Intent goTeamCreate = new Intent(this,Team_createActivity.class);
+             startActivityForResult(goTeamCreate,0);
+            //Intent intent = new Intent(regist.this, Team_createActivity.class);
+            //startActivity(intent);
         }
 
 

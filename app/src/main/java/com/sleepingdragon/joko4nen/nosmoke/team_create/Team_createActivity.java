@@ -15,11 +15,14 @@ import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
 
+import android.util.*;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.*;
 
 public class Team_createActivity extends Activity{
         /** Called when the activity is first created. */
+        private static final String TAG = "hoge";
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -42,14 +45,23 @@ public class Team_createActivity extends Activity{
                     String text = input.getText().toString();
 
                     URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-                        @Override
+                        String Invite_TeamName;
                         protected void onPostExecute(JSONObject result) {
                             //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                             //try/catchしないと駄目っぽい
-                            String Invite_TeamName = null;
                             try {
                                 // TeamNameを取得　無かったらnul入れるよ
-                                Invite_TeamName = result.has("TeamId")?result.getString("TeamId"):null;
+                                //JSONObject json = new JSONObject("result");
+                                //JSONObject json = result;
+
+                                //JSONObject itemobject = (JSONObject)result.get("Name");
+                                //JSONオブジェクト型から、文字列に変換
+                                //String san = json.toString(4);
+                                //Log.d(TAG, san);
+
+                                //Log.d(TAG,result.getString("TeamId"));
+                              Invite_TeamName  = result.has("TeamId")?result.getString("Name"):null;
+                                Toast.makeText(Team_createActivity.this, Invite_TeamName, Toast.LENGTH_LONG).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -76,7 +88,7 @@ public class Team_createActivity extends Activity{
                     };
                     //executeで非同期処理開始
                     URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
-                            "get=teamselect&TeamId="+text);
+                            "get=teamselect2&UserId=&TeamId="+text);
 
 
 
