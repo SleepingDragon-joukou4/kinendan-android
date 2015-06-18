@@ -18,18 +18,19 @@ import android.widget.EditText;
  */
 public class TeamSettingActivity extends Activity {
 
-    String insertteamname;
-    private EditText teamNameText;
-    private Button back;
+     String insertteamname;
+     private EditText teamNameText;
+     private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teamsetting);
 
-        teamNameText = (EditText) findViewById(R.id.team_nametext);
+        teamNameText = (EditText)findViewById(R.id.team_nametext);
         insertteamname = teamNameText.getText().toString();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         back = (Button) findViewById(R.id.teamset_back);
 =======
@@ -61,5 +62,14 @@ public class TeamSettingActivity extends Activity {
         startActivityForResult(goTeamCreate,0);
 
 >>>>>>> 3d810c5b24da5c882e3c98059a5cb63e83a60301
+=======
+        back = (Button)findViewById(R.id.teamset_back );
+        back.setOnClickListener(this);
+
+
+    }
+    public void onClick(View v){
+        if (v == back) {
+>>>>>>> parent of 7e4b68b... no message
     }
 }
