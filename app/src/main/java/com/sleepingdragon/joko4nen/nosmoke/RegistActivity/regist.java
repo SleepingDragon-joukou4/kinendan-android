@@ -1,4 +1,4 @@
-package com.sleepingdragon.joko4nen.nosmoke;
+package com.sleepingdragon.joko4nen.nosmoke.RegistActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,15 +9,11 @@ import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import android.widget.EditText;
-import android.widget.TextView;
 
+import com.sleepingdragon.joko4nen.nosmoke.R;
+import com.sleepingdragon.joko4nen.nosmoke.ConnectionFiles.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
 
 import org.json.JSONException;
