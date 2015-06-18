@@ -1,13 +1,20 @@
-package com.sleepingdragon.joko4nen.nosmoke.MainActivity;
+package com.sleepingdragon.joko4nen.nosmoke;
 
 
 import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 // ’Ç‰Á
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sleepingdragon.joko4nen.nosmoke.ConnectionFiles.URLConnectionAsyncTask;
-import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
+import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
