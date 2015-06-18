@@ -25,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".teamsetting.TeamSettingActivity"
-            android:label="teamsetting" >
-        </activity>
+        <!--<activity-->
+            <!--android:name=".teamsetting.TeamSettingActivity"-->
+            <!--android:label="teamsetting" >-->
+        <!--</activity>-->
         <activity
             android:name=".team_invite.TeamInviteActivity"
             android:label="team_invite" >
@@ -36,9 +36,7 @@
         <activity
             android:name=".MainActivity.Home"
             android:label="MainActivity" >
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
         </activity>
     </application>
 
