@@ -1,4 +1,4 @@
-package com.sleepingdragon.joko4nen.nosmoke.ConnectionFiles;
+package com.sleepingdragon.joko4nen.nosmoke;
 
 import android.app.Activity;
 import android.content.AsyncTaskLoader;
