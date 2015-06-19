@@ -9,17 +9,10 @@ import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity;
-import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
+import com.sleepingdragon.joko4nen.nosmoke.team_create.TeamCreateActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -99,7 +92,7 @@ public class regist extends Activity implements OnClickListener {
 
         public void nextpage(){
 
-             Intent goTeamCreate = new Intent(this,Team_createActivity.class);
+             Intent goTeamCreate = new Intent(this, TeamCreateActivity.class);
              startActivityForResult(goTeamCreate,0);
             //Intent intent = new Intent(regist.this, Team_createActivity.class);
             //startActivity(intent);

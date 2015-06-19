@@ -9,21 +9,22 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".team_create.Team_createActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:theme="@style/FullscreenTheme" >
 
+        <activity
+            android:name=".MainActivity"
+            android:label="MainActivity" >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".regist"
-            android:label="nosmoke" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="regist" >
+        </activity>
+        <activity
+            android:name=".team_create.TeamCreateActivity"
+            android:label="teamcreate" >
         </activity>
         <activity
             android:name=".teamsetting.TeamSettingActivity"
@@ -32,6 +33,22 @@
         <activity
             android:name=".team_invite.TeamInviteActivity"
             android:label="team_invite" >
+        </activity>
+        <activity
+            android:name=".team_sinselect.TeamSinselectActivity"
+            android:label="team_sinselect" >
+        </activity>
+        <activity
+            android:name=".home.HomeActivity"
+            android:label="home" >
+        </activity>
+        <activity
+            android:name=".ranking.RankingActivity"
+            android:label="ranking" >
+        </activity>
+        <activity
+            android:name=".syohin.SyohinActivity"
+            android:label="syohin" >
         </activity>
     </application>
 
