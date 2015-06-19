@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".regist"
-            android:label="regist" >
+            android:label="regist2" >
         </activity>
         <activity
             android:name=".team_create.TeamCreateActivity"
