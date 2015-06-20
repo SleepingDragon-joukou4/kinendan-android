@@ -42,6 +42,7 @@ public class TeamCreateActivity extends Activity{
 
                     URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
                         String Invite_TeamName;
+                        String Status;
                         protected void onPostExecute(JSONObject result) {
                             //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                             //try/catchしないと駄目っぽい
@@ -57,12 +58,13 @@ public class TeamCreateActivity extends Activity{
 
                                 //Log.d(TAG,result.getString("TeamId"));
                               Invite_TeamName  = result.has("TeamId")?result.getString("Name"):null;
-                                //Toast.makeText(TeamCreateActivity.this, Invite_TeamName, Toast.LENGTH_LONG).show();
+                                Status = result.getString("Status");
+                                //Toast.makeText(TeamCreateActivity.this, , Toast.LENGTH_LONG).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                             //ユーザーが入力した情報が
-                            if (Invite_TeamName != null) {
+                            if (Invite_TeamName != null && Status =="待機中") {
                                 // 取得した結果をテキストビューに入れるよ
                                 //TextView TeamName = (TextView) TeamCreateActivity.this.findViewById(R.id.createteam_text);
                                 //TeamName.setText(Invite_TeamName);
@@ -78,6 +80,8 @@ public class TeamCreateActivity extends Activity{
                                 //return;
                             }else
                             {
+                                //Toast.makeText(TeamCreateActivity.this, Status, Toast.LENGTH_LONG).show();
+
                                 Toast.makeText(TeamCreateActivity.this, "チームIDが見つかりません", Toast.LENGTH_LONG).show();
 
                             }
@@ -86,7 +90,7 @@ public class TeamCreateActivity extends Activity{
                     };
                     //executeで非同期処理開始
                     URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
-                            "get=teamselect2&UserId=&TeamId="+text);
+                            "get=teamselect&UserId=&TeamId="+text+"Status");
 
 
 
