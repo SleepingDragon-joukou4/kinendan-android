@@ -31,16 +31,24 @@
             android:label="teamsetting" >
         </activity>
         <activity
+            android:name=".team_sinselect.TeamSinselectActivity"
+            android:label="team_sinselect" >
+        </activity>
+        <activity
             android:name=".team_invite.TeamInviteActivity"
             android:label="team_invite" >
         </activity>
         <activity
-            android:name=".team_sinselect.TeamSinselectActivity"
+            android:name=".reg_success.RegSuccessActivity"
             android:label="team_sinselect" >
         </activity>
         <activity
             android:name=".home.HomeActivity"
             android:label="home" >
+        </activity>
+        <activity
+            android:name=".schedule.ScheduleActivity"
+            android:label="ranking" >
         </activity>
         <activity
             android:name=".ranking.RankingActivity"
