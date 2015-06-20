@@ -3,6 +3,7 @@ package com.sleepingdragon.joko4nen.nosmoke.team_create;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -43,6 +44,7 @@ public class TeamCreateActivity extends Activity{
                     URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
                         String Invite_TeamName;
                         String Status;
+
                         protected void onPostExecute(JSONObject result) {
                             //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                             //try/catchしないと駄目っぽい
@@ -55,16 +57,15 @@ public class TeamCreateActivity extends Activity{
                                 //JSONオブジェクト型から、文字列に変換
                                 //String san = json.toString(4);
                                 //Log.d(TAG, san);
-
                                 //Log.d(TAG,result.getString("TeamId"));
                               Invite_TeamName  = result.has("TeamId")?result.getString("Name"):null;
                                 Status = result.getString("Status");
-                                //Toast.makeText(TeamCreateActivity.this, , Toast.LENGTH_LONG).show();
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                             //ユーザーが入力した情報が
-                            if (Invite_TeamName != null && Status =="待機中") {
+                            if (Invite_TeamName != null && Status.equals("待機中")) {
                                 // 取得した結果をテキストビューに入れるよ
                                 //TextView TeamName = (TextView) TeamCreateActivity.this.findViewById(R.id.createteam_text);
                                 //TeamName.setText(Invite_TeamName);
@@ -82,7 +83,7 @@ public class TeamCreateActivity extends Activity{
                             {
                                 //Toast.makeText(TeamCreateActivity.this, Status, Toast.LENGTH_LONG).show();
 
-                                Toast.makeText(TeamCreateActivity.this, "チームIDが見つかりません", Toast.LENGTH_LONG).show();
+                               Toast.makeText(TeamCreateActivity.this, "チームIDが見つかりません", Toast.LENGTH_LONG).show();
 
                             }
 
@@ -90,7 +91,7 @@ public class TeamCreateActivity extends Activity{
                     };
                     //executeで非同期処理開始
                     URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
-                            "get=teamselect&UserId=&TeamId="+text+"Status");
+                            "get=teamselect&UserId&TeamId="+text);
 
 
 
