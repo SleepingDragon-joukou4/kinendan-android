@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    startActivity(new Intent(MainActivity.this, regist.class));
                     //finishして戻るボタンで戻れなくする
                     // 画面移動後アクティビティ消去
                     MainActivity.this.finish();
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(MainActivity.this, regist.class));
+                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
                     //finishして戻るボタンで戻れなくする
                     // 画面移動後アクティビティ消去
                     MainActivity.this.finish();
