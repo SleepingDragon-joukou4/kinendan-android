@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +24,7 @@ import org.json.JSONObject;
  *
  *   ※ それぞれ不要な場合は、Voidを設定すれば良い
  */
-public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONObject> {
+public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
 
     //コンストラクタ
     //Activityを使うためここで紐づけします
@@ -49,7 +50,7 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONObject> 
     //ここが非同期で処理される部分。
     //これが後ろ側で見えないところで実行されるってことです
     @Override
-    protected JSONObject doInBackground(String... arg) {
+    protected JSONArray doInBackground(String... arg) {
         //HttpURLConnectionを使用して接続を行います。
         HttpURLConnection connection = null;
         StringBuilder src = new StringBuilder();
@@ -80,11 +81,13 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONObject> 
         String strsrc = new String(src);
         //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
         // JSONObject に変換します
-        JSONObject json = null;
+        JSONArray json = null;
         //try/catchしないと駄目っぽい
         try {
             //JSONObject型に変換
-            json = new JSONObject(strsrc);
+            //json = new JSONObject(strsrc);
+            //JSONArray型に変換で
+            json=new JSONArray(strsrc);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -95,7 +98,7 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONObject> 
     //つまり、インターネット接続を行い、接続が完了し、値が正常に取得で来たらこれが実行されます。
     //ここの部分の振る舞いを変更したい時は、extendを使って個別に拡張すればいいです
     @Override
-    protected void onPostExecute(JSONObject result) {
+    protected void onPostExecute(JSONArray result) {
         //try{
         //    result.getString("TeamName");
         //} catch (JSONException e) {
