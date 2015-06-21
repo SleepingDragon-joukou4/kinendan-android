@@ -45,10 +45,11 @@ public class MainActivity extends Activity {
         //初期表示確認
         //UserIDがあるか確認
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = Savedata.edit();
         String UserData = Savedata.getString("UserID", "なし");
         String TeamData = Savedata.getString("TeamID", "なし");
         Log.d("Userdata", UserData);
-        if (UserData.equals("なし")) {
+        if (TeamData.equals("なし")) {
             //なければ新しく作る
             //User+日付+6文字の乱数(例:User20150620531455)
             String tempUserID = "User";
@@ -59,7 +60,7 @@ public class MainActivity extends Activity {
             tempUserID = tempUserID + sdf.format(c.getTime()).toString();
             Random random = new Random();
             tempUserID = tempUserID + random.nextInt(1000000);
-            SharedPreferences.Editor editor = Savedata.edit();
+            editor = Savedata.edit();
             editor.putString("UserID", tempUserID);
             editor.apply();
             //registにIntent
@@ -67,14 +68,14 @@ public class MainActivity extends Activity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(MainActivity.this, regist.class));
+                    startActivity(new Intent(MainActivity.this,regist.class));
                     //finishして戻るボタンで戻れなくする
                     // 画面移動後アクティビティ消去
                     MainActivity.this.finish();
                 }
             }, 3000);//3000ms後に画面遷移する
-        } else {
-            //ある場合ホーム画面にintent
+        } else{
+            //TeamIDがある場合ホーム画面にintent
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
