@@ -1,7 +1,9 @@
 package com.sleepingdragon.joko4nen.nosmoke;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 import android.view.View;
@@ -25,34 +27,25 @@ public class regist extends Activity implements OnClickListener {
     String username;
     int sigarettebrand;
     String syokihonsu;
+    EditText regnametxt;
+    EditText tabakohonsu;
+    Spinner tabakosyurui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.regist);
 
-        tabakolistselect();
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("a");
-        list.add("s");
-        list.add("d");
-        list.add("f");
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner tabakosyurui = (Spinner) findViewById(R.id.tabakospn);
-        tabakosyurui.setAdapter(adapter);
+        TabakoListSelect();
+        tabakosyurui = (Spinner) findViewById(R.id.tabakospn);
 
         sigarettebrand = (int)tabakosyurui.getSelectedItemId();
 
-
-        EditText regnametxt = (EditText) findViewById(R.id.reg_nametext);
+        regnametxt = (EditText) findViewById(R.id.reg_nametext);
         username = regnametxt.getText().toString();
 
 
-        EditText tabakohonsu = (EditText)findViewById(R.id.reg_tabakotext);
+        tabakohonsu = (EditText)findViewById(R.id.reg_tabakotext);
         syokihonsu = tabakohonsu.getText().toString();
 
 
@@ -69,19 +62,20 @@ public class regist extends Activity implements OnClickListener {
             public void onClick(View v) {
 
                 if (v == inext) {
-                    nextpage();
+                    UserDataClientInsert();
+                    NextPage();
 
                 }
             }
 
-        public void nextpage(){
+        public void NextPage(){
 
              Intent goTeamCreate = new Intent(this, TeamCreateActivity.class);
              startActivityForResult(goTeamCreate,0);
             //Intent intent = new Intent(regist.this, Team_createActivity.class);
             //startActivity(intent);
         }
-        public void tabakolistselect(){
+        public void TabakoListSelect(){
             URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
                 @Override
                 protected void onPostExecute(JSONArray result) {
@@ -94,7 +88,7 @@ public class regist extends Activity implements OnClickListener {
                                 JSONObject ja=result.getJSONObject(i);
                                 list.add(ja.getString("CigaretteName"));
                             }
-                        }else {
+                        }else{
                             list.add("Error!");
                         }
 
@@ -112,6 +106,23 @@ public class regist extends Activity implements OnClickListener {
             //executeで非同期処理開始
             URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=cigarettebrandselect" +
                     "&UserId=0000&TeamId=Team");
+        }
+        public void UserDataClientInsert(){
+            regnametxt = (EditText) findViewById(R.id.reg_nametext);
+            username = regnametxt.getText().toString();
+            tabakohonsu =(EditText)findViewById(R.id.reg_tabakotext);
+            syokihonsu =tabakohonsu.getText().toString();
+            tabakosyurui = (Spinner) findViewById(R.id.tabakospn);
+            sigarettebrand = (int)tabakosyurui.getSelectedItemId();
+            //登録します
+            SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = Savedata.edit();
+            editor = Savedata.edit();
+            editor.putString("UserName", username);
+            editor.putString("CigaretteNumber",syokihonsu);
+            editor.putInt("CigarreteBrandNo", sigarettebrand);
+            editor.apply();
+
         }
 
 
