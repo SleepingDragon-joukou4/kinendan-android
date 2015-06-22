@@ -130,6 +130,7 @@ public class TeamSettingActivity extends Activity {
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
+                    Log.d("",result.toString());
                     JSONObject ja=result.getJSONObject(0);
                     String res=ja.getString("response");
                     if(res.equals("success")){
@@ -151,7 +152,7 @@ public class TeamSettingActivity extends Activity {
         URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupsert" +
                 "&UserId="+UserID+"&TeamId="+TeamId+"&CigaretteBrandNo="+CigarreteBrandNo+"&Deadline="+kikanselectstring
                 +"&StartDate="+nowDate+"&Name="+teamname+"&Punishment="+batsugame+"&PunishmentNumber="+sinnumselectstring
-                +"&Status=‘Ò‹@’†"+"&HostUserId="+UserID);
+                +"&Status=%E5%BE%85%E6%A9%9F%E4%B8%AD"+"&HostUserId="+UserID);
     }
 
 }
