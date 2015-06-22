@@ -27,7 +27,8 @@ public class TeamCreateActivity extends Activity{
             super.onCreate(savedInstanceState);
             setContentView(R.layout.team_create);
         }
-        protected void Resume() {
+        @Override
+        protected void onResume() {
             super.onResume();
             Button createteam = (Button) findViewById(R.id.createteam);
             createteam.setOnClickListener(new OnClickListener() {
