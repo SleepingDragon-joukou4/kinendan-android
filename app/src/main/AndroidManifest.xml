@@ -31,10 +31,6 @@
             android:label="teamsetting" >
         </activity>
         <activity
-            android:name=".team_sinselect.TeamSinselectActivity"
-            android:label="team_sinselect" >
-        </activity>
-        <activity
             android:name=".team_invite.TeamInviteActivity"
             android:label="team_invite" >
         </activity>
