@@ -89,22 +89,50 @@ public class MainActivity extends Activity {
                     try {
 
                         Log.d("", result.toString());
-                        ArrayList<String> list = new ArrayList<String>();
+                        //2次元配列
+                        final ArrayList<String> Namelist=new ArrayList<String>();
+                        final ArrayList<String> PunishmentNumberlist=new ArrayList<String>();
+                        final ArrayList<String> NowPunishmentNumberlist=new ArrayList<String>();
                         if(result!=null) {
                             for (int i=0;i<result.length();i++){
                                 JSONObject ja=result.getJSONObject(i);
-                                list.add(ja.getString("Name"));
+                                if(ja.has("Name")) //has:値が存在するときtrue,しないときfalse
+                                {
+                                    Namelist.add(ja.getString("Name"));
+                                    PunishmentNumberlist.add(ja.getString("PunishmentNumber"));
+                                    NowPunishmentNumberlist.add(ja.getString("NowPunishmentNumber"));
+                                }
                             }
-                        }else{
-                            list.add("Error!");
                         }
                         //名前(list型）がある場合、sin_jikko画面にintent
-                        if(list != null){
+
+                        if(Namelist != null){
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    startActivity(new Intent(MainActivity.this,SinJikkoActivity.class));
+                                    Intent i=new Intent(MainActivity.this,SinJikkoActivity.class);
+                                    //listをActivityに値渡し
+                                    //Namelist:名前
+                                    //PunishmentNumberList:罰ゲームを受ける回数
+                                    //NowPunishmentNumberList:現在そのユーザーが破った回数
+                                    i.putStringArrayListExtra("NameList",Namelist);
+                                    i.putStringArrayListExtra("PunishmentNumberList",PunishmentNumberlist);
+                                    i.putStringArrayListExtra("NowPunishmentNumberList",NowPunishmentNumberlist);
+                                    startActivity(i);
+                                    //finishして戻るボタンで戻れなくする
+                                    // 画面移動後アクティビティ消去
+                                    MainActivity.this.finish();
+                                }
+                            }, 3000);//3000ms後に画面遷移する
+
+                        }else{
+                            //誰も罰を受けなかった時の処理
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
                                     //finishして戻るボタンで戻れなくする
                                     // 画面移動後アクティビティ消去
                                     MainActivity.this.finish();
@@ -112,10 +140,6 @@ public class MainActivity extends Activity {
                             }, 3000);//3000ms後に画面遷移する
 
                         }
-                        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, list);
-                        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        //Spinner tabakosyurui = (Spinner) findViewById(R.id.tabakospn);
-                        //tabakosyurui.setAdapter(adapter);
 
                     }catch (JSONException e) {
                         e.printStackTrace();
@@ -129,19 +153,6 @@ public class MainActivity extends Activity {
 
         }
 
-
-
-            //TeamIDがある場合ホーム画面にintent
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                    //finishして戻るボタンで戻れなくする
-                    // 画面移動後アクティビティ消去
-                    MainActivity.this.finish();
-                }
-            }, 3000);//3000ms後に画面遷移する
         }
     }
 
