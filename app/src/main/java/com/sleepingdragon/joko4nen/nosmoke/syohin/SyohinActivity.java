@@ -2,14 +2,25 @@ package com.sleepingdragon.joko4nen.nosmoke.syohin;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
+import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.home.HomeActivity;
 import com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity;
+import com.sleepingdragon.joko4nen.nosmoke.regist;
 import com.sleepingdragon.joko4nen.nosmoke.schedule.ScheduleActivity;
+import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Ryosei on 2015/06/19.
@@ -18,6 +29,40 @@ public class SyohinActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.syohin);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        //UserIDÇ∆TeamIDÇéÊìæ
+        SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        //String UserID = Savedata.getString("UserID", "Ç»Çµ");
+        String TeamID = Savedata.getString("TeamID", "Ç»Çµ");
+        //sampleópÇÃUserID
+        String UserID = "User20150528s4KV2d";
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+            @Override
+            protected void onPostExecute(JSONArray result) {
+                try {
+                    JSONObject ja=result.getJSONObject(0);
+                    String ModerationPrice = ja.getString("ModerationPrice");
+                          //TextViewÇ…ModerationPricÇë}ì¸
+                    TextView textView = (TextView) findViewById(R.id.kingaku);
+                    textView.setText(ModerationPrice);
+                    
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return;
+
+            }
+        };
+        //executeÇ≈îÒìØä˙èàóùäJén
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=smokingselect" +
+                "&UserId="+UserID+"&TeamId="+TeamID);
+    }
+
+        public void buttonseni() {
         Button HomeButton = (Button) findViewById(R.id.HomeButton);
         Button RankingButton = (Button) findViewById(R.id.RankingButton);
         Button ScheduleButton = (Button) findViewById(R.id.ScheduleButton);
@@ -62,7 +107,7 @@ public class SyohinActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-
     }
 }
+
+

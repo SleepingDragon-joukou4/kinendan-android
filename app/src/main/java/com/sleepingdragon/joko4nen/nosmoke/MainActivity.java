@@ -46,10 +46,8 @@ public class MainActivity extends Activity {
         //UserIDがあるか確認
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = Savedata.edit();
-        String UserData = Savedata.getString("UserID", "なし");
-        String TeamData = Savedata.getString("TeamID", "なし");
-        Log.d("Userdata", UserData);
-        if (TeamData.equals("なし")) {
+        boolean TeamCreated = Savedata.getBoolean("TeamCreated", false);
+        if (!TeamCreated) {
             //なければ新しく作る
             //User+日付+6文字の乱数(例:User20150620531455)
             String tempUserID = "User";
