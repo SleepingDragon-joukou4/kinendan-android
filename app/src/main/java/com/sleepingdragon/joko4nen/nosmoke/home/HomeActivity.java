@@ -12,6 +12,7 @@ import com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity;
 import com.sleepingdragon.joko4nen.nosmoke.schedule.ScheduleActivity;
 import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
 
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Ryosei on 2015/06/18.
@@ -21,18 +22,19 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        TextView homeNissu = (TextView) findViewById(R.id.home_nissu);
-        TextView homeMhonsu = (TextView) findViewById(R.id.home_mhonsu);
-        TextView homeTeamMokuhyo = (TextView) findViewById(R.id.home_mokuhyo);
-        TextView homeTeanGenzai = (TextView) findViewById(R.id.home_teamgenzai);
+        //TextView homeMhonsu = (TextView) findViewById(R.id.home_mhonsu);
+        //TextView homeTeamMokuhyo = (TextView) findViewById(R.id.home_mokuhyo);
+        //TextView homeTeanGenzai = (TextView) findViewById(R.id.home_teamgenzai);
 
         Button HomeButton = (Button) findViewById(R.id.HomeButton);
         Button RankingButton = (Button) findViewById(R.id.RankingButton);
         Button ScheduleButton = (Button) findViewById(R.id.ScheduleButton);
         Button SyohinButton = (Button) findViewById(R.id.SyohinButton);
 
+        TeamDataModel teamDataModel = new TeamDataModel();
+        teamDataModel.getData();
 
-        //HomeButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡Homeï¿½ï¿½Ê‚É‘Jï¿½ï¿½
+        //HomeButton?½?½?½?½?½?½?½ê‚½?½ê?Home?½?½Ê‚É‘J?½?½
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +44,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        //RankingButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡Rankingï¿½ï¿½Ê‚É‘Jï¿½ï¿½
+        //RankingButton?½?½?½?½?½?½?½ê‚½?½ê?Ranking?½?½Ê‚É‘J?½?½
         RankingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +53,7 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-        //ScheduleButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡scheduleï¿½ï¿½Ê‚É‘Jï¿½ï¿½
+        //ScheduleButton?½?½?½?½?½?½?½ê‚½?½ê?schedule?½?½Ê‚É‘J?½?½
         ScheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +63,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        //SyohinButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡syohinï¿½ï¿½Ê‚É‘Jï¿½ï¿½
+        //SyohinButton?½?½?½?½?½?½?½ê‚½?½ê?syohin?½?½Ê‚É‘J?½?½
         SyohinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +75,22 @@ public class HomeActivity extends Activity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    private void onEvent (TeamDataEvent event){
+        TextView homeNissu = (TextView) findViewById(R.id.home_nissu);
+        homeNissu.setText(event.getHomeNissu());
+    }
 }
 
 
