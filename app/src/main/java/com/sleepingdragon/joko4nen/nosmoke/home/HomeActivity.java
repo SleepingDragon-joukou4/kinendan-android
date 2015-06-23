@@ -1,6 +1,7 @@
 package com.sleepingdragon.joko4nen.nosmoke.home;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,27 +14,28 @@ import com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity;
 import com.sleepingdragon.joko4nen.nosmoke.schedule.ScheduleActivity;
 import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
 
 /**
  * Created by Ryosei on 2015/06/18.
  */
 public class HomeActivity extends Activity {
+
+    @InjectView(R.id.HomeButton) Button HomeButton;
+    @InjectView(R.id.RankingButton) Button RankingButton;
+    @InjectView(R.id.ScheduleButton) Button ScheduleButton;
+    @InjectView(R.id.SyohinButton) Button SyohinButton;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
+        ButterKnife.inject(this);
         //TextView homeMhonsu = (TextView) findViewById(R.id.home_mhonsu);
         //TextView homeTeamMokuhyo = (TextView) findViewById(R.id.home_mokuhyo);
         //TextView homeTeanGenzai = (TextView) findViewById(R.id.home_teamgenzai);
-
-        Button HomeButton = (Button) findViewById(R.id.HomeButton);
-        Button RankingButton = (Button) findViewById(R.id.RankingButton);
-        Button ScheduleButton = (Button) findViewById(R.id.ScheduleButton);
-        Button SyohinButton = (Button) findViewById(R.id.SyohinButton);
-
-        TeamDataModel teamDataModel = new TeamDataModel();
-        teamDataModel.getData();
+        
         TextView homeNissu = (TextView) findViewById(R.id.home_nissu);
         homeNissu.setOnClickListener(new View.OnClickListener() {
             @Override
