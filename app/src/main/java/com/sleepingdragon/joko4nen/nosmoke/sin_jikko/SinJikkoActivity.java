@@ -30,32 +30,20 @@ public class SinJikkoActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+            Intent i=getIntent();
+            String[] name;
+            name= i.getStringArrayExtra("NameList");
+
+                    //sin_text1にTextViewにName(目標本数を超えたユーザの名前)を挿入
+                    TextView sin_text1 = (TextView) findViewById(R.id.sin_text1);
+                    sin_text1.setText(name[0]);
+
+
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         String TeamID = Savedata.getString("TeamID", "なし");
         String UserID = Savedata.getString("UserID", "なし");
         URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-            @Override
-            protected void onPostExecute(JSONArray result) {
-                try {
-                    JSONObject ja = result.getJSONObject(0);
-                    String Name = ja.getString("Name");
-                    //sin_text1にTextViewにName(目標本数を超えたユーザの名前)を挿入
-                    TextView sin_text1 = (TextView) findViewById(R.id.sin_text1);
-                    sin_text1.setText(Name);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                return;
-
-            }
-        };
-        //executeで非同期処理開始
-        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=judgement" +
-                "&UserId=" + UserID + "&TeamId=" + TeamID);
-
-
-        URLConnectionAsyncTask URLConnectionTask2 = new URLConnectionAsyncTask() {
         @Override
         protected void onPostExecute(JSONArray result) {
             try {
@@ -74,7 +62,7 @@ public class SinJikkoActivity extends Activity {
         }
     };
     //executeで非同期処理開始
-    URLConnectionTask2.execute("http://sleepingdragon.potproject.net/api.php?get=panishmentselect" +
+    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=panishmentselect" +
             "&UserId=" + UserID + "&TeamId=" + TeamID);
 
 
