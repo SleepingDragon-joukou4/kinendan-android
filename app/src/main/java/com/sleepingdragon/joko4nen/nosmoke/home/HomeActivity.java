@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity;
@@ -20,13 +21,18 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        TextView homeNissu = (TextView) findViewById(R.id.home_nissu);
+        TextView homeMhonsu = (TextView) findViewById(R.id.home_mhonsu);
+        TextView homeTeamMokuhyo = (TextView) findViewById(R.id.home_mokuhyo);
+        TextView homeTeanGenzai = (TextView) findViewById(R.id.home_teamgenzai);
+
         Button HomeButton = (Button) findViewById(R.id.HomeButton);
         Button RankingButton = (Button) findViewById(R.id.RankingButton);
         Button ScheduleButton = (Button) findViewById(R.id.ScheduleButton);
         Button SyohinButton = (Button) findViewById(R.id.SyohinButton);
 
 
-        //HomeButton‚ª‰Ÿ‚³‚ê‚½ê‡Home‰æ–Ê‚É‘JˆÚ
+        //HomeButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡Homeï¿½ï¿½Ê‚É‘Jï¿½ï¿½
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +42,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        //RankingButton‚ª‰Ÿ‚³‚ê‚½ê‡Ranking‰æ–Ê‚É‘JˆÚ
+        //RankingButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡Rankingï¿½ï¿½Ê‚É‘Jï¿½ï¿½
         RankingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +51,7 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-        //ScheduleButton‚ª‰Ÿ‚³‚ê‚½ê‡schedule‰æ–Ê‚É‘JˆÚ
+        //ScheduleButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡scheduleï¿½ï¿½Ê‚É‘Jï¿½ï¿½
         ScheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +61,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        //SyohinButton‚ª‰Ÿ‚³‚ê‚½ê‡syohin‰æ–Ê‚É‘JˆÚ
+        //SyohinButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ê‡syohinï¿½ï¿½Ê‚É‘Jï¿½ï¿½
         SyohinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
