@@ -3,6 +3,7 @@ package com.sleepingdragon.joko4nen.nosmoke.home;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,6 +34,14 @@ public class HomeActivity extends Activity {
 
         TeamDataModel teamDataModel = new TeamDataModel();
         teamDataModel.getData();
+        TextView homeNissu = (TextView) findViewById(R.id.home_nissu);
+        homeNissu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TeamDataModel teamDataModel = new TeamDataModel();
+                teamDataModel.getData();
+            }
+        });
 
         //HomeButton?Ω?Ω?Ω?Ω?Ω?Ω?ΩÍÇΩ?ΩÍç?Home?Ω?Ω Ç…ëJ?Ω?Ω
         HomeButton.setOnClickListener(new View.OnClickListener() {
@@ -87,9 +96,10 @@ public class HomeActivity extends Activity {
         super.onStop();
     }
 
-    private void onEvent (TeamDataEvent event){
+    public void onEvent(TeamDataEvent event){
+        Log.d("TAG",event.homeNissu);
         TextView homeNissu = (TextView) findViewById(R.id.home_nissu);
-        homeNissu.setText(event.getHomeNissu());
+        homeNissu.setText(event.homeNissu);
     }
 }
 

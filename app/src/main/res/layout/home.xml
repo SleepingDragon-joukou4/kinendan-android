@@ -68,7 +68,6 @@
                 android:layout_width="59dp"
                 android:layout_height="50dp"
                 android:textSize="50sp"
-                android:text="77"
                 android:textColor="#000"
                 android:id="@+id/home_nissu"
                 android:gravity="bottom|right" />

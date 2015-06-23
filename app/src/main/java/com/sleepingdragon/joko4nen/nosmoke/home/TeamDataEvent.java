@@ -1,16 +1,17 @@
 package com.sleepingdragon.joko4nen.nosmoke.home;
 
+import android.util.Log;
+
 /**
  * Created by ryu on 15/06/23.
  */
 public class TeamDataEvent {
-    private String homeNissu;
+
+    public final String homeNissu;
 
     public TeamDataEvent(String homeNissu){
-        homeNissu = this.homeNissu;
+        this.homeNissu = homeNissu;
+        Log.d("TAG","EventCreate" + homeNissu);
     }
 
-    public String getHomeNissu(){
-        return homeNissu;
-    }
 }
