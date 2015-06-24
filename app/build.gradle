@@ -25,6 +25,6 @@ dependencies {
     compile 'com.android.support:support-v4:22.1.1'
 }
 tasks.withType(JavaCompile) {
-    options.encoding = 'Shift_JIS'
+    options.encoding = 'UTF-8'
 }
 

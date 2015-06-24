@@ -26,7 +26,7 @@ public class HomeActivity extends Activity {
         Button SyohinButton = (Button) findViewById(R.id.SyohinButton);
 
 
-        //HomeButton‚ª‰Ÿ‚³‚ê‚½ê‡Home‰æ–Ê‚É‘JˆÚ
+        //HomeButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆHomeç”»é¢ã«é·ç§»
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +36,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        //RankingButton‚ª‰Ÿ‚³‚ê‚½ê‡Ranking‰æ–Ê‚É‘JˆÚ
+        //RankingButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆRankingç”»é¢ã«é·ç§»
         RankingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +45,7 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-        //ScheduleButton‚ª‰Ÿ‚³‚ê‚½ê‡schedule‰æ–Ê‚É‘JˆÚ
+        //ScheduleButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆscheduleç”»é¢ã«é·ç§»
         ScheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +55,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        //SyohinButton‚ª‰Ÿ‚³‚ê‚½ê‡syohin‰æ–Ê‚É‘JˆÚ
+        //SyohinButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆsyohinç”»é¢ã«é·ç§»
         SyohinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

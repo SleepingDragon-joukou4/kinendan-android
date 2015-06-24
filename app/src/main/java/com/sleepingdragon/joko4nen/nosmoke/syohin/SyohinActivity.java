@@ -33,11 +33,11 @@ public class SyohinActivity extends Activity {
 
     protected void onResume() {
         super.onResume();
-        //UserID‚ÆTeamID‚ğæ“¾
+        //UserIDã¨TeamIDã‚’å–å¾—
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
-        //String UserID = Savedata.getString("UserID", "‚È‚µ");
-        String TeamID = Savedata.getString("TeamID", "‚È‚µ");
-        //sample—p‚ÌUserID
+        //String UserID = Savedata.getString("UserID", "ãªã—");
+        String TeamID = Savedata.getString("TeamID", "ãªã—");
+        //sampleç”¨ã®UserID
         String UserID = "User20150528s4KV2d";
         URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
             @Override
@@ -45,7 +45,7 @@ public class SyohinActivity extends Activity {
                 try {
                     JSONObject ja=result.getJSONObject(0);
                     String ModerationPrice = ja.getString("ModerationPrice");
-                          //TextView‚ÉModerationPric‚ğ‘}“ü
+                          //TextViewã«ModerationPricã‚’æŒ¿å…¥
                     TextView textView = (TextView) findViewById(R.id.kingaku);
                     textView.setText(ModerationPrice);
                     
@@ -57,7 +57,7 @@ public class SyohinActivity extends Activity {
 
             }
         };
-        //execute‚Å”ñ“¯Šúˆ—ŠJn
+        //executeã§éåŒæœŸå‡¦ç†é–‹å§‹
         URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=smokingselect" +
                 "&UserId="+UserID+"&TeamId="+TeamID);
     }
@@ -69,7 +69,7 @@ public class SyohinActivity extends Activity {
         Button SyohinButton = (Button) findViewById(R.id.SyohinButton);
 
 
-        //HomeButton‚ª‰Ÿ‚³‚ê‚½ê‡Home‰æ–Ê‚É‘JˆÚ
+        //HomeButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆHomeç”»é¢ã«é·ç§»
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +79,7 @@ public class SyohinActivity extends Activity {
             }
         });
 
-        //RankingButton‚ª‰Ÿ‚³‚ê‚½ê‡Ranking‰æ–Ê‚É‘JˆÚ
+        //RankingButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆRankingç”»é¢ã«é·ç§»
         RankingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +88,7 @@ public class SyohinActivity extends Activity {
                 startActivity(intent);
             }
         });
-        //ScheduleButton‚ª‰Ÿ‚³‚ê‚½ê‡schedule‰æ–Ê‚É‘JˆÚ
+        //ScheduleButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆscheduleç”»é¢ã«é·ç§»
         ScheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +98,7 @@ public class SyohinActivity extends Activity {
             }
         });
 
-        //SyohinButton‚ª‰Ÿ‚³‚ê‚½ê‡syohin‰æ–Ê‚É‘JˆÚ
+        //SyohinButtonãŒæŠ¼ã•ã‚ŒãŸå ´åˆsyohinç”»é¢ã«é·ç§»
         SyohinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
