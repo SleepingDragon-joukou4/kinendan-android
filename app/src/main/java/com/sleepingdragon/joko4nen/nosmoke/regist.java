@@ -120,7 +120,7 @@ public class regist extends Activity implements OnClickListener {
             editor = Savedata.edit();
             editor.putString("UserName", username);
             editor.putString("CigaretteNumber",syokihonsu);
-            editor.putInt("CigarreteBrandNo", sigarettebrand);
+            editor.putInt("CigaretteBrandNo", sigarettebrand);
             editor.apply();
 
         }
