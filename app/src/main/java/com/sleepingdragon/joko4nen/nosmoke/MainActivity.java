@@ -69,6 +69,7 @@ public class MainActivity extends Activity {
             editor = Savedata.edit();
             editor.putString("UserID", tempUserID);
             editor.apply();
+            Log.d("UserID",tempUserID);
             //registにIntent
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {

@@ -35,22 +35,22 @@ public class SinJikkoActivity extends Activity {
             String[] name;
             name= i.getStringArrayExtra("NameList");
 
-                    //sin_text1‚ÉTextView‚ÉName(–Ú•W–{”‚ğ’´‚¦‚½ƒ†[ƒU‚Ì–¼‘O)‚ğ‘}“ü
+                    //sin_text1ã«TextViewã«Name(ç›®æ¨™æœ¬æ•°ã‚’è¶…ãˆãŸãƒ¦ãƒ¼ã‚¶ã®åå‰)ã‚’æŒ¿å…¥
                     TextView sin_text1 = (TextView) findViewById(R.id.sin_text1);
                     sin_text1.setText(name[0]);
 
 
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
-        String TeamID = Savedata.getString("TeamID", "‚È‚µ");
-        String UserID = Savedata.getString("UserID", "‚È‚µ");
+        String TeamID = Savedata.getString("TeamID", "ãªã—");
+        String UserID = Savedata.getString("UserID", "ãªã—");
         URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
         @Override
         protected void onPostExecute(JSONArray result) {
             try {
-                //”±ƒQ[ƒ€“à—e‚ğæ“¾
+                //ç½°ã‚²ãƒ¼ãƒ å†…å®¹ã‚’å–å¾—
                 JSONObject ja = result.getJSONObject(0);
                 String Panishment = ja.getString("Panishment");
-                //TextView judgement ‚Éjudgemeni”±ƒQ[ƒ€“à—ej‚ğ‘}“ü
+                //TextView judgement ã«judgemenï¼ˆç½°ã‚²ãƒ¼ãƒ å†…å®¹ï¼‰ã‚’æŒ¿å…¥
                 TextView judgement = (TextView) findViewById(R.id.judgement);
                 judgement.setText(Panishment);
 
@@ -61,12 +61,12 @@ public class SinJikkoActivity extends Activity {
 
         }
     };
-    //execute‚Å”ñ“¯Šúˆ—ŠJn
+    //executeã§éåŒæœŸå‡¦ç†é–‹å§‹
     URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=panishmentselect" +
             "&UserId=" + UserID + "&TeamId=" + TeamID);
 
 
-        // uŠm”Fvbutton‚Åhome‰æ–Ê‚É‘JˆÚ
+        // ã€Œç¢ºèªã€buttonã§homeç”»é¢ã«é·ç§»
         Button createteam = (Button) findViewById(R.id.regsuccess_next);
         createteam.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

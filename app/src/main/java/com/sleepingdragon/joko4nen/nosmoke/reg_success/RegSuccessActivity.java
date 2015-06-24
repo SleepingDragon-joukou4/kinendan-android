@@ -21,7 +21,7 @@ public class RegSuccessActivity extends Activity {
         Button regsuccess_next =(Button)findViewById(R.id.regsuccess_next);
         regsuccess_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Team_HomeActivity‰æ–Ê‚É‘JˆÚ
+                //Team_HomeActivityç”»é¢ã«é·ç§»
                 Intent intent = new Intent(RegSuccessActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

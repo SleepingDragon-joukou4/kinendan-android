@@ -37,6 +37,6 @@ dependencies {
 }
 
 tasks.withType(JavaCompile) {
-    options.encoding = 'Shift_JIS'
+    options.encoding = 'UTF-8'
 }
 

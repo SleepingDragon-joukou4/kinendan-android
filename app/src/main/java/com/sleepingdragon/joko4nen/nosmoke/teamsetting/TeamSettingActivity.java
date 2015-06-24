@@ -92,11 +92,11 @@ public class TeamSettingActivity extends Activity {
         });
     }
     public  void TeamIdCreate(){
-        //User+“ú•t+6•¶š‚Ì—”(—á:User20150620531455)
+        //User+æ—¥ä»˜+6æ–‡å­—ã®ä¹±æ•°(ä¾‹:User20150620531455)
         String tempTeamID = "Team";
-        //Œ»İ“ú‚ğæ“¾‚·‚é
+        //ç¾åœ¨æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹
         Calendar c = Calendar.getInstance();
-        //ƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğw’è‚µ‚Ä•\¦‚·‚é
+        //ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æŒ‡å®šã—ã¦è¡¨ç¤ºã™ã‚‹
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         tempTeamID = tempTeamID + sdf.format(c.getTime()).toString();
         Random random = new Random();
@@ -110,20 +110,20 @@ public class TeamSettingActivity extends Activity {
     }
 
     public void TeamInsert(){
-        //¡“ú‚Ì“ú•t
-        Date date1 = new Date();  //(1)DateƒIƒuƒWƒFƒNƒg‚ğ¶¬
+        //ä»Šæ—¥ã®æ—¥ä»˜
+        Date date1 = new Date();  //(1)Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-        String nowDate=sdf1.format(date1);  //(5)DateƒIƒuƒWƒFƒNƒg‚ğ•\¦
-        // “ü—Íƒf[ƒ^æ“¾
+        String nowDate=sdf1.format(date1);  //(5)Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
+        // å…¥åŠ›ãƒ‡ãƒ¼ã‚¿å–å¾—
         kikanselectstring = (String)kikanselectspinner.getSelectedItem();
         sinnumselectstring = (String)kikanselectspinner.getSelectedItem();
         teamname = teamnametext.getText().toString();
         batsugame = batsugametext.getText().toString();
-        //UserID‚Æ‚©æ“¾
+        //UserIDã¨ã‹å–å¾—
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
-        String UserID = Savedata.getString("UserID", "‚È‚µ");
-        String UserName = Savedata.getString("UserName", "‚È‚µ");
-        String CigaretteNumber = Savedata.getString("CigaretteNumber", "‚È‚µ");
+        String UserID = Savedata.getString("UserID", "ãªã—");
+        String UserName = Savedata.getString("UserName", "ãªã—");
+        String CigaretteNumber = Savedata.getString("CigaretteNumber", "ãªã—");
         int CigarreteBrandNo = Savedata.getInt("CigarreteBrandNo", 1);
 
         URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
@@ -135,10 +135,11 @@ public class TeamSettingActivity extends Activity {
                     String res=ja.getString("response");
                     if(res.equals("success")){
 
-                        // team_sinselect‰æ–Ê‚É‘JˆÚ(xml)
+                        // team_sinselectç”»é¢ã«é·ç§»(xml)
                         Intent intent = new Intent(TeamSettingActivity.this, TeamInviteActivity.class);
-                        //teamID‚ğActivity‚É‘—‚é
+                        //teamIDã‚’Activityã«é€ã‚‹
                         intent.putExtra("TeamID",TeamId);
+                        Log.d("intent",TeamId);
                         intent.putExtra("Host",true);
                         startActivity(intent);
                     }else{
@@ -152,11 +153,11 @@ public class TeamSettingActivity extends Activity {
                 return;
             }
         };
-        //execute‚Å”ñ“¯Šúˆ—ŠJn
+        //executeã§éåŒæœŸå‡¦ç†é–‹å§‹
         URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupsert" +
                 "&UserId="+UserID+"&TeamId="+TeamId+"&CigaretteBrandNo="+CigarreteBrandNo+"&Deadline="+kikanselectstring
                 +"&StartDate="+nowDate+"&Name="+teamname+"&Punishment="+batsugame+"&PunishmentNumber="+sinnumselectstring
-                +"&Status=%E5%BE%85%E6%A9%9F%E4%B8%AD"+"&HostUserId="+UserID);
+                +"&Status=å¾…æ©Ÿä¸­"+"&HostUserId="+UserID);
     }
 
 }

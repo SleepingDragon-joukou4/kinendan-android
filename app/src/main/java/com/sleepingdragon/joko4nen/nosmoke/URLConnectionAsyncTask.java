@@ -11,59 +11,59 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /*
- * AsyncTask<�^1, �^2,�^3>
-   * �@�@�߂�ǂ��������ǂ����Ɛݒ肵�Ȃ��ƃG���[���N���܂�
- *   �^1		execute()�̈����̌^
- *          doInBackground()�̈����̌^
- *          �������ɂ��Ȃ��Ƃ����Ȃ��悤�ł�
+ * AsyncTask<型1, 型2,型3>
+   * 　　めんどくさいけどちゃんと設定しないとエラーが起きます
+ *   型1		execute()の引数の型
+ *          doInBackground()の引数の型
+ *          ※同じにしないといけないようです
  *
- *   �^2 �c onProgressUpdate()�̈����̌^
+ *   型2 … onProgressUpdate()の引数の型
  *
- *   �^3 �c doInBackground()�̖߂�l�̌^
- *         onPostExecute()�̈����̌^
+ *   型3 … doInBackground()の戻り値の型
+ *         onPostExecute()の引数の型
  *
- *   �� ���ꂼ��s�v�ȏꍇ�́AVoid��ݒ肷��Ηǂ�
+ *   ※ それぞれ不要な場合は、Voidを設定すれば良い
  */
 public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
 
-    //�R���X�g���N�^
-    //Activity���g�����߂����ŕR�Â����܂�
-    //useActivity�ϐ��Ɏg�p����Activity��ݒ�
+    //コンストラクタ
+    //Activityを使うためここで紐づけします
+    //useActivity変数に使用するActivityを設定
     public URLConnectionAsyncTask() {
 
     }
-    //������Override���Ďg�p�ł��郁�]�b�g�ꗗ
+    //ここでOverrideして使用できるメゾット一覧
     //onPreExecute() :
-    //this.execute()��������Ǝ��s�����
-    //���C���X���b�h�Ŏ��s�A��ԍŏ��ɍs����
+    //this.execute()が送られると実行される
+    //メインスレッドで実行、一番最初に行われる
     //doInBackground() :
-    //onPreExecute()�̌�Ɏ��s�A�Ɨ������X���b�h�ōs����
-    //doInBackground()�́A�ϒ������łȂ���΂Ȃ�Ȃ��悤�ł�
-    //onProgressUpdate()�@:
-    //doInBackground()�ƕ��񂵂ă��C���X���b�h�Ŏ��s�A
-    //�񓯊������̐i�s�󋵂��v���O���X�o�[�ŕ\�����������ȂǂɎg��
+    //onPreExecute()の後に実行、独立したスレッドで行われる
+    //doInBackground()は、可変長引数でなければならないようです
+    //onProgressUpdate()　:
+    //doInBackground()と並列してメインスレッドで実行、
+    //非同期処理の進行状況をプログレスバーで表示したい時などに使う
     //onPostExecute():
-    //doInBackground()�̌�Ɏ��s�A���C���X���b�h�ōs����
-    //doInBackground()�ł̕Ԃ�l�������ɓ���
+    //doInBackground()の後に実行、メインスレッドで行われる
+    //doInBackground()での返り値が引数に入る
     //
 
-    //�������񓯊��ŏ�������镔���B
-    //���ꂪ��둤�Ō����Ȃ��Ƃ���Ŏ��s�������Ă��Ƃł�
+    //ここが非同期で処理される部分。
+    //これが後ろ側で見えないところで実行されるってことです
     @Override
     protected JSONArray doInBackground(String... arg) {
-        //HttpURLConnection���g�p���Đڑ����s���܂��B
+        //HttpURLConnectionを使用して接続を行います。
         HttpURLConnection connection = null;
         StringBuilder src = new StringBuilder();
         try {
             URL url = new URL(arg[0]);
             connection = (HttpURLConnection) url.openConnection();
-            //����!!!
-            //AndroidManifest.xml�ŃC���^�[�l�b�g�ڑ��̋������Ȃ��Ƃ�����RuntimeException���������܂��I
+            //注意!!!
+            //AndroidManifest.xmlでインターネット接続の許可をしないとここでRuntimeExceptionが発生します！
             //<uses-permission android:name="android.permission.INTERNET" />
-            //���AAndroidManifest.xml�̍Ō�ɋL�q���Ă��������I
+            //を、AndroidManifest.xmlの最後に記述してください！
             connection.connect();
             InputStream is = connection.getInputStream();
-            //�擾�����e�L�X�g�f�[�^���Asrc�ϐ��ɓ���Ă����܂�
+            //取得したテキストデータを、src変数に入れていきます
             while (true) {
                 byte[] line = new byte[1024];
                 int size = is.read(line);
@@ -74,19 +74,19 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            //�ڑ����I��
+            //接続を終了
             connection.disconnect();
         }
-        //String�^�ɕϊ�
+        //String型に変換
         String strsrc = new String(src);
-        //��������Ajson�`���Ŏ擾�������̂��p�[�X(���)���A�K�؂Ɏ��o���܂�
-        // JSONObject �ɕϊ����܂�
+        //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
+        // JSONObject に変換します
         JSONArray json = null;
-        //try/catch���Ȃ��Ƒʖڂ��ۂ�
+        //try/catchしないと駄目っぽい
         try {
-            //JSONObject�^�ɕϊ�
+            //JSONObject型に変換
             //json = new JSONObject(strsrc);
-            //JSONArray�^�ɕϊ���
+            //JSONArray型に変換で
             json=new JSONArray(strsrc);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -94,9 +94,9 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
         return json;
     }
 
-    //���̃��]�b�g�́AdoInBackground���I�������ɌĂяo����܂��B
-    //�܂�A�C���^�[�l�b�g�ڑ����s���A�ڑ����������A�l������Ɏ擾�ŗ����炱�ꂪ���s����܂��B
-    //�����̕����̐U�镑����ύX���������́Aextend���g���ČʂɊg������΂����ł�
+    //このメゾットは、doInBackgroundが終わった後に呼び出されます。
+    //つまり、インターネット接続を行い、接続が完了し、値が正常に取得で来たらこれが実行されます。
+    //ここの部分の振る舞いを変更したい時は、extendを使って個別に拡張すればいいです
     @Override
     protected void onPostExecute(JSONArray result) {
         //try{
@@ -104,10 +104,10 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
         //} catch (JSONException e) {
         //    e.printStackTrace();
         //}
-        // �擾�������ʂ��e�L�X�g�r���[�ɓ�����
+        // 取得した結果をテキストビューに入れるよ
         //TextView TeamName = (TextView) SubActivity.this.findViewById(R.id.SubtextTeamName);
         //TeamName.setText(jsonTeamName);
-        //����ŁA�\������Ă�͂��I
+        //これで、表示されてるはず！
         return;
     }
 }

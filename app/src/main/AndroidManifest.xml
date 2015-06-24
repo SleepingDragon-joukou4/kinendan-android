@@ -40,7 +40,7 @@
         </activity>
         <activity
             android:name=".reg_success.RegSuccessActivity"
-            android:label="team_sinselect" >
+            android:label="reg_success" >
         </activity>
         <activity
             android:name=".home.HomeActivity"

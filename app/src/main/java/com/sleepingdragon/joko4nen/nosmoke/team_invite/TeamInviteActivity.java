@@ -29,8 +29,8 @@ import java.util.TimerTask;
  * Created by Ryosei on 2015/06/15.
  */
 public class TeamInviteActivity extends Activity{
-    boolean host_frag=false; //Host”»’è
-    boolean UserInsert_success=false; //ƒ†[ƒU[‚ª‚¿‚á‚ñ‚Æ‘}“ü‚Å‚«‚½‚©H
+    boolean host_frag=false; //Hoståˆ¤å®š
+    boolean UserInsert_success=false; //ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã¡ã‚ƒã‚“ã¨æŒ¿å…¥ã§ããŸã‹ï¼Ÿ
     String TeamIDintent=""; //TeamID
     Timer timer;
     @Override
@@ -39,20 +39,22 @@ public class TeamInviteActivity extends Activity{
         setContentView(R.layout.team_invite);
         Button invite_next = (Button) findViewById(R.id.invite_next);
         TextView TeamIDTextView = (TextView) findViewById(R.id.team_nameinvite);
-        //TeamID‚ğ•\¦
+        Log.d("a","start");
+        //TeamIDã‚’è¡¨ç¤º
         Intent intent = getIntent();
         if (intent != null) {
+            Log.d("aa",TeamIDintent);
             TeamIDintent = intent.getStringExtra("TeamID");
             host_frag=intent.getBooleanExtra("Host",false);
             TeamIDTextView.setText(TeamIDintent);
         }
-        //host‚¶‚á‚È‚¢‚Æ‰Ÿ‚¹‚È‚¢
+        //hostã˜ã‚ƒãªã„ã¨æŠ¼ã›ãªã„
         if(!host_frag) {
             invite_next.setVisibility(View.GONE);
         }
 
 
-        //Ÿ‚ª‰Ÿ‚³‚ê‚½ê‡reg_success(“o˜^Š®—¹j‰æ–Ê‚É‘JˆÚ
+        //æ¬¡ãŒæŠ¼ã•ã‚ŒãŸå ´åˆreg_success(ç™»éŒ²å®Œäº†ï¼‰ç”»é¢ã«é·ç§»
         invite_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,23 +69,27 @@ public class TeamInviteActivity extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
-        //‚Ü‚¸AUser‚ğ“o˜^
+        //ã¾ãšã€Userã‚’ç™»éŒ²
         UserInsert();
         UserSelect();
     }
     public void UserInsert() {
-        //Userî•ñæ“¾
+        //Useræƒ…å ±å–å¾—
         SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String SUserID = SPreferences.getString("UserID", "‚È‚µ");
-        String SUserName = SPreferences.getString("UserName", "‚È‚µ");
-        String SCigaretteNumber = SPreferences.getString("CigaretteNumber", "‚È‚µ");
-        int SCigaretteBrandNo = SPreferences.getInt("CigaretteBrandNo", 0);
-        if(!SUserName.equals("‚È‚µ") && !SCigaretteNumber.equals("‚È‚µ") &&
-                SCigaretteBrandNo!=0 && !SUserID.equals("‚È‚µ")) {
+        String SUserID = SPreferences.getString("UserID", "ãªã—");
+        String SUserName = SPreferences.getString("UserName", "ãªã—");
+        String SCigaretteNumber = SPreferences.getString("CigaretteNumber", "ãªã—");
+        int SCigaretteBrandNo = SPreferences.getInt("CigaretteBrandNo", 99999);
+        Log.d("SUserid",SUserID);
+        Log.d("SUserName",SUserName);
+        Log.d("SCigaretteBrandNo",SCigaretteBrandNo+"");
+        Log.d("SCigaretteNumber",""+SCigaretteNumber);
+        if(!SUserName.equals("ãªã—") && !SCigaretteNumber.equals("ãªã—") &&
+                SCigaretteBrandNo!=99999 && !SUserID.equals("ãªã—")) {
             URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
                 protected void onPostExecute(JSONArray result) {
-                    //‚±‚±‚©‚çAjsonŒ`®‚Åæ“¾‚µ‚½‚à‚Ì‚ğƒp[ƒX(‰ğÍ)‚µA“KØ‚Éæ‚èo‚µ‚Ü‚·
-                    //try/catch‚µ‚È‚¢‚Æ‘Ê–Ú‚Á‚Û‚¢
+                    //ã“ã“ã‹ã‚‰ã€jsonå½¢å¼ã§å–å¾—ã—ãŸã‚‚ã®ã‚’ãƒ‘ãƒ¼ã‚¹(è§£æ)ã—ã€é©åˆ‡ã«å–ã‚Šå‡ºã—ã¾ã™
+                    //try/catchã—ãªã„ã¨é§„ç›®ã£ã½ã„
                     try {
                         if (result != null) {
                             JSONObject ja = result.getJSONObject(0);
@@ -100,14 +106,14 @@ public class TeamInviteActivity extends Activity{
 
                 }
             };
-            //execute‚Å”ñ“¯Šúˆ—ŠJn
+            //executeã§éåŒæœŸå‡¦ç†é–‹å§‹
             URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
-                    "get=userupsert&UserId="+SUserID+"&Name="+SUserName+"&CigarreteBrandNo="+SCigaretteBrandNo+"&TeamId=" + TeamIDintent
+                    "get=userupsert&UserId="+SUserID+"&Name="+SUserName+"&CigaretteBrandNo="+SCigaretteBrandNo+"&TeamId=" + TeamIDintent
                     +"&CigaretteNumber="+SCigaretteNumber);
         }
     }
     public void UserSelect() {
-            //Timer‚Å’èŠúæ“¾
+            //Timerã§å®šæœŸå–å¾—
             timer = new Timer();
             timer.scheduleAtFixedRate(
                     new TimerTask() {
@@ -119,22 +125,25 @@ public class TeamInviteActivity extends Activity{
                                     String Status;
 
                                     protected void onPostExecute(JSONArray result) {
-                                        //‚±‚±‚©‚çAjsonŒ`®‚Åæ“¾‚µ‚½‚à‚Ì‚ğƒp[ƒX(‰ğÍ)‚µA“KØ‚Éæ‚èo‚µ‚Ü‚·
-                                        //try/catch‚µ‚È‚¢‚Æ‘Ê–Ú‚Á‚Û‚¢
+                                        //ã“ã“ã‹ã‚‰ã€jsonå½¢å¼ã§å–å¾—ã—ãŸã‚‚ã®ã‚’ãƒ‘ãƒ¼ã‚¹(è§£æ)ã—ã€é©åˆ‡ã«å–ã‚Šå‡ºã—ã¾ã™
+                                        //try/catchã—ãªã„ã¨é§„ç›®ã£ã½ã„
                                         try {
                                             if (result != null) {
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
-                                                    //Invite_TeamName‚ªˆê’v‚·‚ê‚Îƒ`[ƒ€–¼‚ğ‚Á‚Ä‚­‚éA‚»‚¤‚Å‚È‚¯‚ê‚ÎNULL
+                                                    //Invite_TeamNameãŒä¸€è‡´ã™ã‚Œã°ãƒãƒ¼ãƒ åã‚’æŒã£ã¦ãã‚‹ã€ãã†ã§ãªã‘ã‚Œã°NULL
                                                     if(ja.has("TeamName")) {
                                                         namelist.add(ja.getString("TeamName"));
                                                         Log.d("TeamNameList",ja.getString("TeamName"));
                                                     }
-                                                    if (i == 0) {//Statusih‘Ò‹@’†"OR"“o˜^Š®—¹")
+                                                    if (i == 0) {//Statusï¼ˆâ€å¾…æ©Ÿä¸­"OR"ç™»éŒ²å®Œäº†")
                                                         Status = ja.getString("Status");
                                                     }
                                                 }
-                                                if(namelist!=null && Status.equals("‘Ò‹@’†")) {
+                                                Log.d("status",Status);
+                                                Log.d("nale",Status.equals("å¾…æ©Ÿä¸­")+"");
+                                                if(namelist!=null && Status.equals("å¾…æ©Ÿä¸­")) {
+                                                    Log.d("log","taiki");
                                                     //Update
                                                     LinearLayout li =(LinearLayout)findViewById(R.id.invite_body);
                                                     for(int i=0;i<namelist.size();i++){
@@ -146,8 +155,8 @@ public class TeamInviteActivity extends Activity{
                                                         text.setText(namelist.get(i));
 
                                                     }
-                                                } else if (Status.equals("“o˜^Š®—¹")) {
-                                                    //“o˜^Š®—¹!
+                                                } else if (Status.equals("ç™»éŒ²å®Œäº†")) {
+                                                    //ç™»éŒ²å®Œäº†!
                                                 }
                                             }
 
@@ -159,12 +168,12 @@ public class TeamInviteActivity extends Activity{
 
                                     }
                                 };
-                                //execute‚Å”ñ“¯Šúˆ—ŠJn
+                                //executeã§éåŒæœŸå‡¦ç†é–‹å§‹
                                 URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
                                         "get=teamselect&UserId&TeamId=" + TeamIDintent);
                             }
                         }
-                    }, 5000, 5000);//5•bŒã‚É5•bŠÔŠu‚Åæ“¾
+                    }, 5000, 5000);//5ç§’å¾Œã«5ç§’é–“éš”ã§å–å¾—
 
     }
 }
