@@ -12,13 +12,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -139,6 +136,16 @@ public class TeamInviteActivity extends Activity{
                                                 }
                                                 if(namelist!=null && Status.equals("‘Ò‹@’†")) {
                                                     //Update
+                                                    LinearLayout li =(LinearLayout)findViewById(R.id.invite_body);
+                                                    for(int i=0;i<namelist.size();i++){
+                                                        View inviteview = getLayoutInflater().inflate(R.layout.team_inviteview, null);
+                                                        li.addView(inviteview);
+                                                        TextView text = (TextView) inviteview.findViewById(R.id.invite_v);
+                                                        text.setText(i + 1);
+                                                        TextView text2 = (TextView) inviteview.findViewById(R.id.invitejoin_v);
+                                                        text.setText(namelist.get(i));
+
+                                                    }
                                                 } else if (Status.equals("“o˜^Š®—¹")) {
                                                     //“o˜^Š®—¹!
                                                 }
