@@ -15,129 +15,153 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#b0c4de"
-        android:id="@+id/invite_body">
+        android:weightSum="1">
 
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="参加者待機中..."
-            android:textSize="22sp"
-            android:gravity="center"
-            android:layout_marginTop="30dp"
-            android:textColor="#000"
-            android:id="@+id/invite" />
+            android:layout_height="0dip"
+            android:id="@+id/scrollView"
+            android:layout_weight="0.9"
+            android:background="#b0c4de">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/invite_body">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="参加者待機中..."
+                    android:textSize="22sp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000"
+                    android:id="@+id/invite" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="チームID:"
+                    android:id="@+id/team_nameinvite"
+                    android:textSize="22sp"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:text="1"
+                    android:gravity="center"
+                    android:id="@+id/invite1"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="30dp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:text="taaaooooaaa"
+                        android:textColor="#000"
+                        android:textSize="22dp"
+                        android:gravity="center"
+                        android:id="@+id/invitejoin1" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:text="2"
+                        android:gravity="center"
+                        android:id="@+id/invite2"
+                        android:textColor="#000"
+                        android:textSize="22dp"
+                        android:layout_marginLeft="30dp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:text="taaaooooaaa"
+                        android:textColor="#000"
+                        android:textSize="22dp"
+                        android:gravity="center"
+                        android:id="@+id/invitejoin2" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:text="3"
+                        android:gravity="center"
+                        android:id="@+id/invite3"
+                        android:textColor="#000"
+                        android:textSize="22dp"
+                        android:layout_marginLeft="30dp" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:text="taaaooooaaa"
+                        android:textColor="#000"
+                        android:textSize="22dp"
+                        android:gravity="center"
+                        android:id="@+id/invitejoin3" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_height="0dip"
+            android:layout_weight="0.1"
+            android:id="@+id/invite_button"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
 
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:text="1"
-            android:gravity="center"
-            android:id="@+id/invite1"
-            android:textColor="#000"
-            android:textSize="22dp"
-            android:layout_marginLeft="30dp" />
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="取消"
+                android:id="@+id/invite_back"
+                android:layout_gravity="left" />
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="70dp"
-                android:text="taaaooooaaa"
-                android:textColor="#000"
-                android:textSize="22dp"
-                android:gravity="center"
-                android:id="@+id/invitejoin1" />
-
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="次へ"
+                android:id="@+id/invite_next"
+                android:layout_gravity="right" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="2"
-                android:gravity="center"
-                android:id="@+id/invite2"
-                android:textColor="#000"
-                android:textSize="22dp"
-                android:layout_marginLeft="30dp" />
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="70dp"
-                android:text="taaaooooaaa"
-                android:textColor="#000"
-                android:textSize="22dp"
-                android:gravity="center"
-                android:id="@+id/invitejoin2" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="3"
-                android:gravity="center"
-                android:id="@+id/invite3"
-                android:textColor="#000"
-                android:textSize="22dp"
-                android:layout_marginLeft="30dp" />
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="70dp"
-                android:text="taaaooooaaa"
-                android:textColor="#000"
-                android:textSize="22dp"
-                android:gravity="center"
-                android:id="@+id/invitejoin3" />
-
-
-        </LinearLayout>
-
-
 
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:id="@+id/invite_button"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="取消"
-            android:id="@+id/invite_back"
-            android:layout_gravity="left" />
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="次へ"
-            android:id="@+id/invite_next"
-            android:layout_gravity="right" />
-
-    </LinearLayout>
-    </FrameLayout>
+</FrameLayout>

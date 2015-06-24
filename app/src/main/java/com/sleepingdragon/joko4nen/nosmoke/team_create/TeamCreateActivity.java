@@ -16,6 +16,7 @@ import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,16 +46,23 @@ public class TeamCreateActivity extends Activity{
                     String text = input.getText().toString();
 
                     URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-                        String Invite_TeamName;
+                        String Invite_TeamID;
                         String Status;
-                        protected void onPostExecute(JSONObject result) {
+                        protected void onPostExecute(JSONArray result) {
                             //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                             //try/catchしないと駄目っぽい
                             try {
-                                //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
-                                Invite_TeamName = result.has("TeamId") ? result.getString("TeamName") : null;
-                                //Status（”待機中"OR"登録完了")
-                                Status = result.getString("Status");
+                                if(result!=null) {
+                                    for (int i=0;i<result.length();i++){
+                                        JSONObject ja=result.getJSONObject(i);
+                                        //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
+                                        Invite_TeamID = ja.has("TeamId") ? ja.getString("TeamId") : null;
+                                        if(i==0) {//Status（”待機中"OR"登録完了")
+                                            Status = ja.getString("Status");
+                                        }
+                                    }
+                                }
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -62,10 +70,11 @@ public class TeamCreateActivity extends Activity{
                             ユーザーが入力した情報(チームID)がある、かつチームステータスが待機中である場合
                             TeamInviteActivity飛ぶ
                              **/
-                            if (Invite_TeamName != null && Status.equals("待機中")) {
+                            if (Invite_TeamID != null && Status.equals("待機中")) {
                                 Intent intent = new Intent(TeamCreateActivity.this, TeamInviteActivity.class);
-                                //Invite_TeamNameをDATAの名前でTeamInviteActivityへ送信
-                                //intent.putExtra("DATA1", Invite_TeamName);
+                                //Invite_TeamIDをDATAの名前でTeamInviteActivityへ送信
+                                intent.putExtra("TeamID",Invite_TeamID);
+                                intent.putExtra("Host",false);
                                 startActivity(intent);
                             /**
                              チームIDが見つからないもしくはチームステータスが登録完了の場合

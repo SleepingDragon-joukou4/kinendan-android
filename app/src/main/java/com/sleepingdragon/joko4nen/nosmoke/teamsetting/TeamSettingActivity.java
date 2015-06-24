@@ -134,8 +134,12 @@ public class TeamSettingActivity extends Activity {
                     JSONObject ja=result.getJSONObject(0);
                     String res=ja.getString("response");
                     if(res.equals("success")){
+
                         // team_sinselect‰æ–Ê‚É‘JˆÚ(xml)
                         Intent intent = new Intent(TeamSettingActivity.this, TeamInviteActivity.class);
+                        //teamID‚ðActivity‚É‘—‚é
+                        intent.putExtra("TeamID",TeamId);
+                        intent.putExtra("Host",true);
                         startActivity(intent);
                     }else{
                         Log.d("Error","");
