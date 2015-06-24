@@ -8,7 +8,10 @@ import com.sleepingdragon.joko4nen.nosmoke.reg_success.RegSuccessActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,29 +76,38 @@ public class TeamInviteActivity extends Activity{
     }
     public void UserInsert() {
         //User情報取得
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-            protected void onPostExecute(JSONArray result) {
-                //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
-                //try/catchしないと駄目っぽい
-                String Status_insert;
-                try {
-                    if(result!=null) {
-                        JSONObject ja=result.getJSONObject(0);
-                        String res=ja.getString("response");
-                        if(res.equals("success")) {
-                            UserInsert_success=true;
+        SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String SUserID = SPreferences.getString("UserID", "なし");
+        String SUserName = SPreferences.getString("UserName", "なし");
+        String SCigaretteNumber = SPreferences.getString("CigaretteNumber", "なし");
+        int SCigaretteBrandNo = SPreferences.getInt("CigarreteBrandNo", 0);
+        if(!SUserName.equals("なし") && !SCigaretteNumber.equals("なし") &&
+                SCigaretteBrandNo!=0 && !SUserID.equals("なし")) {
+            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+                protected void onPostExecute(JSONArray result) {
+                    //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
+                    //try/catchしないと駄目っぽい
+                    try {
+                        if (result != null) {
+                            JSONObject ja = result.getJSONObject(0);
+                            String res = ja.getString("response");
+                            if (res.equals("success")) {
+                                Log.d("success", "");
+                                UserInsert_success = true;
+                            }
                         }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
-
-            }
-        };
-        //executeで非同期処理開始
-        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
-                "get=userupsert&UserId&TeamId=" + TeamIDintent);
+            };
+            //executeで非同期処理開始
+            URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
+                    "get=userupsert&UserId="+SUserID+"&Name="+SUserName+"&CigarreteBrandNo="+SCigaretteBrandNo+"&TeamId=" + TeamIDintent
+                    +"&CigaretteNumber="+SCigaretteNumber);
+        }
     }
     public void UserSelect() {
             //Timerで定期取得
@@ -106,7 +118,7 @@ public class TeamInviteActivity extends Activity{
                         public void run() {
                             if (UserInsert_success) {
                                 URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-                                    String Invite_TeamID;
+                                    ArrayList<String> namelist = new ArrayList<String>();
                                     String Status;
 
                                     protected void onPostExecute(JSONArray result) {
@@ -117,21 +129,26 @@ public class TeamInviteActivity extends Activity{
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
                                                     //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
-                                                    Invite_TeamID = ja.has("TeamId") ? ja.getString("TeamId") : null;
+                                                    if(ja.has("TeamName")) {
+                                                        namelist.add(ja.getString("TeamName"));
+                                                        Log.d("TeamNameList",ja.getString("TeamName"));
+                                                    }
                                                     if (i == 0) {//Status（”待機中"OR"登録完了")
                                                         Status = ja.getString("Status");
                                                     }
                                                 }
+                                                if(namelist!=null && Status.equals("待機中")) {
+                                                    //Update
+                                                } else if (Status.equals("登録完了")) {
+                                                    //登録完了!
+                                                }
                                             }
+
 
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
-                                        if (Invite_TeamID != null && Status.equals("待機中")) {
-                                            //Update
-                                        } else if (Invite_TeamID != null && Status.equals("登録完了")) {
-                                            //登録完了!
-                                        }
+
 
                                     }
                                 };
