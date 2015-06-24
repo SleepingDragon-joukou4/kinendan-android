@@ -157,7 +157,7 @@ public class TeamSettingActivity extends Activity {
         URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupsert" +
                 "&UserId="+UserID+"&TeamId="+TeamId+"&CigaretteBrandNo="+CigarreteBrandNo+"&Deadline="+kikanselectstring
                 +"&StartDate="+nowDate+"&Name="+teamname+"&Punishment="+batsugame+"&PunishmentNumber="+sinnumselectstring
-                +"&Status=%E5%BE%85%E6%A9%9F%E4%B8%AD"+"&HostUserId="+UserID);
+                +"&Status=待機中"+"&HostUserId="+UserID);
     }
 
 }
