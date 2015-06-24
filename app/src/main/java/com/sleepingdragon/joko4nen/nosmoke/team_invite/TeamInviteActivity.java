@@ -80,7 +80,7 @@ public class TeamInviteActivity extends Activity{
         String SUserID = SPreferences.getString("UserID", "‚È‚µ");
         String SUserName = SPreferences.getString("UserName", "‚È‚µ");
         String SCigaretteNumber = SPreferences.getString("CigaretteNumber", "‚È‚µ");
-        int SCigaretteBrandNo = SPreferences.getInt("CigarreteBrandNo", 0);
+        int SCigaretteBrandNo = SPreferences.getInt("CigaretteBrandNo", 0);
         if(!SUserName.equals("‚È‚µ") && !SCigaretteNumber.equals("‚È‚µ") &&
                 SCigaretteBrandNo!=0 && !SUserID.equals("‚È‚µ")) {
             URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
