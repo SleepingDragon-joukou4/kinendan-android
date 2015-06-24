@@ -49,63 +49,20 @@
                     android:gravity="center"/>
 
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:text="1"
-                    android:gravity="center"
-                    android:id="@+id/invite1"
-                    android:textColor="#000"
-                    android:textSize="22dp"
-                    android:layout_marginLeft="30dp" />
+                    android:id="@+id/invite_bodyline">
 
                     <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="70dp"
-                        android:text="taaaooooaaa"
-                        android:textColor="#000"
-                        android:textSize="22dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="読み込み中..."
+                        android:textSize="22sp"
                         android:gravity="center"
-                        android:id="@+id/invitejoin1" />
-
-
+                        android:layout_marginTop="10dp"
+                        android:textColor="#000"/>
                 </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:text="2"
-                        android:gravity="center"
-                        android:id="@+id/invite2"
-                        android:textColor="#000"
-                        android:textSize="22dp"
-                        android:layout_marginLeft="30dp" />
-
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="70dp"
-                        android:text="taaaooooaaa"
-                        android:textColor="#000"
-                        android:textSize="22dp"
-                        android:gravity="center"
-                        android:id="@+id/invitejoin2" />
-
-
-                </LinearLayout>
-
-
-
 
 
             </LinearLayout>

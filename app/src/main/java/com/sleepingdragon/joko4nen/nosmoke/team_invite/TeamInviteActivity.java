@@ -132,9 +132,9 @@ public class TeamInviteActivity extends Activity{
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
                                                     //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
-                                                    if(ja.has("TeamName")) {
-                                                        namelist.add(ja.getString("TeamName"));
-                                                        Log.d("TeamNameList",ja.getString("TeamName"));
+                                                    if(ja.has("UserName")) {
+                                                        namelist.add(ja.getString("UserName"));
+                                                        Log.d("TeamNameList",ja.getString("UserName"));
                                                     }
                                                     if (i == 0) {//Status（”待機中"OR"登録完了")
                                                         Status = ja.getString("Status");
@@ -145,14 +145,15 @@ public class TeamInviteActivity extends Activity{
                                                 if(namelist!=null && Status.equals("待機中")) {
                                                     Log.d("log","taiki");
                                                     //Update
-                                                    LinearLayout li =(LinearLayout)findViewById(R.id.invite_body);
+                                                    LinearLayout li =(LinearLayout)TeamInviteActivity.this.findViewById(R.id.invite_bodyline);
+                                                    li.removeAllViews();
                                                     for(int i=0;i<namelist.size();i++){
                                                         View inviteview = getLayoutInflater().inflate(R.layout.team_inviteview, null);
                                                         li.addView(inviteview);
-                                                        TextView text = (TextView) inviteview.findViewById(R.id.invite_v);
-                                                        text.setText(i + 1);
-                                                        TextView text2 = (TextView) inviteview.findViewById(R.id.invitejoin_v);
-                                                        text.setText(namelist.get(i));
+                                                        TextView textss = (TextView) inviteview.findViewById(R.id.invite_v);
+                                                        textss.setText(""+(i+1));
+                                                        TextView textss2 = (TextView) inviteview.findViewById(R.id.invitejoin_v);
+                                                        textss2.setText(namelist.get(i));
 
                                                     }
                                                 } else if (Status.equals("登録完了")) {
@@ -173,7 +174,7 @@ public class TeamInviteActivity extends Activity{
                                         "get=teamselect&UserId&TeamId=" + TeamIDintent);
                             }
                         }
-                    }, 5000, 5000);//5秒後に5秒間隔で取得
+                    }, 1500, 5000);//1.5秒後に5秒間隔で取得
 
     }
 }
