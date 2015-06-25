@@ -27,7 +27,51 @@
             android:layout_marginTop="30dp"
             android:textColor="#000"
             android:id="@+id/reg_success" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.9"
+                android:id="@+id/reg_body">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="チーム名:"
+                    android:id="@+id/reg_nametextview"
+                    android:textSize="22sp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="チームID:"
+                    android:id="@+id/reg_nameinvite"
+                    android:textSize="22sp"
+                    android:gravity="center"/>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/regscrollView"
+
+                    android:background="#b0c4de">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/reg_bodyline">
+                    </LinearLayout>
+
+                </ScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -35,7 +79,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:id="@+id/invite_button"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
