@@ -130,7 +130,7 @@ public class TeamInviteActivity extends Activity{
                                         //try/catchしないと駄目っぽい
                                         try {
                                             if (result != null) {
-                                                namelist=null;
+                                                namelist=new ArrayList<String>();
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
                                                     //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
