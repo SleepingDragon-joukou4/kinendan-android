@@ -32,7 +32,9 @@ public class TeamInviteActivity extends Activity{
     boolean host_frag=false; //Host判定
     boolean UserInsert_success=false; //ユーザーがちゃんと挿入できたか？
     String TeamIDintent=""; //TeamID
+    String STeamName;
     Timer timer;
+    ArrayList<String> namelist = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,18 +51,15 @@ public class TeamInviteActivity extends Activity{
             TeamIDTextView.setText(TeamIDintent);
         }
         //hostじゃないと押せない
-        if(!host_frag) {
-            invite_next.setVisibility(View.GONE);
-        }
+        invite_next.setVisibility(View.GONE);
 
 
         //次が押された場合reg_success(登録完了）画面に遷移
         invite_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TeamInviteActivity.this,
-                        RegSuccessActivity.class);
-                startActivity(intent);
+                TeamUpdatecomp();
+
             }
         });
 
@@ -121,7 +120,7 @@ public class TeamInviteActivity extends Activity{
                         public void run() {
                             if (UserInsert_success) {
                                 URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-                                    ArrayList<String> namelist = new ArrayList<String>();
+
                                     String Status;
 
                                     protected void onPostExecute(JSONArray result) {
@@ -156,8 +155,21 @@ public class TeamInviteActivity extends Activity{
                                                         textss2.setText(namelist.get(i));
 
                                                     }
+                                                    if(namelist.size()>1 && host_frag) {
+                                                        Button binvite_next = (Button) TeamInviteActivity.this.findViewById(R.id.invite_next);
+                                                        binvite_next.setVisibility(View.VISIBLE);
+                                                    }
                                                 } else if (Status.equals("登録完了")) {
                                                     //登録完了!
+                                                    //登録完了画面に遷移
+                                                    Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
+                                                    //teamIDをActivityに送る
+                                                    intent.putExtra("TeamID",TeamIDintent);
+                                                    intent.putExtra("TeamName",STeamName);
+                                                    intent.putStringArrayListExtra("NameList",namelist);
+                                                    startActivity(intent);
+                                                    finish();
+
                                                 }
                                             }
 
@@ -176,5 +188,40 @@ public class TeamInviteActivity extends Activity{
                         }
                     }, 1500, 5000);//1.5秒後に5秒間隔で取得
 
+    }
+    public void TeamUpdatecomp() {
+        //登録完了に設定
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+            @Override
+            protected void onPostExecute(JSONArray result) {
+                try {
+                    Log.d("",result.toString());
+                    JSONObject ja=result.getJSONObject(0);
+                    String res=ja.getString("response");
+                    if(res.equals("success")){
+
+                        // team_sinselect画面に遷移(xml)
+                        Intent intent = new Intent(TeamInviteActivity.this, RegSuccessActivity.class);
+                        //teamIDをActivityに送る
+                        intent.putExtra("TeamID",TeamIDintent);
+                        intent.putExtra("TeamName",STeamName);
+                        intent.putStringArrayListExtra("NameList",namelist);
+                        startActivity(intent);
+                        finish();
+
+                    }else{
+                        Log.d("Error","");
+                    }
+
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return;
+            }
+        };
+        //executeで非同期処理開始
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupdatecomp" +
+                "&UserId&TeamId="+TeamIDintent);
     }
 }
