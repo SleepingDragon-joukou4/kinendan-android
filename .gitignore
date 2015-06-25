@@ -7,3 +7,6 @@
 /build
 /captures
 RetroTest.java
+app/src/main/java/com/sleepingdragon/joko4nen/nosmoke/home/RetroTest.java
+app/src/main/java/com/sleepingdragon/joko4nen/nosmoke/util/ArrayAdapter.java
+app/src/main/java/com/sleepingdragon/joko4nen/nosmoke/util/ArrayAdapterFactory.java
