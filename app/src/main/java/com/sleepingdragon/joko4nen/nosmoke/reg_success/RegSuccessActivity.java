@@ -2,7 +2,9 @@ package com.sleepingdragon.joko4nen.nosmoke.reg_success;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -49,6 +51,11 @@ public class RegSuccessActivity extends Activity {
                 textss2.setText(NameLine.get(i));
             }
         }
+        SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = Savedata.edit();
+        editor = Savedata.edit();
+        editor.putBoolean("TeamCreated",true);
+        editor.apply();
 
         regsuccess_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
