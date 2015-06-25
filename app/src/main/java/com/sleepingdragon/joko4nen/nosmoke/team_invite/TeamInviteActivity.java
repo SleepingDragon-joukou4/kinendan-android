@@ -160,7 +160,7 @@ public class TeamInviteActivity extends Activity{
 
                                                     }
                                                     Button binvite_next = (Button) TeamInviteActivity.this.findViewById(R.id.invite_next);
-                                                    if(namelist.size()>1 && host_frag) {
+                                                    if(/*namelist.size()>1 &&*/ host_frag) {
                                                         binvite_next.setVisibility(View.VISIBLE);
                                                     }else{
                                                         binvite_next.setVisibility(View.GONE);
