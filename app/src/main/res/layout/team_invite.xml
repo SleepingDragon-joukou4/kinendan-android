@@ -17,17 +17,13 @@
         android:layout_height="match_parent"
         android:weightSum="1">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:id="@+id/scrollView"
-            android:layout_weight="0.9"
-            android:background="#b0c4de">
+
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.9"
                 android:id="@+id/invite_body">
 
                 <TextView
@@ -39,7 +35,13 @@
                     android:layout_marginTop="10dp"
                     android:textColor="#000"
                     android:id="@+id/invite" />
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="チーム名:"
+                    android:id="@+id/team_nametextview"
+                    android:textSize="22sp"
+                    android:gravity="center"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -47,7 +49,11 @@
                     android:id="@+id/team_nameinvite"
                     android:textSize="22sp"
                     android:gravity="center"/>
-
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/scrollView"
+                    android:background="#b0c4de">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -64,16 +70,16 @@
                         android:textColor="#000"/>
                 </LinearLayout>
 
-
+                </ScrollView>
             </LinearLayout>
-        </ScrollView>
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="0.1"
-            android:id="@+id/invite_button"
+            android:id="@+id/invite_Line"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp">
 

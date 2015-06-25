@@ -35,12 +35,14 @@ public class TeamInviteActivity extends Activity{
     String STeamName;
     Timer timer;
     ArrayList<String> namelist = new ArrayList<String>();
+    TextView TeamNameTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.team_invite);
         Button invite_next = (Button) findViewById(R.id.invite_next);
         TextView TeamIDTextView = (TextView) findViewById(R.id.team_nameinvite);
+        TeamNameTextView = (TextView) findViewById(R.id.team_nametextview);
         Log.d("a","start");
         //TeamIDを表示
         Intent intent = getIntent();
@@ -48,7 +50,7 @@ public class TeamInviteActivity extends Activity{
             Log.d("aa",TeamIDintent);
             TeamIDintent = intent.getStringExtra("TeamID");
             host_frag=intent.getBooleanExtra("Host",false);
-            TeamIDTextView.setText(TeamIDintent);
+            TeamIDTextView.setText("チームID:"+TeamIDintent);
         }
         //hostじゃないと押せない
         invite_next.setVisibility(View.GONE);
@@ -82,7 +84,7 @@ public class TeamInviteActivity extends Activity{
         Log.d("SUserid",SUserID);
         Log.d("SUserName",SUserName);
         Log.d("SCigaretteBrandNo",SCigaretteBrandNo+"");
-        Log.d("SCigaretteNumber",""+SCigaretteNumber);
+        Log.d("SCigaretteNumber", "" + SCigaretteNumber);
         if(!SUserName.equals("なし") && !SCigaretteNumber.equals("なし") &&
                 SCigaretteBrandNo!=99999 && !SUserID.equals("なし")) {
             URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
@@ -128,6 +130,7 @@ public class TeamInviteActivity extends Activity{
                                         //try/catchしないと駄目っぽい
                                         try {
                                             if (result != null) {
+                                                namelist=new ArrayList<String>();
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
                                                     //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
@@ -137,6 +140,8 @@ public class TeamInviteActivity extends Activity{
                                                     }
                                                     if (i == 0) {//Status（”待機中"OR"登録完了")
                                                         Status = ja.getString("Status");
+                                                        STeamName=ja.getString("TeamName");
+                                                        TeamNameTextView.setText("チーム名:"+STeamName);
                                                     }
                                                 }
                                                 Log.d("status",Status);
@@ -155,9 +160,11 @@ public class TeamInviteActivity extends Activity{
                                                         textss2.setText(namelist.get(i));
 
                                                     }
-                                                    if(namelist.size()>1 && host_frag) {
-                                                        Button binvite_next = (Button) TeamInviteActivity.this.findViewById(R.id.invite_next);
+                                                    Button binvite_next = (Button) TeamInviteActivity.this.findViewById(R.id.invite_next);
+                                                    if(/*namelist.size()>1 &&*/ host_frag) {
                                                         binvite_next.setVisibility(View.VISIBLE);
+                                                    }else{
+                                                        binvite_next.setVisibility(View.GONE);
                                                     }
                                                 } else if (Status.equals("登録完了")) {
                                                     //登録完了!
@@ -165,10 +172,12 @@ public class TeamInviteActivity extends Activity{
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
                                                     //teamIDをActivityに送る
                                                     intent.putExtra("TeamID",TeamIDintent);
-                                                    intent.putExtra("TeamName",STeamName);
-                                                    intent.putStringArrayListExtra("NameList",namelist);
+                                                    intent.putExtra("TeamName", STeamName);
+                                                    intent.putStringArrayListExtra("NameList", namelist);
                                                     startActivity(intent);
-                                                    finish();
+                                                    timer.cancel();
+                                                    TeamInviteActivity.this.finish();
+
 
                                                 }
                                             }
@@ -207,7 +216,8 @@ public class TeamInviteActivity extends Activity{
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);
                         startActivity(intent);
-                        finish();
+                        timer.cancel();
+                        TeamInviteActivity.this.finish();
 
                     }else{
                         Log.d("Error","");
