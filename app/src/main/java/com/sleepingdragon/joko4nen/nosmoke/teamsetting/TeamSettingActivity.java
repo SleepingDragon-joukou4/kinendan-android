@@ -115,6 +115,7 @@ public class TeamSettingActivity extends Activity {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         String nowDate=sdf1.format(date1);  //(5)Dateオブジェクトを表示
         // 入力データ取得
+        
         kikanselectstring = (String)kikanselectspinner.getSelectedItem();
         sinnumselectstring = (String)kikanselectspinner.getSelectedItem();
         teamname = teamnametext.getText().toString();
