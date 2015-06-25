@@ -175,7 +175,7 @@ public class TeamInviteActivity extends Activity{
                                                     intent.putExtra("TeamName",STeamName);
                                                     intent.putStringArrayListExtra("NameList",namelist);
                                                     startActivity(intent);
-                                                    finish();
+                                                    TeamInviteActivity.this.finish();
 
                                                 }
                                             }
@@ -214,7 +214,7 @@ public class TeamInviteActivity extends Activity{
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);
                         startActivity(intent);
-                        finish();
+                        TeamInviteActivity.this.finish();
 
                     }else{
                         Log.d("Error","");
