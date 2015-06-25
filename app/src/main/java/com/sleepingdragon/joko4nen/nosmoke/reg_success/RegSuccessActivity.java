@@ -51,11 +51,11 @@ public class RegSuccessActivity extends Activity {
                 textss2.setText(NameLine.get(i));
             }
         }
-        SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        /*SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = Savedata.edit();
         editor = Savedata.edit();
         editor.putBoolean("TeamCreated",true);
-        editor.apply();
+        editor.apply();*/
 
         regsuccess_next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
