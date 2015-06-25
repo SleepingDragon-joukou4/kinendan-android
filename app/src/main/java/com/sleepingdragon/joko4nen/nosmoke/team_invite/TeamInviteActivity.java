@@ -172,10 +172,12 @@ public class TeamInviteActivity extends Activity{
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
                                                     //teamIDをActivityに送る
                                                     intent.putExtra("TeamID",TeamIDintent);
-                                                    intent.putExtra("TeamName",STeamName);
-                                                    intent.putStringArrayListExtra("NameList",namelist);
+                                                    intent.putExtra("TeamName", STeamName);
+                                                    intent.putStringArrayListExtra("NameList", namelist);
                                                     startActivity(intent);
+                                                    timer.cancel();
                                                     TeamInviteActivity.this.finish();
+
 
                                                 }
                                             }
@@ -214,6 +216,7 @@ public class TeamInviteActivity extends Activity{
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);
                         startActivity(intent);
+                        timer.cancel();
                         TeamInviteActivity.this.finish();
 
                     }else{
