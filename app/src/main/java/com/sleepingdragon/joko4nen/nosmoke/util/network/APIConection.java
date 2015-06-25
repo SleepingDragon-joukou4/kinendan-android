@@ -4,38 +4,49 @@ package com.sleepingdragon.joko4nen.nosmoke.util.network;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.Serializable;
 
 /**
  * Created by ryu on 15/06/25.
+ * API接続の継承元クラス
+ * これを元にAPI接続時の操作クラスを作成
+ *
+ * @author ryu
  */
-abstract class APIConnection implements Serializable {
+abstract class APIConnectionService implements Serializable {
 
+    protected final String BASE_URL = "http://sleepingdragon.potproject.net/api.php?get=";
+
+    /**
+     * API接続後のリスナー
+     */
     public interface ConnectionListener {
+
+
         /**
-         * JSONの文字列を返す場合
+         * 成功時の処理
          *
-         * @param msg JSONの文字列
+         * @param jsonArray 受け取った結果
          */
-        public void onSuccess(String msg);
-
-
         public void onSuccess(JSONArray jsonArray);
 
-        public void onSuccess(JSONObject jsonObject);
 
         /**
-         * 失敗
+         * 失敗時の処理
          *
          * @param error 失敗メッセージ
          */
         public void onFailed(String error);
     }
 
-    public void request(String url, final ConnectionListener listener) {
+    /**
+     * 指定したURLから
+     *
+     * @param url 利用するAPI URL
+     * @param listener
+     */
+    public void request(String url, final ConnectionListener listener){
         URLConnectionAsyncTask urlConnectionAsyncTask = new URLConnectionAsyncTask(){
             @Override
             protected void onPostExecute(JSONArray result) {
@@ -49,11 +60,3 @@ abstract class APIConnection implements Serializable {
         urlConnectionAsyncTask.execute(url);
     }
 }
-//try {
-//        if (result != null){
-//        listener.onSuccess(result);
-//        }
-//        }
-//        catch (JSONException e){
-//        listener.onFailed(e.getMessage());
-//        }
