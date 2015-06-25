@@ -32,7 +32,9 @@ public class TeamInviteActivity extends Activity{
     boolean host_frag=false; //Host判定
     boolean UserInsert_success=false; //ユーザーがちゃんと挿入できたか？
     String TeamIDintent=""; //TeamID
+    String STeamName;
     Timer timer;
+    ArrayList<String> namelist = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,18 +51,15 @@ public class TeamInviteActivity extends Activity{
             TeamIDTextView.setText(TeamIDintent);
         }
         //hostじゃないと押せない
-        if(!host_frag) {
-            invite_next.setVisibility(View.GONE);
-        }
+        invite_next.setVisibility(View.GONE);
 
 
         //次が押された場合reg_success(登録完了）画面に遷移
         invite_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TeamInviteActivity.this,
-                        RegSuccessActivity.class);
-                startActivity(intent);
+                TeamUpdatecomp();
+
             }
         });
 
@@ -81,9 +80,9 @@ public class TeamInviteActivity extends Activity{
         String SCigaretteNumber = SPreferences.getString("CigaretteNumber", "なし");
         int SCigaretteBrandNo = SPreferences.getInt("CigaretteBrandNo", 99999);
         Log.d("SUserid",SUserID);
-        Log.d("SUserName",SUserName);
-        Log.d("SCigaretteBrandNo",SCigaretteBrandNo+"");
-        Log.d("SCigaretteNumber",""+SCigaretteNumber);
+        Log.d("SUserName", SUserName);
+        Log.d("SCigaretteBrandNo", SCigaretteBrandNo + "");
+        Log.d("SCigaretteNumber", "" + SCigaretteNumber);
         if(!SUserName.equals("なし") && !SCigaretteNumber.equals("なし") &&
                 SCigaretteBrandNo!=99999 && !SUserID.equals("なし")) {
             URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
@@ -121,7 +120,7 @@ public class TeamInviteActivity extends Activity{
                         public void run() {
                             if (UserInsert_success) {
                                 URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
-                                    ArrayList<String> namelist = new ArrayList<String>();
+
                                     String Status;
 
                                     protected void onPostExecute(JSONArray result) {
@@ -132,21 +131,22 @@ public class TeamInviteActivity extends Activity{
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
                                                     //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
-                                                    if(ja.has("TeamName")) {
+                                                    if (ja.has("TeamName")) {
                                                         namelist.add(ja.getString("TeamName"));
-                                                        Log.d("TeamNameList",ja.getString("TeamName"));
+                                                        Log.d("TeamNameList", ja.getString("TeamName"));
                                                     }
                                                     if (i == 0) {//Status（”待機中"OR"登録完了")
                                                         Status = ja.getString("Status");
+                                                        STeamName=ja.getString("TeamName");
                                                     }
                                                 }
-                                                Log.d("status",Status);
-                                                Log.d("nale",Status.equals("待機中")+"");
-                                                if(namelist!=null && Status.equals("待機中")) {
-                                                    Log.d("log","taiki");
+                                                Log.d("status", Status);
+                                                Log.d("nale", Status.equals("待機中") + "");
+                                                if (namelist != null && Status.equals("待機中")) {
+                                                    Log.d("log", "taiki");
                                                     //Update
-                                                    LinearLayout li =(LinearLayout)findViewById(R.id.invite_body);
-                                                    for(int i=0;i<namelist.size();i++){
+                                                    LinearLayout li = (LinearLayout) findViewById(R.id.invite_body);
+                                                    for (int i = 0; i < namelist.size(); i++) {
                                                         View inviteview = getLayoutInflater().inflate(R.layout.team_inviteview, null);
                                                         li.addView(inviteview);
                                                         TextView text = (TextView) inviteview.findViewById(R.id.invite_v);
@@ -155,8 +155,21 @@ public class TeamInviteActivity extends Activity{
                                                         text.setText(namelist.get(i));
 
                                                     }
+                                                    if(namelist.size()>1 && host_frag) {
+                                                        Button binvite_next = (Button) TeamInviteActivity.this.findViewById(R.id.invite_next);
+                                                        binvite_next.setVisibility(View.VISIBLE);
+                                                    }
                                                 } else if (Status.equals("登録完了")) {
                                                     //登録完了!
+                                                    //登録完了画面に遷移
+                                                    Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
+                                                    //teamIDをActivityに送る
+                                                    intent.putExtra("TeamID",TeamIDintent);
+                                                    intent.putExtra("TeamName",STeamName);
+                                                    intent.putStringArrayListExtra("NameList",namelist);
+                                                    startActivity(intent);
+                                                    finish();
+
                                                 }
                                             }
 
@@ -175,5 +188,40 @@ public class TeamInviteActivity extends Activity{
                         }
                     }, 5000, 5000);//5秒後に5秒間隔で取得
 
+    }
+    public void TeamUpdatecomp() {
+        //登録完了に設定
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+            @Override
+            protected void onPostExecute(JSONArray result) {
+                try {
+                    Log.d("",result.toString());
+                    JSONObject ja=result.getJSONObject(0);
+                    String res=ja.getString("response");
+                    if(res.equals("success")){
+
+                        // team_sinselect画面に遷移(xml)
+                        Intent intent = new Intent(TeamInviteActivity.this, RegSuccessActivity.class);
+                        //teamIDをActivityに送る
+                        intent.putExtra("TeamID",TeamIDintent);
+                        intent.putExtra("TeamName",STeamName);
+                        intent.putStringArrayListExtra("NameList",namelist);
+                        startActivity(intent);
+                        finish();
+
+                    }else{
+                        Log.d("Error","");
+                    }
+
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return;
+            }
+        };
+        //executeで非同期処理開始
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupdatecomp" +
+                "&UserId&TeamId="+TeamIDintent);
     }
 }
