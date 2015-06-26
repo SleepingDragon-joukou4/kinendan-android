@@ -11,13 +11,18 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    packagingOptions {
+        // for AndroidStudio's bug. duplication error of file below.
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'LICENSE.txt'
     }
 }
 
@@ -32,12 +37,9 @@ dependencies {
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'org.apache.commons:commons-lang3:3.4'
-
-    //Testing-only dependencies
-    androidTestCompile 'com.android.support.test:runner:0.3'
-    androidTestCompile 'com.android.support.test:rules:0.3'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+    compile 'de.greenrobot:eventbus:2.4.0'
 }
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
