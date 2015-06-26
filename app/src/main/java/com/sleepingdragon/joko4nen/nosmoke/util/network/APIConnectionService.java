@@ -46,7 +46,7 @@ abstract class APIConnectionService implements Serializable {
      * @param url 利用するAPI URL
      * @param listener 受け取った結果を操作する。
      */
-    public void request(String url, final ConnectionListener listener){
+    protected void request(String url, final ConnectionListener listener){
         URLConnectionAsyncTask urlConnectionAsyncTask = new URLConnectionAsyncTask(){
             @Override
             protected void onPostExecute(JSONArray result) {
