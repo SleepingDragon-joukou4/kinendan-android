@@ -191,7 +191,7 @@
                 android:textSize="22sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/home_teammokuhyo"
+                android:id="@+id/teammokuhyo"
                 android:layout_marginRight="10dp" />
             <TextView
                 android:layout_width="150dp"
@@ -200,7 +200,7 @@
                 android:textSize="22sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/home_teamgenzai"
+                android:id="@+id/teamgenzai"
                 android:layout_marginLeft="10dp" />
 
         </LinearLayout>
@@ -238,32 +238,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:id="@+id/lay8"
-        android:layout_marginBottom="5dp">
+        android:id="@+id/lay8">
 
         <Button
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:text="ホーム"
             android:id="@+id/HomeButton"
+            android:background="@drawable/ic_action_home"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:text="ランキング"
             android:id="@+id/RankingButton"
+            android:background="@drawable/ic_action_achievement"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:text="スケジュール"
             android:id="@+id/ScheduleButton"
+            android:background="@drawable/ic_action_calendar_month"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:text="商品表示"
             android:id="@+id/SyohinButton"
+            android:background="@drawable/ic_action_mustache"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
