@@ -4,6 +4,7 @@ package com.sleepingdragon.joko4nen.nosmoke.util.network;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.Serializable;
 
@@ -29,7 +30,7 @@ abstract class APIConnectionService implements Serializable {
          *
          * @param jsonArray 受け取った結果
          */
-        void onSuccess(JSONArray jsonArray);
+        void onSuccess(JSONArray jsonArray) throws JSONException;
 
 
         /**

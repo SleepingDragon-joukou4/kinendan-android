@@ -6,6 +6,8 @@ import android.util.Log;
 import com.sleepingdragon.joko4nen.nosmoke.home.HomeSelectEvent;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
 
@@ -24,6 +26,7 @@ public class HomeSelectConnectionService extends APIConnectionService {
 
     private final EventBus eventBus;
     private String url;
+    private JSONObject jsonObject;
 
     public HomeSelectConnectionService(){
         eventBus = EventBus.getDefault();
@@ -49,8 +52,10 @@ public class HomeSelectConnectionService extends APIConnectionService {
         request(url, new ConnectionListener() {
 
             @Override
-            public void onSuccess(JSONArray jsonArray) {
-                eventBus.post(new HomeSelectEvent(true, jsonArray));
+            public void onSuccess(JSONArray jsonArray) throws JSONException {
+                toJSONObjectByIndex(jsonArray,0);
+
+                eventBus.post(new HomeSelectEvent(true, jsonObject));
             }
 
             @Override
@@ -59,6 +64,11 @@ public class HomeSelectConnectionService extends APIConnectionService {
                 Log.d("settingHome",error);
             }
         });
+    }
+
+    private JSONObject toJSONObjectByIndex(JSONArray jsonArray, int index) throws JSONException {
+        jsonObject = jsonArray.getJSONObject(index);
+        return jsonObject;
     }
 
 }
