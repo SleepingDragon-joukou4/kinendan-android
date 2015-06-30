@@ -90,8 +90,6 @@ public class HomeActivity extends Activity {
         }
     }
 
-    @OnClick
-
     public void onEvent(HomeSelectEvent event) throws JSONException {
         if (event.isSuccess()) {
             Log.d(TAG, "HomeSelectEvent async task is success");
