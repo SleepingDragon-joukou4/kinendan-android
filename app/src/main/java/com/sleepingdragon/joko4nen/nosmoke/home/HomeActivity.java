@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity;
@@ -12,7 +14,10 @@ import com.sleepingdragon.joko4nen.nosmoke.schedule.ScheduleActivity;
 import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
 import com.sleepingdragon.joko4nen.nosmoke.util.network.HomeSelectConnectionService;
 
+import org.json.JSONException;
+
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 
@@ -26,12 +31,25 @@ public class HomeActivity extends Activity {
     private final EventBus eventBus = EventBus.getDefault();
     private HomeSelectConnectionService service;
 
+    @InjectView(R.id.home_mhonsu)
+    TextView mhousu;
+    @InjectView(R.id.home_nissu)
+    TextView nissu;
+    @InjectView(R.id.teammokuhyo)
+    TextView teamMokuhyo;
+    @InjectView(R.id.teamgenzai)
+    TextView teamGenzai;
+    @InjectView(R.id.home_teamname)
+    TextView teamName;
+    @InjectView(R.id.home_shonsu)
+    NumberPicker shonsu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         ButterKnife.inject(this);
-        service = new HomeSelectConnectionService("User20150528s4KV2d","Team20150528RazMk4");
+        service = new HomeSelectConnectionService("User20150528s4KV2d", "Team20150528RazMk4");
         service.settingHome();
     }
 
@@ -47,9 +65,9 @@ public class HomeActivity extends Activity {
         super.onPause();
     }
 
-    @OnClick({R.id.HomeButton,R.id.ScheduleButton,
+    @OnClick({R.id.HomeButton, R.id.ScheduleButton,
             R.id.RankingButton, R.id.SyohinButton})
-    void onClick(Button button){
+    void onClick(Button button) {
         switch (button.getId()) {
             case R.id.HomeButton:
                 startActivity(new Intent(HomeActivity.this,
@@ -72,12 +90,20 @@ public class HomeActivity extends Activity {
         }
     }
 
-    public void onEvent(HomeSelectEvent event){
+    @OnClick
+
+    public void onEvent(HomeSelectEvent event) throws JSONException {
         if (event.isSuccess()) {
-            Log.d(TAG, "My model async task is success");
-            Log.d(TAG, event.getJsonObject().toString());
+            Log.d(TAG, "HomeSelectEvent async task is success");
+
+            teamName.setText(event.getTeamName());
+            teamGenzai.setText(event.getSmokinghistoryPerformanceNumberTeamSum());
+            teamMokuhyo.setText(event.getTeamCigaretteNumber());
+            mhousu.setText(event.getCigaretteNumber());
+            nissu.setText(event.getDeadline());
+
         } else {
-            Log.d(TAG, "My model async task is failure");
+            Log.d(TAG, "HomeSelectEvent async task is failure");
         }
     }
 }

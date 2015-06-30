@@ -53,4 +53,8 @@ public class HomeSelectEvent {
     public String getCigaretteNumber() throws JSONException {
         return object.getString("CigaretteNumber");
     }
+
+    public String getTeamCigaretteNumber() throws JSONException {
+        return object.getString("TeamCigaretteNumber");
+    }
 }
