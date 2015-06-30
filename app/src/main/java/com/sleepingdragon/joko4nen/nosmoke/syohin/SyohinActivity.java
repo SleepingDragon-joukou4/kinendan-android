@@ -3,11 +3,13 @@ package com.sleepingdragon.joko4nen.nosmoke.syohin;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.AvoidXfermode;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
@@ -48,8 +50,79 @@ public class SyohinActivity extends Activity {
                           //TextViewにModerationPricを挿入
                     TextView textView = (TextView) findViewById(R.id.kingaku);
                     textView.setText(ModerationPrice);
-                    
 
+                    int ModerationPrace2 = Integer.parseInt(ModerationPrice);
+
+                if(ModerationPrace2<=0){
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.mame);
+
+
+
+                    }else if(ModerationPrace2>0&&ModerationPrace2<=100){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>100&&ModerationPrace2<=1000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>1000&&ModerationPrace2<=3000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>3000&&ModerationPrace2<=5000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>5000&&ModerationPrace2<=7500){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>7500&&ModerationPrace2<=10000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>10000&&ModerationPrace2<=12500){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>12500&&ModerationPrace2<=15000){
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+                    }else if(ModerationPrace2>15000&&ModerationPrace2<=20000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>20000&&ModerationPrace2<=25000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>25000&&ModerationPrace2<=30000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>30000&&ModerationPrace2<=50000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }else if(ModerationPrace2>50000&&ModerationPrace2<=100000){
+
+                    ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
+                    imageView1.setImageResource(R.drawable.a);
+
+                    }
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }

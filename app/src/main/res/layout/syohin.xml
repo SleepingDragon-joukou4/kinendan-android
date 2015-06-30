@@ -105,25 +105,15 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:id="@+id/lay4">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="77777円のうまい棒"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/mono"
-                android:layout_marginLeft="15dp" />
-
-        </LinearLayout>
+            <ImageView
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="25dp"
+                android:scaleType="fitCenter"
+                android:background="#ffffff"
+                android:id="@+id/ImageView" /><!-- 画像の読み込み -->
 
 
     </LinearLayout>
