@@ -4,6 +4,7 @@ package com.sleepingdragon.joko4nen.nosmoke.util.network;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.Serializable;
 
@@ -29,7 +30,7 @@ abstract class APIConnectionService implements Serializable {
          *
          * @param jsonArray 受け取った結果
          */
-        public void onSuccess(JSONArray jsonArray);
+        void onSuccess(JSONArray jsonArray) throws JSONException;
 
 
         /**
@@ -37,16 +38,16 @@ abstract class APIConnectionService implements Serializable {
          *
          * @param error 失敗メッセージ
          */
-        public void onFailed(String error);
+        void onFailed(String error);
     }
 
     /**
      * 指定したURLから
      *
      * @param url 利用するAPI URL
-     * @param listener
+     * @param listener 受け取った結果を操作する。
      */
-    public void request(String url, final ConnectionListener listener){
+    protected void request(String url, final ConnectionListener listener){
         URLConnectionAsyncTask urlConnectionAsyncTask = new URLConnectionAsyncTask(){
             @Override
             protected void onPostExecute(JSONArray result) {

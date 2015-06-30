@@ -10,12 +10,19 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    packagingOptions {
+        // for AndroidStudio's bug. duplication error of file below.
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'LICENSE.txt'
     }
 }
 
@@ -25,11 +32,14 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-annotations:22.2.0'
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'de.greenrobot:eventbus:2.4.0'
 }
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
