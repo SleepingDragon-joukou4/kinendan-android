@@ -17,11 +17,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ryosei on 2015/06/23.
  */
 public class SinJikkoActivity extends Activity {
-
+    ArrayList<String> name;
+    ArrayList<String> punishmentnumber;
+    ArrayList<String> nowpunishmentnumber;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sin_jikko);
@@ -32,13 +36,14 @@ public class SinJikkoActivity extends Activity {
         super.onResume();
 
             Intent i=getIntent();
-            String[] name;
-            name= i.getStringArrayExtra("NameList");
-
-                    //sin_text1にTextViewにName(目標本数を超えたユーザの名前)を挿入
-                    TextView sin_text1 = (TextView) findViewById(R.id.sin_text1);
-                    sin_text1.setText(name[0]);
-
+            name=i.getStringArrayListExtra("NameList");
+            punishmentnumber=i.getStringArrayListExtra("PunishmentNumberList");
+            nowpunishmentnumber=i.getStringArrayListExtra("NowPunishmentNumberList");
+            if(name!=null) {
+                //sin_text1にTextViewにName(目標本数を超えたユーザの名前)を挿入
+                TextView sin_text1 = (TextView) findViewById(R.id.sin_text1);
+                sin_text1.setText(name.get(0));
+            }
 
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         String TeamID = Savedata.getString("TeamID", "なし");
@@ -50,7 +55,7 @@ public class SinJikkoActivity extends Activity {
                 //罰ゲーム内容を取得
                 JSONObject ja = result.getJSONObject(0);
                 String Panishment = ja.getString("Panishment");
-                //TextView judgement にjudgemen（罰ゲーム内容）を挿入
+                //TextView judgement にjudgement（罰ゲーム内容）を挿入
                 TextView judgement = (TextView) findViewById(R.id.judgement);
                 judgement.setText(Panishment);
 
@@ -71,8 +76,27 @@ public class SinJikkoActivity extends Activity {
         createteam.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent intent = new Intent(SinJikkoActivity.this, HomeActivity.class);
-                startActivity(intent);
+                if(name!=null){
+                    name.remove(0);
+                    punishmentnumber.remove(0);
+                    nowpunishmentnumber.remove(0);
+                    if(name.size()>0){
+                        Intent i=new Intent(SinJikkoActivity.this,SinJikkoActivity.class);
+                        //listをActivityに値渡し
+                        //Namelist:破ったやつの名前
+                        //PunishmentNumberList:罰ゲームを受ける回数
+                        //NowPunishmentNumberList:現在そのユーザーが破った回数
+                        i.putStringArrayListExtra("NameList",name);
+                        i.putStringArrayListExtra("PunishmentNumberList",punishmentnumber);
+                        i.putStringArrayListExtra("NowPunishmentNumberList",nowpunishmentnumber);
+                        startActivity(i);
+
+                    }else{
+                        Intent intent = new Intent(SinJikkoActivity.this, HomeActivity.class);
+                        startActivity(intent);
+
+                    }
+                }
             }
         });
 

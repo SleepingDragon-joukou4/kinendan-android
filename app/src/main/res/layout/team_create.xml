@@ -15,7 +15,7 @@ android:id="@+id/body">
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#b0c4de"
+        android:background="@drawable/kemuri2"
         android:id="@+id/createteam_body">
 
 

@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
                                 public void run() {
                                     Intent i=new Intent(MainActivity.this,SinJikkoActivity.class);
                                     //listをActivityに値渡し
-                                    //Namelist:名前
+                                    //Namelist:破ったやつの名前
                                     //PunishmentNumberList:罰ゲームを受ける回数
                                     //NowPunishmentNumberList:現在そのユーザーが破った回数
                                     i.putStringArrayListExtra("NameList",Namelist);
