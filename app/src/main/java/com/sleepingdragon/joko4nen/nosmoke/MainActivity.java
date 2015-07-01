@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.sleepingdragon.joko4nen.nosmoke.home.Numbercalc;
 import com.sleepingdragon.joko4nen.nosmoke.sin_jikko.SinJikkoActivity;
 import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
 
@@ -42,6 +43,11 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //test
+        Numbercalc n=new Numbercalc(120,30,2);
+        n.calc();
+        //
+
 
     }
 
