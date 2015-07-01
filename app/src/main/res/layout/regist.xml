@@ -25,7 +25,7 @@
             android:textSize="22sp"
             android:gravity="center"
             android:layout_marginTop="30dp"
-            android:textColor="#fff"
+            android:textColor="#ffffffff"
             android:id="@+id/reg_name" />
 
         <EditText

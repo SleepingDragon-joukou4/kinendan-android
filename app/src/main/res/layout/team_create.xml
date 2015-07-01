@@ -27,7 +27,7 @@
             android:id="@+id/createteam"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
-            android:background="#ff0000ff"
+            android:background="#640000ff"
             android:textColor="#fff" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_height="50dp"
             android:id="@+id/createteam_id"
             android:layout_gravity="center_horizontal"
-            android:background="#fff"
+            android:background="#96ffffff"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="5dp" />
@@ -58,7 +58,7 @@
             android:id="@+id/createteam_join"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:background="#ff0000ff"
+            android:background="#640000ff"
             android:textColor="#fff" />
 
     </LinearLayout>
