@@ -28,7 +28,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
             android:background="#640000ff"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -59,7 +60,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:background="#640000ff"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
     </LinearLayout>
 </FrameLayout>
