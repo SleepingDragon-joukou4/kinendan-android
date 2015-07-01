@@ -32,9 +32,9 @@ public class RegSuccessActivity extends Activity {
         Intent intent = getIntent();
         if (intent != null) {
             TeamID=intent.getStringExtra("TeamID");
-            textTeamID.setText("チームID:"+TeamID);
+            textTeamID.setText(TeamID);
             TeamName=intent.getStringExtra("TeamName");
-            textTeamName.setText("チーム名:"+TeamName);
+            textTeamName.setText(TeamName);
             NameLine=intent.getStringArrayListExtra("NameList");
         }
 

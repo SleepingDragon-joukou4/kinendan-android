@@ -15,17 +15,17 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#b0c4de"
+        android:background="@drawable/kemuri1"
         android:id="@+id/regsuccess_body">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="登録完了"
+            android:text="登録が完了しました"
             android:textSize="22sp"
             android:gravity="center"
             android:layout_marginTop="30dp"
-            android:textColor="#000"
+            android:textColor="#ffffff00"
             android:id="@+id/reg_success" />
         <LinearLayout
             android:orientation="vertical"
@@ -41,26 +41,62 @@
                 android:layout_height="0dip"
                 android:layout_weight="0.9"
                 android:id="@+id/reg_body">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="チーム名:"
+                        android:id="@+id/reg_nametext"
+                        android:textSize="22sp"
+                        android:gravity="center"
+                        android:textColor="#ffffff00"
+                        android:layout_weight="0.65" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="チーム名:"
                     android:id="@+id/reg_nametextview"
                     android:textSize="22sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textColor="#ffffff00"
+                    android:layout_weight="0.25"
+                    android:text="TeamName" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="チームID:"
-                    android:id="@+id/reg_nameinvite"
+                    android:id="@+id/reg_nameinv"
                     android:textSize="22sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textColor="#ffffff00"
+                    android:layout_weight="0.65"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="TeamID"
+                        android:id="@+id/reg_nameinvite"
+                        android:textSize="22sp"
+                        android:gravity="center"
+                        android:textColor="#ffffff00"
+                        android:layout_weight="0.25"/>
+                </LinearLayout>
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/regscrollView"
 
-                    android:background="#b0c4de">
+                    android:background="#00b0c4de">
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -88,7 +124,9 @@
             android:layout_height="50dp"
             android:text="次へ"
             android:id="@+id/regsuccess_next"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="#640000ff"
+            android:textColor="#fff" />
 
     </LinearLayout>
     </FrameLayout>
