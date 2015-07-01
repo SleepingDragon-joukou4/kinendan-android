@@ -1,9 +1,11 @@
 package com.sleepingdragon.joko4nen.nosmoke.home;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -41,8 +43,9 @@ public class HomeActivity extends Activity {
     TextView teamGenzai;
     @InjectView(R.id.home_teamname)
     TextView teamName;
+
     @InjectView(R.id.home_shonsu)
-    NumberPicker shonsu;
+    TextView shonsu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,16 @@ public class HomeActivity extends Activity {
             default:
                 throw new IllegalArgumentException();
         }
+    }
+
+    @OnClick(R.id.honsu_button)
+    void onClick(View v){
+        DialogFragment dialogFragment = new HonsuDialogFragment();
+        dialogFragment.show(getFragmentManager(),"dialog");
+    }
+
+    public void onSetHonsu(String val){
+        shonsu.setText(val);
     }
 
     public void onEvent(HomeSelectEvent event) throws JSONException {
