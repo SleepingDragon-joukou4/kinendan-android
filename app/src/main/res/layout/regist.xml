@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="アカウント名"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="30dp"
             android:textColor="#ffffffff"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="タバコ銘柄選択"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="35dp"
             android:textColor="#fff"
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="1日に吸うタバコの本数"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="30dp"
             android:textColor="#fff"
@@ -100,7 +100,8 @@
             android:textStyle="bold"
             android:background="#640000ff"
             android:id="@+id/invite_next"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
     </LinearLayout>
     </FrameLayout>

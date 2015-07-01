@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="チーム名"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="30dp"
             android:textColor="#fff"
@@ -41,9 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="禁煙達成までの期間(/ヶ月)"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:textColor="#fff"
             android:id="@+id/team_period" />
 
@@ -61,9 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="罰ゲーム回数(/回毎)"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:textColor="#fff"
             android:id="@+id/team_sinnum" />
 
@@ -81,9 +81,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="罰ゲーム内容"
-            android:textSize="22sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:textColor="#fff"
             android:id="@+id/team_batsugame" />
 
@@ -121,7 +121,8 @@
             android:layout_gravity="left"
             android:layout_marginRight="10dp"
             android:background="#640000ff"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
         <Button
             android:layout_width="150dp"
@@ -131,7 +132,8 @@
             android:layout_gravity="right"
             android:layout_marginLeft="10dp"
             android:background="#640000ff"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
     </LinearLayout>
     </FrameLayout>

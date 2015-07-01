@@ -15,7 +15,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:background="@drawable/kemuri1">
 
 
 
@@ -26,34 +27,61 @@
                 android:layout_weight="0.9"
                 android:id="@+id/invite_body">
 
-                <TextView
+
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="参加者待機中..."
-                    android:textSize="22sp"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#000"
-                    android:id="@+id/invite" />
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_marginTop="10dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="チーム名:"
-                    android:id="@+id/team_nametextview"
-                    android:textSize="22sp"
-                    android:gravity="center"/>
+                    android:id="@+id/team_nametext"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_weight="0.75"
+                    android:textColor="#fff" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="TeamName"
+                        android:id="@+id/team_nametextview"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_weight="0.25"
+                        android:textColor="#fff" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="チームID:"
+                    android:id="@+id/team_nameinv"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_weight="0.75"
+                    android:textColor="#fff" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="TeamID"
                     android:id="@+id/team_nameinvite"
-                    android:textSize="22sp"
-                    android:gravity="center"/>
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_weight="0.25"
+                    android:textColor="#fff" />
+            </LinearLayout>
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/scrollView"
-                    android:background="#b0c4de">
+                    android:background="#00000000">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -63,11 +91,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="読み込み中..."
+                        android:text="参加者待機中..."
                         android:textSize="22sp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"
-                        android:textColor="#000"/>
+                        android:textColor="#fff"/>
                 </LinearLayout>
 
                 </ScrollView>
@@ -78,10 +106,10 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.1"
             android:id="@+id/invite_Line"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginRight="30dp"
+            android:layout_weight="0.1">
 
             <Button
                 android:layout_width="150dp"

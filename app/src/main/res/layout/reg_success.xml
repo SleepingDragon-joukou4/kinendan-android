@@ -96,7 +96,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/regscrollView"
 
-                    android:background="#00b0c4de">
+                    android:background="#00000000">
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
