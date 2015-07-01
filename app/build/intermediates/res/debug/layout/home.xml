@@ -1,0 +1,275 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#ffffff"
+    tools:context=".FullscreenActivity"
+    android:id="@+id/body">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b0c4de"
+        android:id="@+id/home">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lay1">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="チーム名"
+            android:textSize="15sp"
+
+            android:textColor="#000"
+            android:id="@+id/home_team" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:textSize="22sp"
+
+            android:text="asdfzzzzz"
+            android:textColor="#000"
+            android:id="@+id/home_teamname"
+             />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:id="@+id/lay2">
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:text="残りあと"
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:gravity="top"
+                android:id="@+id/home_nokori"
+                android:layout_gravity="bottom" />
+
+            <TextView
+                android:layout_width="59dp"
+                android:layout_height="50dp"
+                android:textSize="50sp"
+                android:text="77"
+                android:textColor="#000"
+                android:id="@+id/home_nissu"
+                android:gravity="bottom|right" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:text="日！"
+                android:textColor="#000"
+                android:id="@+id/home_niti"
+                android:layout_gravity="top"
+                android:gravity="center|bottom|right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:longClickable="false"
+            android:gravity="center|bottom"
+            android:id="@+id/lay3">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="今日の目標"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/home_mokuhyo"
+                android:layout_marginRight="10dp" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="吸った本数"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/team_sutta"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="60dp"
+        android:id="@+id/lay4">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="7"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:id="@+id/home_mhonsu" />
+
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/lay5">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="チームの目標"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/home_teammokuhyo"
+                android:layout_marginRight="10dp" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="チーム合計"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/home_teamgenzai"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/lay6">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="77"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/teammokuhyo"
+                android:layout_marginRight="10dp" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="33"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:id="@+id/teamgenzai"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:weightSum="1"
+        android:layout_gravity="right"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="150dp"
+        android:id="@+id/lay7">
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/home_shonsu"
+            android:layout_weight="0.61"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:id="@+id/lay8">
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="ホーム"
+            android:id="@+id/HomeButton"
+            android:background="@drawable/ic_action_home"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="ランキング"
+            android:id="@+id/RankingButton"
+            android:background="@drawable/ic_action_achievement"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="スケジュール"
+            android:id="@+id/ScheduleButton"
+            android:background="@drawable/ic_action_calendar_month"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="商品表示"
+            android:id="@+id/SyohinButton"
+            android:background="@drawable/ic_action_mustache"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+</FrameLayout>
+<!-- From: file:/C:/Users/student/Desktop/kinendan-android/app/src/main/res/layout/home.xml -->

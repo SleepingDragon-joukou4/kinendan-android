@@ -1,0 +1,105 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#ffffff"
+    tools:context=".FullscreenActivity"
+    android:id="@+id/body">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/kemuri1"
+        android:id="@+id/reg_body">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="アカウント名"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textColor="#fff"
+            android:id="@+id/reg_name" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:maxLength="10"
+            android:id="@+id/reg_nametext"
+            android:layout_gravity="center_horizontal"
+            android:background="#96ffffff"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="タバコ銘柄選択"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="35dp"
+            android:textColor="#fff"
+            android:id="@+id/reg_tabakoselect" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tabakospn"
+            android:textColor="#000"
+            android:layout_gravity="center_horizontal"
+            android:background="#96ffffff" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="1日に吸うタバコの本数"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textColor="#fff"
+            android:id="@+id/reg_tabako" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/reg_tabakotext"
+            android:maxLength="2"
+            android:background="#96ffffff"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="right"
+        android:id="@+id/invite_button"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="次へ"
+            android:textStyle="bold"
+            android:background="#640000ff"
+            android:id="@+id/invite_next"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+    </FrameLayout>
+<!-- From: file:/C:/Users/student/Desktop/kinendan-android/app/src/main/res/layout/regist.xml -->

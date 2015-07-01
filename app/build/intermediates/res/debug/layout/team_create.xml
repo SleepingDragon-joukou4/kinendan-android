@@ -1,0 +1,66 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#ffffff"
+    tools:context="com.sleepingdragon.joko4nen.nosmoke.team_create.Team_createActivity.team_create"
+    android:id="@+id/body">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/kemuri1"
+        android:id="@+id/createteam_body">
+
+
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="チームを作成する"
+            android:id="@+id/createteam"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:background="#ff0000ff"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="チームIDを入力してください"
+            android:id="@+id/createteam_text"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#fff"
+            android:layout_marginTop="90dp"
+            android:textSize="22dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/createteam_id"
+            android:layout_gravity="center_horizontal"
+            android:background="#fff"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="チームに参加する"
+            android:id="@+id/createteam_join"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="#ff0000ff"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+</FrameLayout>
+<!-- From: file:/C:/Users/student/Desktop/kinendan-android/app/src/main/res/layout/team_create.xml -->
