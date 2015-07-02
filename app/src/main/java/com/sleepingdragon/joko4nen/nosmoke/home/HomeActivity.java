@@ -18,6 +18,8 @@ import com.sleepingdragon.joko4nen.nosmoke.util.network.HomeSelectConnectionServ
 
 import org.json.JSONException;
 
+import java.text.ParseException;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -103,7 +105,8 @@ public class HomeActivity extends Activity {
         shonsu.setText(val);
     }
 
-    public void onEvent(HomeSelectEvent event) throws JSONException {
+
+    public void onEvent(HomeSelectEvent event) throws JSONException, ParseException {
         if (event.isSuccess()) {
             Log.d(TAG, "HomeSelectEvent async task is success");
 
@@ -111,7 +114,7 @@ public class HomeActivity extends Activity {
             teamGenzai.setText(event.getSmokinghistoryPerformanceNumberTeamSum());
             teamMokuhyo.setText(event.getTeamCigaretteNumber());
             mhousu.setText(event.getCigaretteNumber());
-            nissu.setText(event.getDeadline());
+            nissu.setText(event.getRemainingDate());
 
         } else {
             Log.d(TAG, "HomeSelectEvent async task is failure");
