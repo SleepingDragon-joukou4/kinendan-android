@@ -21,6 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -108,9 +110,13 @@ public class TeamInviteActivity extends Activity{
                 }
             };
             //executeで非同期処理開始
-            URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
-                    "get=userupsert&UserId="+SUserID+"&Name="+SUserName+"&CigaretteBrandNo="+SCigaretteBrandNo+"&TeamId=" + TeamIDintent
-                    +"&CigaretteNumber="+SCigaretteNumber);
+            try {
+                URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?" +
+                        "get=userupsert&UserId="+SUserID+"&Name="+ URLEncoder.encode(SUserName, "utf-8")+"&CigaretteBrandNo="+SCigaretteBrandNo+"&TeamId=" + TeamIDintent
+                        +"&CigaretteNumber="+ URLEncoder.encode(SCigaretteNumber, "utf-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
     }
     public void UserSelect() {

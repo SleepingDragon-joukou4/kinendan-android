@@ -1,12 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.sleepingdragon.joko4nen.nosmoke.finish.finishactivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
         android:weightSum="1">
 
         <TextView
@@ -177,12 +179,28 @@
 
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="0.29">
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.6"
+                android:textSize="30sp"
+                android:text="禁煙成功！\nおめでとうございます！"
+                android:id="@+id/finish_text" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="0.4"
+                android:layout_gravity="bottom|right"
+                android:textSize="26sp"
+                android:text="最初から"
+                android:id="@+id/finish_firstbutton" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

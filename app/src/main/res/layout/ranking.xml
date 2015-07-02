@@ -10,16 +10,28 @@
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#b0c4de"
+        android:weightSum="1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+
+        android:layout_weight="0.80"
         android:id="@+id/ranking_body">
 
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="現在のチームランキング"
+            android:textSize="22sp"
+            android:id="@+id/textView2" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -35,7 +47,7 @@
                 android:textSize="22sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/rank_rank"
+                android:id="@+id/rank_ranktext"
                 android:layout_marginLeft="15dp" />
             <TextView
                 android:layout_width="150dp"
@@ -44,7 +56,7 @@
                 android:textSize="22sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/rank_name"
+                android:id="@+id/rank_nametext"
                 android:layout_marginLeft="30dp" />
             <TextView
                 android:layout_width="70dp"
@@ -53,142 +65,36 @@
                 android:textSize="22sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/rank_ritu"
+                android:id="@+id/rank_ritutext"
                 android:layout_marginLeft="30dp" />
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:id="@+id/lay2">
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView_ranking" >
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="1"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_rank1"
-                android:layout_marginLeft="15dp" />
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:text="qwe"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_name1"
-                android:layout_marginLeft="30dp" />
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:text="95%"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_ritu1"
-                android:layout_marginLeft="30dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ranking_bodyline">
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:id="@+id/lay3">
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="2"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_rank2"
-                android:layout_marginLeft="15dp" />
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:text="rty"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_name2"
-                android:layout_marginLeft="30dp" />
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:text="85%"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_ritu2"
-                android:layout_marginLeft="30dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:id="@+id/lay4">
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="3"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_rank3"
-                android:layout_marginLeft="15dp" />
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:text="asd"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_name3"
-                android:layout_marginLeft="30dp" />
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:text="70%"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/rank_ritu3"
-                android:layout_marginLeft="30dp" />
-
-
-        </LinearLayout>
-
-
-
-
-
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/lay8"
-        android:layout_marginBottom="5dp">
+        android:layout_gravity="center_horizontal|bottom">
 
         <Button
             android:layout_width="90dp"
@@ -218,6 +124,4 @@
     </LinearLayout>
 
 
-
-
-    </FrameLayout>
+</FrameLayout>
