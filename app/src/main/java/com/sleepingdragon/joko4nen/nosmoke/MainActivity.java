@@ -3,10 +3,7 @@ package com.sleepingdragon.joko4nen.nosmoke;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.sleepingdragon.joko4nen.nosmoke.home.Numbercalc;
 import com.sleepingdragon.joko4nen.nosmoke.sin_jikko.SinJikkoActivity;
-import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
 
 /**
  * Created by Ryosei on 2015/06/19.
@@ -39,14 +36,11 @@ import java.util.Random;
  * Created by Ryosei on 2015/06/19.
  */
 public class MainActivity extends Activity {
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //test
-        Numbercalc n=new Numbercalc(120,30,2);
-        n.calc();
-        //
 
 
     }

@@ -9,13 +9,13 @@
         android:icon="@mipmap/ic_launcherr"
         android:label="オレ達禁煙団"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".MainActivity"
             android:label="オレ達禁煙団" >
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -57,6 +57,10 @@
         <activity
             android:name=".syohin.SyohinActivity"
             android:label="syohin" >
+        </activity>
+        <activity
+            android:name=".finish.finishactivity"
+            android:label="finishactivity" >
         </activity>
     </application>
 

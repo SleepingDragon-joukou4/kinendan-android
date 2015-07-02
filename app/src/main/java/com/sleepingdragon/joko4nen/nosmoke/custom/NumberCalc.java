@@ -15,7 +15,7 @@ public class NumberCalc {
     public NumberCalc(int number, int day, int nowdate) {
         this.number = number; //初期本数
         this.day = day; //日数
-        this.nowdate = nowdate; //今の日付
+        this.nowdate = nowdate; //経過日数
 
     }
 
