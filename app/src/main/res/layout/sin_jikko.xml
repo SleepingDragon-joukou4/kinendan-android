@@ -67,7 +67,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:text="ホーム画面へ"
+            android:text="OK"
             android:id="@+id/regsuccess_next"
             android:background="#ffff0000" />
 
