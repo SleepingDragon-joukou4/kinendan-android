@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#b0c4de"
+        android:background="@drawable/god"
         android:id="@+id/regsuccess_body"
         android:gravity="center|top"
         android:weightSum="1">
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="目標本数を超過しました"
             android:textSize="22sp"
-            android:textColor="#000"
+            android:textColor="#ffff0000"
             android:id="@+id/sin_text2"
             android:layout_weight="0.12" />
 
@@ -46,7 +46,7 @@
             android:textSize="22sp"
             android:gravity="center"
             android:layout_marginTop="150dp"
-            android:textColor="#000"
+            android:textColor="#ffff0000"
             android:id="@+id/judgement"
             android:layout_weight="0.18"
             android:text="罰内容" />
@@ -68,7 +68,8 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="ホーム画面へ"
-            android:id="@+id/regsuccess_next" />
+            android:id="@+id/regsuccess_next"
+            android:background="#ffff0000" />
 
     </LinearLayout>
     </FrameLayout>

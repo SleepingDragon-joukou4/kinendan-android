@@ -75,7 +75,7 @@
                     android:textSize="14sp"
                     android:gravity="center"
                     android:layout_weight="0.25"
-                    android:textColor="#fff" />
+                    android:textColor="#ff00ff00" />
             </LinearLayout>
                 <ScrollView
                     android:layout_width="match_parent"
@@ -127,7 +127,7 @@
             <Button
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:text="次へ"
+                android:text="決定"
                 android:id="@+id/invite_next"
                 android:layout_gravity="right"
                 android:background="#640000ff"
