@@ -22,6 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -155,10 +157,14 @@ public class TeamSettingActivity extends Activity {
             }
         };
         //executeで非同期処理開始
-        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupsert" +
-                "&UserId="+UserID+"&TeamId="+TeamId+"&CigaretteBrandNo="+CigarreteBrandNo+"&Deadline="+kikanselectstring
-                +"&StartDate="+nowDate+"&Name="+teamname+"&Punishment="+batsugame+"&PunishmentNumber="+sinnumselectstring
-                +"&Status=待機中"+"&HostUserId="+UserID);
+        try {
+            URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupsert" +
+                    "&UserId="+UserID+"&TeamId="+TeamId+"&CigaretteBrandNo="+CigarreteBrandNo+"&Deadline="+kikanselectstring
+                    +"&StartDate="+nowDate+"&Name="+URLEncoder.encode(teamname, "utf-8")+"&Punishment="+ URLEncoder.encode(batsugame, "utf-8")+"&PunishmentNumber="+sinnumselectstring
+                    +"&Status=%E5%BE%85%E6%A9%9F%E4%B8%AD"+"&HostUserId="+UserID);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
 }
