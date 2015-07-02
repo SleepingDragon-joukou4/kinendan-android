@@ -20,18 +20,20 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:text="ー 登録が完了しました ー"
             android:textSize="22sp"
             android:gravity="center"
-            android:layout_marginTop="30dp"
             android:textColor="#ff00ff00"
-            android:id="@+id/reg_success" />
+            android:id="@+id/reg_success"
+            android:paddingTop="30dp"
+            android:background="#96000000" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:background="#96000000">
 
 
 

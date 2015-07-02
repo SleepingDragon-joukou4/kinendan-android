@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
@@ -26,6 +27,7 @@ public class SinJikkoActivity extends Activity {
     ArrayList<String> name;
     ArrayList<String> punishmentnumber;
     ArrayList<String> nowpunishmentnumber;
+    private ImageView image;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sin_jikko);
