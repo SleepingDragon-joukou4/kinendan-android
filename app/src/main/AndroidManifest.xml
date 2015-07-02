@@ -59,7 +59,7 @@
             android:label="syohin" >
         </activity>
         <activity
-            android:name=".finish.finishactivity"
+            android:name=".finish.FinishActivity"
             android:label="finishactivity" >
         </activity>
     </application>
