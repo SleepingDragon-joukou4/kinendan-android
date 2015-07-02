@@ -50,7 +50,7 @@ public class TeamInviteActivity extends Activity{
             Log.d("aa",TeamIDintent);
             TeamIDintent = intent.getStringExtra("TeamID");
             host_frag=intent.getBooleanExtra("Host",false);
-            TeamIDTextView.setText("チームID:"+TeamIDintent);
+            TeamIDTextView.setText(TeamIDintent);
         }
         //hostじゃないと押せない
         invite_next.setVisibility(View.GONE);
@@ -141,7 +141,7 @@ public class TeamInviteActivity extends Activity{
                                                     if (i == 0) {//Status（”待機中"OR"登録完了")
                                                         Status = ja.getString("Status");
                                                         STeamName=ja.getString("TeamName");
-                                                        TeamNameTextView.setText("チーム名:"+STeamName);
+                                                        TeamNameTextView.setText(STeamName);
                                                     }
                                                 }
                                                 Log.d("status",Status);
