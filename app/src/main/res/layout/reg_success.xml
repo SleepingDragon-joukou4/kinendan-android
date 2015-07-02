@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#ffffff"
+    android:layout_height="match_parent" android:background="@drawable/kemuri1"
     tools:context=".FullscreenActivity"
     android:id="@+id/body">
 
@@ -15,28 +15,39 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/kemuri1"
+        android:background="#96000000"
         android:id="@+id/regsuccess_body">
-
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ー 登録が完了しました ー"
             android:textSize="22sp"
             android:gravity="center"
-            android:textColor="#ff00ff00"
+            android:textColor="#fff"
             android:id="@+id/reg_success"
-            android:paddingTop="30dp"
-            android:background="#96000000" />
+            android:background="#96000000"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+        </LinearLayout></LinearLayout>
+
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="1"
-            android:background="#96000000">
-
-
-
+            android:weightSum="1">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
