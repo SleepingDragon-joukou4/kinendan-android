@@ -120,6 +120,15 @@ public class HomeActivity extends Activity {
             Log.d(TAG, "HomeSelectEvent async task is failure");
         }
     }
+
+    public void onEvent(SmokingUpsertEvent event) {
+        if (event.isSuccess()) {
+            Log.d(TAG,event.getMessage());
+            service.settingHome();
+        } else {
+            Log.d(TAG,event.getMessage());
+        }
+    }
 }
 
 
