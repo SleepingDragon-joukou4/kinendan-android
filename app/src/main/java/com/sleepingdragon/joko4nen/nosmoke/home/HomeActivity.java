@@ -111,8 +111,8 @@ public class HomeActivity extends Activity {
             Log.d(TAG, "HomeSelectEvent async task is success");
 
             teamName.setText(event.getTeamName());
-            teamGenzai.setText(event.getSmokinghistoryPerformanceNumberTeamSum());
-            teamMokuhyo.setText(event.getTeamCigaretteNumber());
+            teamGenzai.setText(event.getTeamCigaretteNumber());
+            teamMokuhyo.setText(event.getSmokinghistoryPerformanceNumberTeamSum());
             mhousu.setText(event.getCigaretteNumber());
             nissu.setText(event.getRemainingDate());
 
