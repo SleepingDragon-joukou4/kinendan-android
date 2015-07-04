@@ -142,9 +142,11 @@ public class TeamSettingActivity extends Activity {
                         Intent intent = new Intent(TeamSettingActivity.this, TeamInviteActivity.class);
                         //teamIDをActivityに送る
                         intent.putExtra("TeamID",TeamId);
-                        Log.d("intent",TeamId);
-                        intent.putExtra("Host",true);
+                        Log.d("intent", TeamId);
+                        intent.putExtra("Host", true);
                         startActivity(intent);
+                        //戻れないようにfinish
+                        TeamSettingActivity.this.finish();
                     }else{
                         Log.d("Error","");
                     }

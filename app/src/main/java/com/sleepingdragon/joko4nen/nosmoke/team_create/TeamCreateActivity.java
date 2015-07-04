@@ -76,6 +76,8 @@ public class TeamCreateActivity extends Activity{
                                 intent.putExtra("TeamID",Invite_TeamID);
                                 intent.putExtra("Host",false);
                                 startActivity(intent);
+                                //finish
+                                TeamCreateActivity.this.finish();
                             /**
                              チームIDが見つからないもしくはチームステータスが登録完了の場合
                              警告を促す
