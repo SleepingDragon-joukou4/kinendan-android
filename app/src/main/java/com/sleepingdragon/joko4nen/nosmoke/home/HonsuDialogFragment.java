@@ -6,12 +6,14 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
+import com.sleepingdragon.joko4nen.nosmoke.util.network.SmokingUpsertConnectionService;
 
 import butterknife.InjectView;
 
@@ -19,6 +21,7 @@ import butterknife.InjectView;
  * Created by ryu on 15/07/01.
  */
 public class HonsuDialogFragment extends DialogFragment {
+    SmokingUpsertConnectionService service;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -45,11 +48,13 @@ public class HonsuDialogFragment extends DialogFragment {
                 .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-
+                        Log.d("dialog","OKClick");
                         Integer value = numberPicker.getValue();
                         HomeActivity activity = (HomeActivity) getActivity();
+                        service = new SmokingUpsertConnectionService("User20150528s4KV2d","",value.toString(),activity.mhousu.getText().toString());
+                        service.upsert();
                         activity.onSetHonsu(value.toString());
-                        dismiss();
+
                     }
                 });
 

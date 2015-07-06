@@ -29,11 +29,12 @@ public class FinishActivity extends Activity {
     TextView Protect;
     TextView Break;
     TextView Solo_Moderation;
-    TextView Team_Moderation;
+    //TextView Team_Moderation;
     TextView Saving;
     TextView Percent;
     TextView FinishText;
     Button NextButton;
+    String UserId="";
 
     SharedPreferences Savedata;
     SharedPreferences.Editor editor;
@@ -45,14 +46,14 @@ public class FinishActivity extends Activity {
         Protect=(TextView)findViewById(R.id.finish_protect);
         Break =(TextView)findViewById(R.id.finish_braek);
         Solo_Moderation=(TextView)findViewById(R.id.finish_solo_moderation);
-        Team_Moderation=(TextView)findViewById(R.id.finish_team_moderation);
+        //Team_Moderation=(TextView)findViewById(R.id.finish_team_moderation);
         Saving=(TextView)findViewById(R.id.finish_saving);
         Percent=(TextView)findViewById(R.id.finish_percent);
         FinishText=(TextView)findViewById(R.id.finish_text);
 
         NextButton = (Button) findViewById(R.id.finish_firstbutton);
-        Savedata = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = Savedata.edit();
+        SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        UserId = SPreferences.getString("UserID", "なし");
         NextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,14 +73,14 @@ public class FinishActivity extends Activity {
                 try {
                     if(result!=null) {
                             JSONObject ja=result.getJSONObject(0);
-                            UserName.setText(ja.getString(""));
-                            Protect.setText(ja.getString(""));
-                            Break.setText(ja.getString(""));
-                            Solo_Moderation.setText(ja.getString(""));
-                            Team_Moderation.setText(ja.getString(""));
-                            Saving.setText(ja.getString(""));
+                            UserName.setText(ja.getString("UserName"));
+                            Protect.setText(ja.getString("AcheiveCount"));
+                            Break.setText(ja.getString("DisAcheiveCount"));
+                            Solo_Moderation.setText(ja.getString("UserModerationNumber"));
+                            //Team_Moderation.setText(ja.getString(""));
+                            Saving.setText(ja.getString("ModerationPrice"));
 
-                        int PercentInt=Integer.valueOf(ja.getString(""));
+                            int PercentInt=Integer.valueOf(ja.getString("PercentComplete"));
                             Percent.setText(PercentInt+"%");
                             FinishText.setText(TextSetting(PercentInt));
 
@@ -95,7 +96,8 @@ public class FinishActivity extends Activity {
             }
         };
         //executeで非同期処理開始
-        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=");
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=finishselect&TeamId&UserId="
+                                    +UserId);
     }
     private String TextSetting(int per) {
         if(per>=100){

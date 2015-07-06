@@ -54,6 +54,7 @@ public class HomeSelectConnectionService extends APIConnectionService {
 
             @Override
             public void onSuccess(JSONArray jsonArray) throws JSONException {
+                Log.d("Json",jsonArray.toString());
                 toJSONObjectByIndex(jsonArray, 0);
                 eventBus.post(new HomeSelectEvent(true, jsonObject));
             }

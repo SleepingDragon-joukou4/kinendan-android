@@ -37,6 +37,11 @@ public class RegSuccessActivity extends Activity {
             textTeamName.setText(TeamName);
             NameLine=intent.getStringArrayListExtra("NameList");
         }
+        //TeamCreated!
+        SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = Savedata.edit();
+        editor.putBoolean("TeamCreated", true);
+        editor.apply();
 
         //Update
         if(NameLine!=null){
