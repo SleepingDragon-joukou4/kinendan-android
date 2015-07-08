@@ -14,8 +14,10 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sleepingdragon.joko4nen.nosmoke.team_create.TeamCreateActivity;
+import com.sleepingdragon.joko4nen.nosmoke.custom.InputTextCheck;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,8 +64,16 @@ public class regist extends Activity implements OnClickListener {
             public void onClick(View v) {
 
                 if (v == inext) {
-                    UserDataClientInsert();
-                    NextPage();
+                    //空白の時の処理
+                    username = regnametxt.getText().toString();
+                    syokihonsu = tabakohonsu.getText().toString();
+                    if(InputTextCheck.inputTextCheck(username)&&
+                    InputTextCheck.inputTextCheck(syokihonsu)) {
+                        UserDataClientInsert();
+                        NextPage();
+                    }else{
+                        Toast.makeText(this, "文字をきちんと入力してください！", Toast.LENGTH_LONG).show();
+                    }
 
                 }
             }
