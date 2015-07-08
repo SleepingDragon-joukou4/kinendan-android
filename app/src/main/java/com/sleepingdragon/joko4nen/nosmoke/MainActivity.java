@@ -46,13 +46,14 @@ public class MainActivity extends Activity {
     }
 
     SharedPreferences Savedata = null;
-
+    String UserID;
     @Override
     protected void onResume() {
         super.onResume();
         //初期表示確認
         //UserIDがあるか確認
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        UserID = Savedata.getString("UserID", "なし");
         SharedPreferences.Editor editor = Savedata.edit();
         boolean TeamCreated = Savedata.getBoolean("TeamCreated", false);
         if (!TeamCreated) {
@@ -150,7 +151,7 @@ public class MainActivity extends Activity {
             };
             //executeで非同期処理開始
             URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=judgement" +
-                    "&UserId=UserID&TeamId=Team");
+                    "&UserId="+UserID+"&TeamId=Team");
 
         }
 

@@ -249,13 +249,14 @@ public class TeamInviteActivity extends Activity{
                                                     //登録完了!
                                                     //登録完了画面に遷移
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
+                                                    //Activityを全部削除
+                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                     //teamIDをActivityに送る
                                                     intent.putExtra("TeamID",TeamIDintent);
                                                     intent.putExtra("TeamName", STeamName);
                                                     intent.putStringArrayListExtra("NameList", namelist);
                                                     startActivity(intent);
                                                     if(timer!=null) timer.cancel();
-                                                    TeamInviteActivity.this.finish();
 
 
                                                 }
@@ -291,12 +292,13 @@ public class TeamInviteActivity extends Activity{
                         // team_sinselect画面に遷移(xml)
                         Intent intent = new Intent(TeamInviteActivity.this, RegSuccessActivity.class);
                         //teamIDをActivityに送る
+                        //Activityを全部削除
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("TeamID",TeamIDintent);
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);
                         startActivity(intent);
                         timer.cancel();
-                        TeamInviteActivity.this.finish();
 
                     }else{
                         Log.d("Error","");
