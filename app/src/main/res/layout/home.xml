@@ -77,22 +77,21 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:longClickable="false"
         android:id="@+id/userinfo"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center_vertical">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
             android:longClickable="false"
             android:id="@+id/today_ok"
-            android:background="#ff00ff00"
-            android:gravity="center"
+            android:background="#c8cdcdcd"
             android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
@@ -101,7 +100,9 @@
                 android:textSize="22sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/home_mokuhyo" />
+                android:id="@+id/home_mokuhyo"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginTop="20dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,42 +110,45 @@
                 android:textSize="40sp"
                 android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/home_mhonsu" />
+                android:id="@+id/home_mhonsu"
+                android:layout_gravity="center_horizontal|bottom" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:weightSum="1"
             android:id="@+id/today_real"
             android:background="#ff00ffff"
             android:layout_gravity="center_horizontal"
-            android:gravity="center"
             android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="吸った本数"
                 android:textSize="22sp"
-                android:gravity="center"
                 android:textColor="#000"
-                android:id="@+id/team_sutta" />
+                android:id="@+id/team_sutta"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginTop="20dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/home_shonsu"
                 android:textColor="#000"
                 android:textSize="40dp"
-                android:paddingLeft="12dp" />
+                android:paddingLeft="12dp"
+                android:layout_gravity="center_horizontal" />
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="本数\n入力"
+                android:text="本数入力"
                 android:id="@+id/honsu_button"
                 android:background="#ffff0000"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:layout_gravity="center_horizontal|bottom" />
             </LinearLayout>
         </LinearLayout>
 
@@ -154,16 +158,16 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:id="@+id/team_inf"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="70dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/team_today_ok"
             android:layout_weight="1"
@@ -190,7 +194,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/team_today_real"
             android:layout_weight="1"

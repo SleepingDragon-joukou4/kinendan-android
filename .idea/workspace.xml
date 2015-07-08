@@ -75,7 +75,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="regist.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="regist.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/regist.xml">
           <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
@@ -90,13 +90,13 @@
       </file>
       <file leaf-file-name="team_create.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_create.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.6875">
-              <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer">
+          <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -166,11 +166,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home.xml">
           <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="134" column="49" selection-start-line="134" selection-start-column="49" selection-end-line="134" selection-end-column="49" />
+              <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
               <folding>
                 <element signature="n#LinearLayout#0;n#FrameLayout#0;n#!!top" expanded="false" />
                 <element signature="n#TextView#0;n#LinearLayout#0;n#FrameLayout#0;n#!!top" expanded="false" />
@@ -1525,12 +1525,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/team_inviteview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sleepingdragon/joko4nen/nosmoke/sin_jikko/SinJikkoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/reg_success.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/sin_jikko.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/regist.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/teamsetting.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/team_create.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/team_invite.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/team_create.xml" />
       </list>
     </option>
   </component>
@@ -2138,50 +2138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/regist.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_create.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.6875">
-          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/teamsetting.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_invite.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/reg_success.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2218,7 +2174,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="49" selection-start-line="134" selection-start-column="49" selection-end-line="134" selection-end-column="49" />
+          <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
           <folding>
             <element signature="n#LinearLayout#0;n#FrameLayout#0;n#!!top" expanded="false" />
             <element signature="n#TextView#0;n#LinearLayout#0;n#FrameLayout#0;n#!!top" expanded="false" />
@@ -2227,6 +2183,50 @@
             <element signature="n#TextView#1;n#LinearLayout#1;n#FrameLayout#0;n#!!top" expanded="false" />
             <element signature="n#TextView#2;n#LinearLayout#1;n#FrameLayout#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/teamsetting.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_invite.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/team_create.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/regist.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer">
