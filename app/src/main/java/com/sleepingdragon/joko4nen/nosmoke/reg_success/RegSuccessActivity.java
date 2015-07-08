@@ -67,6 +67,7 @@ public class RegSuccessActivity extends Activity {
                 //Team_HomeActivity画面に遷移
                 Intent intent = new Intent(RegSuccessActivity.this, HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
