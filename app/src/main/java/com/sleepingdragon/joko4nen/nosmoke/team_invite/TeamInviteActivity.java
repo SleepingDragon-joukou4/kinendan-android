@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -84,10 +85,15 @@ public class TeamInviteActivity extends Activity{
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         //まず、Userを登録
         UserInsert();
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
         UserSelect();
     }
 
@@ -98,6 +104,16 @@ public class TeamInviteActivity extends Activity{
         if(timer!=null) {
             timer.cancel();
         }
+    }
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // 戻るボタンの無効化
+        if (event.getAction()==KeyEvent.ACTION_DOWN) {
+            if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                return false;
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     public void UserInsert() {
