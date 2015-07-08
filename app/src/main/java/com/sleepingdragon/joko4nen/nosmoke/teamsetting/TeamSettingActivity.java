@@ -69,6 +69,7 @@ public class TeamSettingActivity extends Activity {
         list.add("1");
         list.add("3");
         list.add("6");
+        list.add("9");
         list.add("12");
         kikanselect.setAdapter(adapter);
 
@@ -81,6 +82,11 @@ public class TeamSettingActivity extends Activity {
         list2.add("3");
         list2.add("4");
         list2.add("5");
+        list2.add("6");
+        list2.add("7");
+        list2.add("8");
+        list2.add("9");
+        list2.add("10");
         sinnumselect.setAdapter(adapter2);
 
         Button teamset_next = (Button) findViewById(R.id.teamset_next);
