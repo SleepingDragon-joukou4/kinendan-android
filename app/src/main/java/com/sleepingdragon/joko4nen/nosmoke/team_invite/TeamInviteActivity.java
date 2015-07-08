@@ -88,7 +88,9 @@ public class TeamInviteActivity extends Activity{
     protected void onStart() {
         super.onStart();
         //まず、Userを登録
-        UserInsert();
+        if(!UserInsert_success) {
+            UserInsert();
+        }
 
     }
     @Override
