@@ -36,6 +36,7 @@ import java.util.TimerTask;
 public class TeamInviteActivity extends Activity{
     boolean host_frag=false; //Host判定
     boolean UserInsert_success=false; //ユーザーがちゃんと挿入できたか？
+    boolean Host_dead=true; //host死亡の時
     String TeamIDintent=""; //TeamID
     String STeamName;
     String SUserID;
@@ -214,6 +215,7 @@ public class TeamInviteActivity extends Activity{
                                         try {
                                             if (result != null) {
                                                 namelist=new ArrayList<String>();
+                                                Host_dead=true;
                                                 for (int i = 0; i < result.length(); i++) {
                                                     JSONObject ja = result.getJSONObject(i);
                                                     //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
@@ -225,12 +227,15 @@ public class TeamInviteActivity extends Activity{
                                                         Status = ja.getString("Status");
                                                         STeamName=ja.getString("TeamName");
                                                         TeamNameTextView.setText(STeamName);
-                                                        if(!ja.getString("UserId").equals(ja.getString("HostUserId"))){
-                                                            //Host死亡のお知らせ
-                                                            UserDelete();
-                                                            return;
-                                                        }
                                                     }
+                                                    if(ja.getString("UserId").equals(ja.getString("HostUserId"))){
+                                                        //Host生存のお知らせ
+                                                        Host_dead=false;
+                                                    }
+                                                }
+                                                if(Host_dead){
+                                                    UserDelete();
+                                                    return;
                                                 }
                                                 Log.d("status",Status);
                                                 Log.d("nale",Status.equals("待機中")+"");
