@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,6 +62,7 @@ public class TeamInviteActivity extends Activity{
             host_frag=intent.getBooleanExtra("Host",false);
             TeamIDTextView.setText(TeamIDintent);
         }
+
         //hostじゃないと押せない
         invite_next.setVisibility(View.GONE);
 
@@ -192,7 +194,7 @@ public class TeamInviteActivity extends Activity{
             }
         };
         //executeで非同期処理開始
-        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=userdelete&TeamId&UserId="+SUserID);
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=userdelete&TeamId&UserId=" + SUserID);
     }
     public void UserSelect() {
             //Timerで定期取得
@@ -223,6 +225,11 @@ public class TeamInviteActivity extends Activity{
                                                         Status = ja.getString("Status");
                                                         STeamName=ja.getString("TeamName");
                                                         TeamNameTextView.setText(STeamName);
+                                                        if(!ja.getString("UserId").equals(ja.getString("HostUserId"))){
+                                                            //Host死亡のお知らせ
+                                                            UserDelete();
+                                                            return;
+                                                        }
                                                     }
                                                 }
                                                 Log.d("status",Status);
@@ -252,7 +259,7 @@ public class TeamInviteActivity extends Activity{
                                                     //登録完了画面に遷移
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
                                                     //Activityを全部削除
-                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     //teamIDをActivityに送る
                                                     intent.putExtra("TeamID",TeamIDintent);
                                                     intent.putExtra("TeamName", STeamName);
@@ -295,7 +302,7 @@ public class TeamInviteActivity extends Activity{
                         Intent intent = new Intent(TeamInviteActivity.this, RegSuccessActivity.class);
                         //teamIDをActivityに送る
                         //Activityを全部削除
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("TeamID",TeamIDintent);
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);

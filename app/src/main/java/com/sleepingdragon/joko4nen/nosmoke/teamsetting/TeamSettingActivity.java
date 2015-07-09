@@ -13,9 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
+import com.sleepingdragon.joko4nen.nosmoke.custom.InputTextCheck;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 
 import org.json.JSONArray;
@@ -92,8 +94,16 @@ public class TeamSettingActivity extends Activity {
         Button teamset_next = (Button) findViewById(R.id.teamset_next);
         teamset_next.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                TeamIdCreate();
-                TeamInsert();
+                teamname = teamnametext.getText().toString();
+                batsugame = batsugametext.getText().toString();
+                if(InputTextCheck.inputTextCheck(teamname)&&
+                        InputTextCheck.inputTextCheck(batsugame)) {
+                    TeamIdCreate();
+                    TeamInsert();
+                }else{
+                    Toast.makeText(TeamSettingActivity.this, "文字をきちんと入力してください！", Toast.LENGTH_LONG).show();
+                }
+
 
             }
 
