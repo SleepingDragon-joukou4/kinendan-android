@@ -13,9 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
+import com.sleepingdragon.joko4nen.nosmoke.custom.InputTextCheck;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 
 import org.json.JSONArray;
@@ -69,6 +71,7 @@ public class TeamSettingActivity extends Activity {
         list.add("1");
         list.add("3");
         list.add("6");
+        list.add("9");
         list.add("12");
         kikanselect.setAdapter(adapter);
 
@@ -81,13 +84,26 @@ public class TeamSettingActivity extends Activity {
         list2.add("3");
         list2.add("4");
         list2.add("5");
+        list2.add("6");
+        list2.add("7");
+        list2.add("8");
+        list2.add("9");
+        list2.add("10");
         sinnumselect.setAdapter(adapter2);
 
         Button teamset_next = (Button) findViewById(R.id.teamset_next);
         teamset_next.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                TeamIdCreate();
-                TeamInsert();
+                teamname = teamnametext.getText().toString();
+                batsugame = batsugametext.getText().toString();
+                if(InputTextCheck.inputTextCheck(teamname)&&
+                        InputTextCheck.inputTextCheck(batsugame)) {
+                    TeamIdCreate();
+                    TeamInsert();
+                }else{
+                    Toast.makeText(TeamSettingActivity.this, "文字をきちんと入力してください！", Toast.LENGTH_LONG).show();
+                }
+
 
             }
 
@@ -142,9 +158,11 @@ public class TeamSettingActivity extends Activity {
                         Intent intent = new Intent(TeamSettingActivity.this, TeamInviteActivity.class);
                         //teamIDをActivityに送る
                         intent.putExtra("TeamID",TeamId);
-                        Log.d("intent",TeamId);
-                        intent.putExtra("Host",true);
+                        Log.d("intent", TeamId);
+                        intent.putExtra("Host", true);
                         startActivity(intent);
+                        //戻れないようにfinish
+                        TeamSettingActivity.this.finish();
                     }else{
                         Log.d("Error","");
                     }

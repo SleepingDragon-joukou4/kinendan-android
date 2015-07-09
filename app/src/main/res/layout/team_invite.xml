@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#ffffff"
+    android:layout_height="match_parent" android:background="@drawable/kemuri1"
     tools:context=".FullscreenActivity"
     android:id="@+id/body">
 
@@ -16,16 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
-        android:background="@drawable/kemuri1">
+        android:background="#96000000">
 
 
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="0dip"
+                android:layout_height="match_parent"
                 android:id="@+id/invite_body"
-                android:background="#96000000"
                 android:layout_weight="1.1">
 
 
@@ -106,7 +105,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_height="wrap_content"
             android:id="@+id/invite_Line"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"

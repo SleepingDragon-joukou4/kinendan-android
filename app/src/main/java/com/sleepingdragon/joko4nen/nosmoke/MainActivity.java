@@ -46,13 +46,14 @@ public class MainActivity extends Activity {
     }
 
     SharedPreferences Savedata = null;
-
+    String UserID;
     @Override
     protected void onResume() {
         super.onResume();
         //初期表示確認
         //UserIDがあるか確認
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        UserID = Savedata.getString("UserID", "なし");
         SharedPreferences.Editor editor = Savedata.edit();
         boolean TeamCreated = Savedata.getBoolean("TeamCreated", false);
         if (!TeamCreated) {
@@ -94,20 +95,20 @@ public class MainActivity extends Activity {
                         final ArrayList<String> Namelist=new ArrayList<String>();
                         final ArrayList<String> PunishmentNumberlist=new ArrayList<String>();
                         final ArrayList<String> NowPunishmentNumberlist=new ArrayList<String>();
-                        if(result!=null) {
-                            for (int i=0;i<result.length();i++){
-                                JSONObject ja=result.getJSONObject(i);
-                                if(ja.has("Name")) //has:値が存在するときtrue,しないときfalse
-                                {
-                                    Namelist.add(ja.getString("Name"));
-                                    PunishmentNumberlist.add(ja.getString("PunishmentNumber"));
-                                    NowPunishmentNumberlist.add(ja.getString("NowPunishmentNumber"));
+                        if(result!=null && !result.getJSONObject(0).has("response") ) {
+                                for (int i = 0; i < result.length(); i++) {
+                                    JSONObject ja = result.getJSONObject(i);
+                                    if (ja.has("Name")) //has:値が存在するときtrue,しないときfalse
+                                    {
+                                        Namelist.add(ja.getString("Name"));
+                                        PunishmentNumberlist.add(ja.getString("PunishmentNumber"));
+                                        NowPunishmentNumberlist.add(ja.getString("NowPunishmentNumber"));
+                                    }
                                 }
-                            }
                         }
                         //名前(list型）がある場合、sin_jikko画面にintent
 
-                        if(Namelist != null){
+                        if(Namelist.size()>0){
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -150,7 +151,7 @@ public class MainActivity extends Activity {
             };
             //executeで非同期処理開始
             URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=judgement" +
-                    "&UserId=UserID&TeamId=Team");
+                    "&UserId="+UserID+"&TeamId=Team");
 
         }
 

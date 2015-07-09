@@ -5,6 +5,7 @@ package com.sleepingdragon.joko4nen.nosmoke.team_invite;
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.reg_success.RegSuccessActivity;
+import com.sleepingdragon.joko4nen.nosmoke.team_create.TeamCreateActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,10 +13,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +38,10 @@ public class TeamInviteActivity extends Activity{
     boolean UserInsert_success=false; //ユーザーがちゃんと挿入できたか？
     String TeamIDintent=""; //TeamID
     String STeamName;
+    String SUserID;
+    String SUserName;
+    String SCigaretteNumber;
+    int SCigaretteBrandNo;
     Timer timer;
     ArrayList<String> namelist = new ArrayList<String>();
     TextView TeamNameTextView;
@@ -43,6 +50,7 @@ public class TeamInviteActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.team_invite);
         Button invite_next = (Button) findViewById(R.id.invite_next);
+        Button invite_back = (Button) findViewById(R.id.invite_back);
         TextView TeamIDTextView = (TextView) findViewById(R.id.team_nameinvite);
         TeamNameTextView = (TextView) findViewById(R.id.team_nametextview);
         Log.d("a","start");
@@ -54,11 +62,12 @@ public class TeamInviteActivity extends Activity{
             host_frag=intent.getBooleanExtra("Host",false);
             TeamIDTextView.setText(TeamIDintent);
         }
+
         //hostじゃないと押せない
         invite_next.setVisibility(View.GONE);
 
 
-        //次が押された場合reg_success(登録完了）画面に遷移
+        //決定が押された場合reg_success(登録完了）画面に遷移
         invite_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,26 +75,61 @@ public class TeamInviteActivity extends Activity{
 
             }
         });
+        //取り消しが押された時team_create画面に遷移
+        invite_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserDelete();
+
+            }
+        });
 
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         //まず、Userを登録
-        UserInsert();
+        if(!UserInsert_success) {
+            UserInsert();
+        }
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
         UserSelect();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //timerを停止しなきゃ！
+        if(timer!=null) {
+            timer.cancel();
+        }
+    }
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // 戻るボタンの無効化
+        if (event.getAction()==KeyEvent.ACTION_DOWN) {
+            if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                return false;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
     public void UserInsert() {
         //User情報取得
         SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String SUserID = SPreferences.getString("UserID", "なし");
-        String SUserName = SPreferences.getString("UserName", "なし");
-        String SCigaretteNumber = SPreferences.getString("CigaretteNumber", "なし");
-        int SCigaretteBrandNo = SPreferences.getInt("CigaretteBrandNo", 99999);
+        SUserID = SPreferences.getString("UserID", "なし");
+        SUserName = SPreferences.getString("UserName", "なし");
+        SCigaretteNumber = SPreferences.getString("CigaretteNumber", "なし");
+        SCigaretteBrandNo = SPreferences.getInt("CigaretteBrandNo", 99999);
         Log.d("SUserid",SUserID);
         Log.d("SUserName",SUserName);
-        Log.d("SCigaretteBrandNo",SCigaretteBrandNo+"");
+        Log.d("SCigaretteBrandNo", SCigaretteBrandNo + "");
         Log.d("SCigaretteNumber", "" + SCigaretteNumber);
         if(!SUserName.equals("なし") && !SCigaretteNumber.equals("なし") &&
                 SCigaretteBrandNo!=99999 && !SUserID.equals("なし")) {
@@ -119,6 +163,39 @@ public class TeamInviteActivity extends Activity{
             }
         }
     }
+    public void UserDelete(){
+        //User情報取得
+        SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SUserID = SPreferences.getString("UserID", "なし");
+        //データベースから削除しよう
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+            protected void onPostExecute(JSONArray result) {
+                //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
+                //try/catchしないと駄目っぽい
+                try {
+                    if (result != null) {
+                        JSONObject ja = result.getJSONObject(0);
+                        String res = ja.getString("response");
+                        if(res.equals("success")){
+                            // team_create画面に遷移
+                            Intent intent = new Intent(TeamInviteActivity.this,TeamCreateActivity.class);
+                            startActivity(intent);
+                            if(timer!=null) timer.cancel();
+                            TeamInviteActivity.this.finish();
+                        }else{
+                            Log.d("Error","");
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        //executeで非同期処理開始
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=userdelete&TeamId&UserId=" + SUserID);
+    }
     public void UserSelect() {
             //Timerで定期取得
             timer = new Timer();
@@ -148,6 +225,11 @@ public class TeamInviteActivity extends Activity{
                                                         Status = ja.getString("Status");
                                                         STeamName=ja.getString("TeamName");
                                                         TeamNameTextView.setText(STeamName);
+                                                        if(!ja.getString("UserId").equals(ja.getString("HostUserId"))){
+                                                            //Host死亡のお知らせ
+                                                            UserDelete();
+                                                            return;
+                                                        }
                                                     }
                                                 }
                                                 Log.d("status",Status);
@@ -176,13 +258,14 @@ public class TeamInviteActivity extends Activity{
                                                     //登録完了!
                                                     //登録完了画面に遷移
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
+                                                    //Activityを全部削除
+                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     //teamIDをActivityに送る
                                                     intent.putExtra("TeamID",TeamIDintent);
                                                     intent.putExtra("TeamName", STeamName);
                                                     intent.putStringArrayListExtra("NameList", namelist);
                                                     startActivity(intent);
-                                                    timer.cancel();
-                                                    TeamInviteActivity.this.finish();
+                                                    if(timer!=null) timer.cancel();
 
 
                                                 }
@@ -218,12 +301,13 @@ public class TeamInviteActivity extends Activity{
                         // team_sinselect画面に遷移(xml)
                         Intent intent = new Intent(TeamInviteActivity.this, RegSuccessActivity.class);
                         //teamIDをActivityに送る
+                        //Activityを全部削除
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("TeamID",TeamIDintent);
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);
                         startActivity(intent);
                         timer.cancel();
-                        TeamInviteActivity.this.finish();
 
                     }else{
                         Log.d("Error","");
@@ -240,4 +324,6 @@ public class TeamInviteActivity extends Activity{
         URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=teamupdatecomp" +
                 "&UserId&TeamId="+TeamIDintent);
     }
+
+
 }

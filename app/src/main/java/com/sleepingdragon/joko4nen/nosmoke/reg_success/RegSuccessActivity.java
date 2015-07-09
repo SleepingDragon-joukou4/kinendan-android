@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -23,6 +24,16 @@ public class RegSuccessActivity extends Activity {
     String TeamID;
     String TeamName;
     ArrayList<String> NameLine = new ArrayList<String>();
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // 戻るボタンの無効化
+        if (event.getAction()==KeyEvent.ACTION_DOWN) {
+            if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                return false;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reg_success);
@@ -37,6 +48,11 @@ public class RegSuccessActivity extends Activity {
             textTeamName.setText(TeamName);
             NameLine=intent.getStringArrayListExtra("NameList");
         }
+        //TeamCreated!
+        SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = Savedata.edit();
+        editor.putBoolean("TeamCreated", true);
+        editor.apply();
 
         //Update
         if(NameLine!=null){
@@ -61,7 +77,9 @@ public class RegSuccessActivity extends Activity {
             public void onClick(View v) {
                 //Team_HomeActivity画面に遷移
                 Intent intent = new Intent(RegSuccessActivity.this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
             }
         });
     }

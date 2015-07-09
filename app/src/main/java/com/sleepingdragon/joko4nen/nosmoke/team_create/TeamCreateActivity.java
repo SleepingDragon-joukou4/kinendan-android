@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.sleepingdragon.joko4nen.nosmoke.R;
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
+import com.sleepingdragon.joko4nen.nosmoke.custom.InputTextCheck;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 import com.sleepingdragon.joko4nen.nosmoke.teamsetting.TeamSettingActivity;
 
@@ -44,6 +45,10 @@ public class TeamCreateActivity extends Activity{
                 public void onClick(View v) {
                     TextView input = (TextView) findViewById(R.id.createteam_id);
                     String text = input.getText().toString();
+                    if(!InputTextCheck.inputTextCheck(text)) {
+                        Toast.makeText(TeamCreateActivity.this, "文字をきちんと入力してください！", Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
                     URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
                         String Invite_TeamID;
@@ -76,6 +81,8 @@ public class TeamCreateActivity extends Activity{
                                 intent.putExtra("TeamID",Invite_TeamID);
                                 intent.putExtra("Host",false);
                                 startActivity(intent);
+                                //finish
+                                TeamCreateActivity.this.finish();
                             /**
                              チームIDが見つからないもしくはチームステータスが登録完了の場合
                              警告を促す

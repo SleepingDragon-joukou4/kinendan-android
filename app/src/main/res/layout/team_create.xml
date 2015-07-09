@@ -46,6 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/createteam_id"
+            android:singleLine="true"
+            android:maxLength="18"
             android:layout_gravity="center_horizontal"
             android:background="#96ffffff"
             android:layout_marginLeft="30dp"

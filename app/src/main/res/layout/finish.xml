@@ -18,13 +18,13 @@
             android:textSize="30sp"
             android:gravity="center"
             android:id="@+id/finish_resulttext"
-            android:layout_weight="0.15" />
+            android:layout_weight="0.16" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.08">
+            android:layout_weight="0.09">
 
 
             <TextView
@@ -47,7 +47,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.08">
+            android:layout_weight="0.09">
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -69,7 +69,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.08">
+            android:layout_weight="0.09">
 
             <TextView
                 android:layout_width="0dip"
@@ -91,7 +91,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.08">
+            android:layout_weight="0.09">
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -114,30 +114,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.08">
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.4"
-                android:text="チーム節煙合計:"
-                android:id="@+id/finish_team_moderationtext"
-                android:textSize="18sp" android:gravity="right|center"/>
-
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6"
-                android:text="New Text"
-                android:id="@+id/finish_team_moderation"
-                android:textSize="18sp" android:gravity="right|center"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.08">
+            android:layout_weight="0.09">
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
@@ -160,7 +137,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.08">
+            android:layout_weight="0.09">
             <TextView
             android:layout_width="0dip"
             android:layout_height="match_parent"
@@ -182,7 +159,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.29">
+            android:layout_weight="0.30">
 
 
             <TextView
