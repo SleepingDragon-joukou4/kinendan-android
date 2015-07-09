@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="目標本数を超過しました\n以下の内容を実行しましょう"
+            android:text="目標本数を超過しました\n以下の内容を実行してください"
             android:textSize="14dp"
             android:textColor="#ffff0000"
             android:id="@+id/sin_text2"
