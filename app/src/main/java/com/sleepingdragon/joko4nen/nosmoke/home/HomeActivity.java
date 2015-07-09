@@ -122,6 +122,7 @@ public class HomeActivity extends Activity {
             teamMokuhyo.setText(event.getSmokinghistoryPerformanceNumberTeamSum());
             mhousu.setText(event.getCigaretteNumber());
             nissu.setText(event.getRemainingDate());
+            onSetHonsu(event.getTodayPerformanceNumber());
 
         } else {
             Log.d(TAG, "HomeSelectEvent async task is failure");

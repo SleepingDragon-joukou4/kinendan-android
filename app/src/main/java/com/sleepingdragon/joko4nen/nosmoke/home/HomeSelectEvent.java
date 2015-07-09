@@ -104,6 +104,10 @@ public class HomeSelectEvent {
         return calc.calc().toString();
     }
 
+    public String getTodayPerformanceNumber() throws JSONException, ParseException {
+        return object.getString("TodayPerformanceNumber");
+    }
+
     private NumberCalc getCalc(int honsu) throws JSONException, ParseException {
         return new NumberCalc(honsu, getIntegerDeadline().intValue(),NumberOfDaysElapsed());
     }

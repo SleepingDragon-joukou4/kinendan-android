@@ -51,7 +51,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:id="@+id/lay2"
-            android:background="#96ffffff">
+            android:background="#96ffffff"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="170dp"
@@ -61,7 +62,8 @@
                 android:gravity="center"
                 android:textColor="#000"
                 android:id="@+id/setuyaku"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="100dp"
@@ -71,7 +73,9 @@
                 android:textColor="#000"
                 android:id="@+id/kingaku"
                 android:layout_marginLeft="15dp"
-                android:textIsSelectable="false" />
+                android:textIsSelectable="false"
+                android:layout_gravity="center_horizontal"
+                android:text="0" />
 
             <TextView
                 android:layout_width="50dp"
@@ -82,41 +86,19 @@
                 android:textColor="#000"
                 android:id="@+id/en"
                 android:layout_marginLeft="5dp"
-                android:textIsSelectable="false" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|left"
-            android:layout_marginTop="20dp"
-            android:id="@+id/lay3"
-            android:background="#96ffffff">
-
-            <TextView
-                android:layout_width="170dp"
-                android:layout_height="50dp"
-                android:text="買えるモノ"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:id="@+id/kaeru"
-                android:layout_marginLeft="15dp" />
+                android:textIsSelectable="false"
+                android:layout_gravity="center_horizontal" />
 
 
         </LinearLayout>
 
 
-            <ImageView
+        <ImageView
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="25dp"
+                android:layout_height="300dp"
                 android:scaleType="fitCenter"
-                android:background="#ffffff"
+                android:background="@drawable/kinako"
                 android:id="@+id/ImageView" /><!-- 画像の読み込み -->
 
 
