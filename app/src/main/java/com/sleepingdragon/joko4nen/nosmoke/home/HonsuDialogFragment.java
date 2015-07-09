@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,10 +51,16 @@ public class HonsuDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         Log.d("dialog","OKClick");
+
                         Integer value = numberPicker.getValue();
                         HomeActivity activity = (HomeActivity) getActivity();
-                        service = new SmokingUpsertConnectionService("User20150528s4KV2d","",value.toString(),activity.mhousu.getText().toString());
+
+                        SharedPreferences sPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+                        String userID = sPreferences.getString("UserID", "なし");
+
+                        service = new SmokingUpsertConnectionService(userID,"",value.toString(),activity.mhousu.getText().toString());
                         service.upsert();
+
                         activity.onSetHonsu(value.toString());
 
                     }
