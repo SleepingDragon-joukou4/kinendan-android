@@ -256,6 +256,11 @@ public class TeamInviteActivity extends Activity{
                                                     }
                                                 } else if (Status.equals("登録完了")) {
                                                     //登録完了!
+                                                    //SharedPreferencesで登録
+                                                    SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(TeamInviteActivity.this);
+                                                    SharedPreferences.Editor editor = SPreferences.edit();
+                                                    editor.putString("TeamID",TeamIDintent);
+                                                    editor.apply();
                                                     //登録完了画面に遷移
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
                                                     //Activityを全部削除
