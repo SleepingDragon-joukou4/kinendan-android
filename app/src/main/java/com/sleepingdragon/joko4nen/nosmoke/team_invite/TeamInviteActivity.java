@@ -252,7 +252,7 @@ public class TeamInviteActivity extends Activity{
                                                     //登録完了画面に遷移
                                                     Intent intent = new Intent(TeamInviteActivity.this,RegSuccessActivity.class);
                                                     //Activityを全部削除
-                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     //teamIDをActivityに送る
                                                     intent.putExtra("TeamID",TeamIDintent);
                                                     intent.putExtra("TeamName", STeamName);
@@ -295,7 +295,7 @@ public class TeamInviteActivity extends Activity{
                         Intent intent = new Intent(TeamInviteActivity.this, RegSuccessActivity.class);
                         //teamIDをActivityに送る
                         //Activityを全部削除
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("TeamID",TeamIDintent);
                         intent.putExtra("TeamName",STeamName);
                         intent.putStringArrayListExtra("NameList",namelist);

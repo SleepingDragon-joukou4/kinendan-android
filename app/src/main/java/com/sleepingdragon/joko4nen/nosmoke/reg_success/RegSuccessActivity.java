@@ -66,6 +66,7 @@ public class RegSuccessActivity extends Activity {
             public void onClick(View v) {
                 //Team_HomeActivity画面に遷移
                 Intent intent = new Intent(RegSuccessActivity.this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
             }
