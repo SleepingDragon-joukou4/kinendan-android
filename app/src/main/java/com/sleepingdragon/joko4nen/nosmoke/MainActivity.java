@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import com.sleepingdragon.joko4nen.nosmoke.home.HomeActivity;
 import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,15 +59,14 @@ public class MainActivity extends Activity {
         boolean TeamCreated = Savedata.getBoolean("TeamCreated", false);
         if (!TeamCreated) {
             //なければ新しく作る
-            //User+日付+6文字の乱数(例:User20150620531455)
-            String tempUserID = "User";
+            //u+日付(月日)+3文字の半角/全角アルファベット(例:u0713dXr)
+            String tempUserID = "u";
             //現在日時を取得する
             Calendar c = Calendar.getInstance();
             //フォーマットパターンを指定して表示する
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
             tempUserID = tempUserID + sdf.format(c.getTime()).toString();
-            Random random = new Random();
-            tempUserID = tempUserID + random.nextInt(1000000);
+            tempUserID = tempUserID + RandomStringUtils.randomAlphabetic(3);
             editor = Savedata.edit();
             editor.putString("UserID", tempUserID);
             editor.apply();

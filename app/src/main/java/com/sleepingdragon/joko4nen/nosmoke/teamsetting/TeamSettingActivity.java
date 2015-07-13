@@ -20,6 +20,7 @@ import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 import com.sleepingdragon.joko4nen.nosmoke.custom.InputTextCheck;
 import com.sleepingdragon.joko4nen.nosmoke.team_invite.TeamInviteActivity;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -110,15 +111,14 @@ public class TeamSettingActivity extends Activity {
         });
     }
     public  void TeamIdCreate(){
-        //User+日付+6文字の乱数(例:User20150620531455)
-        String tempTeamID = "Team";
+        //t+日付(月日)+3文字の半角/全角アルファベット(例:t0713dXr)
+        String tempTeamID = "t";
         //現在日時を取得する
         Calendar c = Calendar.getInstance();
         //フォーマットパターンを指定して表示する
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
         tempTeamID = tempTeamID + sdf.format(c.getTime()).toString();
-        Random random = new Random();
-        tempTeamID = tempTeamID + random.nextInt(1000000);
+        tempTeamID = tempTeamID + RandomStringUtils.randomAlphabetic(3);
         TeamId = tempTeamID;
         SharedPreferences Teamdata = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = Teamdata.edit();
