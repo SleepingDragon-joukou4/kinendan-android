@@ -113,7 +113,7 @@ public class RankingActivity extends Activity{
         };
         //executeで非同期処理開始
         URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=rankingselect"+
-        "&UserId="+UserID+"&TeamId");
+        "&UserId="+UserID+"&TeamId="+TeamID);
 
 
     }
