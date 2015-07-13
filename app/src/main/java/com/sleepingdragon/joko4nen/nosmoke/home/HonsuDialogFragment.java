@@ -32,8 +32,8 @@ public class HonsuDialogFragment extends DialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        HomeActivity activity = (HomeActivity) getActivity();
-        String mhousu = activity.mhousu.getText().toString();
+        final HomeActivity activity = (HomeActivity) getActivity();
+        final String mhousu = activity.mhousu.getText().toString();
 
         View content = inflater.inflate(R.layout.honsu_dialog_fragment, null);
 

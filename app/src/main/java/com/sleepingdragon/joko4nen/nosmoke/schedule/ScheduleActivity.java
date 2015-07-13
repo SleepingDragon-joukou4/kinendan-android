@@ -91,7 +91,7 @@ public class ScheduleActivity extends Activity {
                         JSONObject ja = result.getJSONObject(i);
                         String getd=ja.getString("Date");
                         String shOn=ja.getString("smokinghistoryObjectiveNumber");
-                        String shPn=ja.getString("smokinghistoryPerfomanceNumber");
+                        String shPn=ja.getString("smokinghistoryPerformanceNumber");
                         View scheduleview = getLayoutInflater().inflate(R.layout.scheduleview, null);
                         li.addView(scheduleview);
                         TextView scheduledatev = (TextView) scheduleview.findViewById(R.id.schedule_date_v);
