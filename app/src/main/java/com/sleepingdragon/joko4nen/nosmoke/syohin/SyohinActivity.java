@@ -51,7 +51,7 @@ public class SyohinActivity extends Activity {
                     TextView textView = (TextView) findViewById(R.id.kingaku);
                     textView.setText(ModerationPrice);
 
-                    int ModerationPrace2 = Integer.parseInt(ModerationPrice);
+                    double ModerationPrace2 = Double.valueOf(ModerationPrice);
 
                 if(ModerationPrace2<=0){
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
