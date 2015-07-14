@@ -1,7 +1,9 @@
 package com.sleepingdragon.joko4nen.nosmoke.home;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -54,14 +56,26 @@ public class HomeActivity extends Activity {
     TextView shonsu;
 
     @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        // 戻るボタンの無効化
-        if (event.getAction()==KeyEvent.ACTION_DOWN) {
-            if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-                return false;
-            }
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            new AlertDialog.Builder(this)
+                    .setTitle("アプリケーションの終了")
+                    .setMessage("アプリケーションを終了してよろしいですか？")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            HomeActivity.this.finish();
+                            HomeActivity.this.moveTaskToBack(true);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {}
+                    })
+                    .show();
         }
-        return super.dispatchKeyEvent(event);
+        return false;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
