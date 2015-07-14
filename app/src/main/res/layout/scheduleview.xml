@@ -9,39 +9,33 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:text="10/11"
             android:gravity="center"
             android:id="@+id/schedule_date_v"
             android:textColor="#000"
             android:textSize="14dp"
-            android:layout_weight="0.4"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp" />
+            android:layout_weight="0.4" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:text="20"
             android:textColor="#000"
             android:textSize="14dp"
             android:gravity="center"
             android:id="@+id/schedule_objective_v"
-            android:layout_weight="0.3"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp" />
+            android:layout_weight="0.3" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:textColor="#000"
         android:textSize="14dp"
         android:gravity="center"
         android:text="10"
         android:id="@+id/schedule_performance_v"
-        android:layout_weight="0.3"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp" />
+        android:layout_weight="0.3" />
 
 
 </LinearLayout>

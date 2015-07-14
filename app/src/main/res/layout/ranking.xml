@@ -40,7 +40,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:id="@+id/lay1"
-            android:background="#96ffffff">
+            android:background="#96ffffff"
+            android:layout_marginBottom="3dp">
 
             <TextView
                 android:layout_width="50dp"

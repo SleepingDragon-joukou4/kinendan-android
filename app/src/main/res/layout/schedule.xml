@@ -17,7 +17,7 @@
         android:id="@+id/schedule">
 
 
-        <Spinner
+        <!-- <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/schelist"
@@ -26,14 +26,15 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:spinnerMode="dialog"
-            android:background="#96ffffff" />
+            android:background="#96ffffff" /> -->
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#96ffffff"
-            android:layout_marginTop="3dp">
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
 
             <TextView
                 android:layout_width="0dip"
@@ -69,24 +70,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_height="0dp"
         android:id="@+id/schedule_scroll"
         android:layout_weight="0.8">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/schedule_data">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Loading..."
-                android:id="@+id/textView"
-                android:textColor="#000"
-                android:textSize="14dp"
-                android:background="#96ffffff" />
         </LinearLayout>
     </ScrollView>
 
