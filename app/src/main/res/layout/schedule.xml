@@ -14,7 +14,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:weightSum="1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.80"
         android:id="@+id/schedule">
+
 
 
         <!-- <Spinner
@@ -70,9 +77,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/schedule_scroll"
-        android:layout_weight="0.8">
+        android:layout_height="match_parent"
+        android:id="@+id/schedule_scroll">
 
         <LinearLayout
             android:orientation="vertical"
@@ -83,43 +89,45 @@
         </LinearLayout>
     </ScrollView>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:id="@+id/menu"
-            android:background="#96ffffff"
-            android:padding="5dp">
 
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/HomeButton"
-                android:background="@drawable/ic_action_home"
-                android:layout_gravity="center_horizontal" />
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/RankingButton"
-                android:background="@drawable/ic_action_achievement"
-                android:layout_gravity="center_horizontal" />
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/ScheduleButton"
-                android:background="@drawable/ic_action_calendar_month"
-                android:layout_gravity="center_horizontal" />
-            <Button
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/SyohinButton"
-                android:background="@drawable/ic_action_mustache"
-                android:layout_gravity="center_horizontal" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
+</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:id="@+id/menu"
+        android:background="#96ffffff"
+        android:padding="5dp">
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/HomeButton"
+            android:background="@drawable/ic_action_home"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/RankingButton"
+            android:background="@drawable/ic_action_achievement"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/ScheduleButton"
+            android:background="@drawable/ic_action_calendar_month"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/SyohinButton"
+            android:background="@drawable/ic_action_mustache"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
 
 </FrameLayout>
