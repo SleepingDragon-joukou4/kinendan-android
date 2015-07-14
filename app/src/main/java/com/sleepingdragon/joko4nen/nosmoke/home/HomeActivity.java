@@ -7,12 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.sleepingdragon.joko4nen.nosmoke.R;
+import com.sleepingdragon.joko4nen.nosmoke.finish.FinishActivity;
 import com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity;
 import com.sleepingdragon.joko4nen.nosmoke.schedule.ScheduleActivity;
 import com.sleepingdragon.joko4nen.nosmoke.syohin.SyohinActivity;
@@ -51,7 +53,16 @@ public class HomeActivity extends Activity {
     @InjectView(R.id.home_shonsu)
     TextView shonsu;
 
-
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // 戻るボタンの無効化
+        if (event.getAction()==KeyEvent.ACTION_DOWN) {
+            if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                return false;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,8 +119,31 @@ public class HomeActivity extends Activity {
         dialogFragment.show(getFragmentManager(),"dialog");
     }
 
+
     public void onSetHonsu(String val){
         shonsu.setText(val);
+    }
+
+    /**
+     * FinishActivityに遷移するかどうかの判定をし、
+     * 合致した場合、FinishActivityに遷移する
+     * @param day 残り日数
+     * @throws NumberFormatException
+     */
+    public void finishMatch(String day){
+        try {
+            if(Integer.parseInt(day) <= 0) {
+                //合致した場合
+                Intent i=new Intent(this,FinishActivity.class);
+                startActivity(i);
+                //finishして戻るボタンで戻れなくする
+                // 画面移動後アクティビティ消去
+                finish();
+            }
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+        }
+        return;
     }
 
 
@@ -123,11 +157,13 @@ public class HomeActivity extends Activity {
             mhousu.setText(event.getCigaretteNumber());
             nissu.setText(event.getRemainingDate());
             onSetHonsu(event.getTodayPerformanceNumber());
+            finishMatch(event.getRemainingDate());
 
         } else {
             Log.d(TAG, "HomeSelectEvent async task is failure");
         }
     }
+
 
     public void onEvent(SmokingUpsertEvent event) {
         if (event.isSuccess()) {
