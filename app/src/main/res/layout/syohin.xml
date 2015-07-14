@@ -98,8 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:scaleType="fitCenter"
-                android:background="@drawable/kinako"
-                android:id="@+id/ImageView" /><!-- 画像の読み込み -->
+            android:id="@+id/ImageView" /><!-- 画像の読み込み -->
 
 
     </LinearLayout>

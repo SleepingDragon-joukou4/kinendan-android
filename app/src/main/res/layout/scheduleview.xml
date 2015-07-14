@@ -8,35 +8,40 @@
     android:background="#96ffffff">
 
         <TextView
-            android:layout_width="0dip"
-            android:layout_height="70dp"
-            android:layout_weight="0.4"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:text="10/11"
             android:gravity="center"
             android:id="@+id/schedule_date_v"
             android:textColor="#000"
             android:textSize="14dp"
-            android:layout_marginLeft="30dp" />
+            android:layout_weight="0.4"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp" />
 
         <TextView
-            android:layout_width="0dip"
-            android:layout_height="70dp"
-            android:layout_weight="0.3"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:text="20"
             android:textColor="#000"
             android:textSize="14dp"
             android:gravity="center"
-            android:id="@+id/schedule_objective_v" />
+            android:id="@+id/schedule_objective_v"
+            android:layout_weight="0.3"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp" />
 
     <TextView
-        android:layout_width="0dip"
-        android:layout_weight="0.3"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:textColor="#000"
         android:textSize="14dp"
         android:gravity="center"
         android:text="10"
-        android:id="@+id/schedule_performance_v" />
+        android:id="@+id/schedule_performance_v"
+        android:layout_weight="0.3"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp" />
 
 
 </LinearLayout>
