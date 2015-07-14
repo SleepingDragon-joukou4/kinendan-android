@@ -74,6 +74,7 @@ public class HomeActivity extends Activity {
                         public void onClick(DialogInterface dialog, int which) {}
                     })
                     .show();
+            return true;
         }
         return false;
     }
