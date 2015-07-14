@@ -33,7 +33,7 @@ public class HonsuDialogFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         final HomeActivity activity = (HomeActivity) getActivity();
-        final String mhousu = activity.mhousu.getText().toString();
+        final String shousu = activity.shonsu.getText().toString();
 
         View content = inflater.inflate(R.layout.honsu_dialog_fragment, null);
 
@@ -41,8 +41,8 @@ public class HonsuDialogFragment extends DialogFragment {
         numberPicker.setMaxValue(100);
         numberPicker.setMinValue(0);
 
-        if (StringUtils.isNotEmpty(mhousu)) {
-            numberPicker.setValue(Integer.parseInt(mhousu));
+        if (StringUtils.isNotEmpty(shousu)) {
+            numberPicker.setValue(Integer.parseInt(shousu));
         }
 
         builder.setView(content);
@@ -65,7 +65,7 @@ public class HonsuDialogFragment extends DialogFragment {
                         SharedPreferences sPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
                         String userID = sPreferences.getString("UserID", "なし");
 
-                        service = new SmokingUpsertConnectionService(userID,"",value.toString(),mhousu);
+                        service = new SmokingUpsertConnectionService(userID,"",value.toString(),shousu);
                         service.upsert();
 
                         activity.onSetHonsu(value.toString());
