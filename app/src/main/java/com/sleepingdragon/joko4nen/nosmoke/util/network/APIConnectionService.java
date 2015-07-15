@@ -51,8 +51,6 @@ abstract class APIConnectionService implements Serializable {
         URLConnectionAsyncTask urlConnectionAsyncTask = new URLConnectionAsyncTask(){
             @Override
             protected void onPostExecute(JSONArray result) {
-                super.onPostExecute(result);
-                if(result==null)return;
                 try {
                     listener.onSuccess(result);
                 }catch (Exception e){

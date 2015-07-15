@@ -86,11 +86,9 @@ public class regist extends Activity implements OnClickListener {
             //startActivity(intent);
         }
         public void TabakoListSelect(){
-            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
+            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
                 @Override
                 protected void onPostExecute(JSONArray result) {
-                    super.onPostExecute(result);
-                    if(result==null)return;
                     try {
 
                         Log.d("", result.toString());

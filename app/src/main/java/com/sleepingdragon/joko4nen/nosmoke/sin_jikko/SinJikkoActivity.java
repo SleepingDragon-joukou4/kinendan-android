@@ -50,11 +50,9 @@ public class SinJikkoActivity extends Activity {
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         String TeamID = Savedata.getString("TeamID", "なし");
         String UserID = Savedata.getString("UserID", "なし");
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this) {
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
         @Override
         protected void onPostExecute(JSONArray result) {
-            super.onPostExecute(result);
-            if(result==null)return;
             try {
                 //罰ゲーム内容を取得
                 JSONObject ja = result.getJSONObject(0);

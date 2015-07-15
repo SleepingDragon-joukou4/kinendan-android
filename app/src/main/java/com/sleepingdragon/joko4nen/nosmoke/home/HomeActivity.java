@@ -66,6 +66,7 @@ public class HomeActivity extends Activity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            HomeActivity.this.finish();
                             HomeActivity.this.moveTaskToBack(true);
                         }
                     })

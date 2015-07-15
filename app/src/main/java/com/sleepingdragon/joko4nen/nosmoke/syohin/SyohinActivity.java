@@ -38,24 +38,21 @@ public class SyohinActivity extends Activity {
         super.onResume();
         //UserIDとTeamIDを取得
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
-        String UserID = Savedata.getString("UserID", "なし");
+        //String UserID = Savedata.getString("UserID", "なし");
         String TeamID = Savedata.getString("TeamID", "なし");
-
         //sample用のUserID
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
+        String UserID = "User20150528s4KV2d";
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
             @Override
             protected void onPostExecute(JSONArray result) {
-                super.onPostExecute(result);
-                if(result==null)return;
                 try {
-                    double ModerationPrace2=0;
                     JSONObject ja=result.getJSONObject(0);
-                    if(!ja.has("response")){
-                        String ModerationPrice = ja.getString("ModerationPrice");
-                        ModerationPrace2 = Double.valueOf(ModerationPrice);
-                    }
+                    String ModerationPrice = ja.getString("ModerationPrice");
+                          //TextViewにModerationPricを挿入
                     TextView textView = (TextView) findViewById(R.id.kingaku);
-                    textView.setText(String.valueOf((int)ModerationPrace2));
+                    textView.setText(ModerationPrice);
+
+                    double ModerationPrace2 = Double.valueOf(ModerationPrice);
 
                 if(ModerationPrace2<=0){
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);

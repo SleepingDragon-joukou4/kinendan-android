@@ -83,11 +83,9 @@ public class RankingActivity extends Activity{
     @Override
     protected void onResume(){
         super.onResume();
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
             @Override
             protected void onPostExecute(JSONArray result) {
-                super.onPostExecute(result);
-                if(result==null)return;
                 try {
                     Log.d("", result.toString());
                     LinearLayout li =(LinearLayout)RankingActivity.this.findViewById(R.id.ranking_bodyline);
