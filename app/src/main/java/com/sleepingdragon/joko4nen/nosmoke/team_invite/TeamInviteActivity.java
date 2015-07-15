@@ -134,8 +134,10 @@ public class TeamInviteActivity extends Activity{
         Log.d("SCigaretteNumber", "" + SCigaretteNumber);
         if(!SUserName.equals("なし") && !SCigaretteNumber.equals("なし") &&
                 SCigaretteBrandNo!=99999 && !SUserID.equals("なし")) {
-            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this) {
                 protected void onPostExecute(JSONArray result) {
+                    super.onPostExecute(result);
+                    if(result==null)return;
                     //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                     //try/catchしないと駄目っぽい
                     try {
@@ -169,8 +171,10 @@ public class TeamInviteActivity extends Activity{
         SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SUserID = SPreferences.getString("UserID", "なし");
         //データベースから削除しよう
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this) {
             protected void onPostExecute(JSONArray result) {
+                super.onPostExecute(result);
+                if(result==null)return;
                 //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                 //try/catchしないと駄目っぽい
                 try {
@@ -205,11 +209,13 @@ public class TeamInviteActivity extends Activity{
                         @Override
                         public void run() {
                             if (UserInsert_success) {
-                                URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+                                URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(TeamInviteActivity.this) {
 
                                     String Status;
 
                                     protected void onPostExecute(JSONArray result) {
+                                        super.onPostExecute(result);
+                                        if(result==null)return;
                                         //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                                         //try/catchしないと駄目っぽい
                                         try {
@@ -299,9 +305,11 @@ public class TeamInviteActivity extends Activity{
     }
     public void TeamUpdatecomp() {
         //登録完了に設定
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
             @Override
             protected void onPostExecute(JSONArray result) {
+                super.onPostExecute(result);
+                if(result==null)return;
                 try {
                     Log.d("",result.toString());
                     JSONObject ja=result.getJSONObject(0);

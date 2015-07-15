@@ -145,9 +145,11 @@ public class TeamSettingActivity extends Activity {
         String CigaretteNumber = Savedata.getString("CigaretteNumber", "なし");
         int CigarreteBrandNo = Savedata.getInt("CigarreteBrandNo", 1);
 
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
             @Override
             protected void onPostExecute(JSONArray result) {
+                super.onPostExecute(result);
+                if(result==null)return;
                 try {
                     Log.d("",result.toString());
                     JSONObject ja=result.getJSONObject(0);

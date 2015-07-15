@@ -78,9 +78,11 @@ public class FinishActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
             @Override
             protected void onPostExecute(JSONArray result) {
+                super.onPostExecute(result);
+                if(result==null)return;
                 try {
                     if(result!=null) {
                             JSONObject ja=result.getJSONObject(0);

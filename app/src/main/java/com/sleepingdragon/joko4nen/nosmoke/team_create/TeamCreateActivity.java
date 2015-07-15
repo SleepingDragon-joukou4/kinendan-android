@@ -50,10 +50,12 @@ public class TeamCreateActivity extends Activity{
                         return;
                     }
 
-                    URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+                    URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(TeamCreateActivity.this) {
                         String Invite_TeamID;
                         String Status;
                         protected void onPostExecute(JSONArray result) {
+                            super.onPostExecute(result);
+                            if(result==null)return;
                             //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                             //try/catchしないと駄目っぽい
                             try {
