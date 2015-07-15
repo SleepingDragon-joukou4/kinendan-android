@@ -63,12 +63,12 @@ public class SyohinActivity extends Activity {
                     }else if(ModerationPrace2>0&&ModerationPrace2<=100){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.kinako);
 
                     }else if(ModerationPrace2>100&&ModerationPrace2<=1000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.beer1000);
 
                     }else if(ModerationPrace2>1000&&ModerationPrace2<=3000){
 
