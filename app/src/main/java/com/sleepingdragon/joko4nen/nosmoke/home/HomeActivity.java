@@ -130,7 +130,15 @@ public class HomeActivity extends Activity {
 
     @OnClick(R.id.honsu_button)
     void onClick(View v){
+        String sHonsu = shonsu.getText().toString();
+        String mMonsu = mhousu.getText().toString();
+
         DialogFragment dialogFragment = new HonsuDialogFragment();
+
+        Bundle args = new Bundle();
+        args.putStringArray("honsu",new String[]{sHonsu,mMonsu});
+
+        dialogFragment.setArguments(args);
         dialogFragment.show(getFragmentManager(),"dialog");
     }
 
