@@ -51,9 +51,10 @@ public class HomeActivity extends Activity {
     TextView teamGenzai;
     @InjectView(R.id.home_teamname)
     TextView teamName;
-
     @InjectView(R.id.home_shonsu)
     TextView shonsu;
+    @InjectView(R.id.home_username)
+    TextView userName;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
@@ -167,6 +168,7 @@ public class HomeActivity extends Activity {
             Log.d(TAG, "HomeSelectEvent async task is success");
 
             teamName.setText(event.getTeamName());
+            userName.setText(event.getUserName());
             teamGenzai.setText(event.getTeamCigaretteNumber());
             teamMokuhyo.setText(event.getSmokinghistoryPerformanceNumberTeamSum());
             mhousu.setText(event.getCigaretteNumber());
