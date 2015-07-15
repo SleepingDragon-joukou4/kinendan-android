@@ -18,6 +18,8 @@ import com.sleepingdragon.joko4nen.nosmoke.util.network.SmokingUpsertConnectionS
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.sql.Array;
+
 import butterknife.InjectView;
 
 /**
@@ -32,8 +34,9 @@ public class HonsuDialogFragment extends DialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        final HomeActivity activity = (HomeActivity) getActivity();
-        final String shousu = activity.shonsu.getText().toString();
+        final String[] honsu = getArguments().getStringArray("honsu");
+        final String shousu = honsu[0];
+        final String mhonsu = honsu[1];
 
         View content = inflater.inflate(R.layout.honsu_dialog_fragment, null);
 
@@ -62,13 +65,11 @@ public class HonsuDialogFragment extends DialogFragment {
 
                         Integer value = numberPicker.getValue();
 
-                        SharedPreferences sPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+                        SharedPreferences sPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
                         String userID = sPreferences.getString("UserID", "なし");
 
-                        service = new SmokingUpsertConnectionService(userID,"",value.toString(),activity.mhousu.getText().toString());
+                        service = new SmokingUpsertConnectionService(userID,"",value.toString(),mhonsu);
                         service.upsert();
-
-                        activity.onSetHonsu(value.toString());
 
                     }
                 });
