@@ -2,14 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.sleepingdragon.joko4nen.nosmoke.finish.finishactivity">
+    tools:context="com.sleepingdragon.joko4nen.nosmoke.finish.finishactivity"
+    android:background="@drawable/kemuri3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#64000000">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_margin="5dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -18,13 +24,18 @@
             android:textSize="30sp"
             android:gravity="center"
             android:id="@+id/finish_resulttext"
-            android:layout_weight="0.16" />
+            android:layout_weight="0.16"
+            android:background="#96ffffff"
+            android:textColor="#000"
+            android:layout_margin="10dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.09">
+            android:layout_weight="0.09"
+            android:background="#96ffffff"
+            android:layout_margin="5dp">
 
 
             <TextView
@@ -33,43 +44,51 @@
                 android:layout_weight="0.4"
                 android:text="ユーザ名:"
                 android:id="@+id/finish_usernametext"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:text="New Text"
+                android:text="Loading..."
                 android:id="@+id/finish_username"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.09">
+            android:layout_weight="0.09"
+            android:background="#96ffffff"
+            android:layout_margin="5dp">
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:text="守った回数:"
                 android:id="@+id/finish_protecttext"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:text="New Text"
+                android:text="Loading..."
                 android:id="@+id/finish_protect"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.09">
+            android:layout_weight="0.09"
+            android:background="#96ffffff"
+            android:layout_margin="5dp">
 
             <TextView
                 android:layout_width="0dip"
@@ -77,36 +96,42 @@
                 android:layout_weight="0.4"
                 android:text="破った回数:"
                 android:id="@+id/finish_breaktext"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:text="New Text"
+                android:text="Loading..."
                 android:id="@+id/finish_braek"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.09">
+            android:layout_weight="0.09"
+            android:background="#96ffffff"
+            android:layout_margin="5dp">
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:text="個人節煙合計:"
                 android:id="@+id/finish_solo_moderationtext"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:text="New Text"
+                android:text="Loading..."
                 android:id="@+id/finish_solo_moderation"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
 
         </LinearLayout>
@@ -114,22 +139,26 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.09">
+            android:layout_weight="0.09"
+            android:background="#96ffffff"
+            android:layout_margin="5dp">
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:text="節煙額:"
                 android:id="@+id/finish_savingtext"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:text="New Text"
+                android:text="Loading..."
                 android:id="@+id/finish_saving"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
 
         </LinearLayout>
@@ -137,47 +166,59 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.09">
+            android:layout_weight="0.09"
+            android:background="#96ffffff"
+            android:layout_margin="5dp">
             <TextView
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:text="達成率:"
             android:id="@+id/finish_percenttext" 
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:text="New Text"
+                android:text="Loading..."
                 android:id="@+id/finish_percent"
-                android:textSize="18sp" android:gravity="right|center"/>
+                android:textSize="18sp" android:gravity="right|center"
+                android:textColor="#000" />
 
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.30">
+            android:layout_weight="0.30"
+            android:background="#96ffffff"
+            android:id="@+id/finish_layout"
+            android:layout_margin="5dp"
+            android:padding="5dp">
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dip"
                 android:layout_weight="0.6"
                 android:textSize="30sp"
                 android:text="禁煙成功！\nおめでとうございます！"
-                android:id="@+id/finish_text" />
+                android:id="@+id/finish_text"
+                android:textColor="#000" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_weight="0.4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_gravity="bottom|right"
                 android:textSize="26sp"
                 android:text="最初から"
-                android:id="@+id/finish_firstbutton" />
+                android:id="@+id/finish_firstbutton"
+                android:background="#c80000ff"
+                android:textColor="#fff"
+                android:padding="5dp" />
         </LinearLayout>
+    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
