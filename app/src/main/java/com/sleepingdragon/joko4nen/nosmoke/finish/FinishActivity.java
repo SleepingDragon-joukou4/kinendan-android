@@ -63,11 +63,12 @@ public class FinishActivity extends Activity {
         FinishText=(TextView)findViewById(R.id.finish_text);
 
         NextButton = (Button) findViewById(R.id.finish_firstbutton);
-        SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         UserId = SPreferences.getString("UserID", "なし");
         NextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor=SPreferences.edit();
                 editor.clear().commit();
                 startActivity(new Intent(FinishActivity.this,MainActivity.class));
                 FinishActivity.this.finish();
