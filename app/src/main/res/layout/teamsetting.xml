@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     tools:context="com.sleepingdragon.joko4nen.nosmoke.teamsetting"
     android:id="@+id/body"
-    android:background="@drawable/kemuri1">
+    android:background="@drawable/regist_kemuri">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#96000000"
+        android:background="#64000000"
         android:id="@+id/teamsetting_body">
 
         <TextView

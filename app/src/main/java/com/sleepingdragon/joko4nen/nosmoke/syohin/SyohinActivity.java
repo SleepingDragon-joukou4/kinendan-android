@@ -112,17 +112,17 @@ public class SyohinActivity extends Activity {
                     }else if(ModerationPrace2>25000&&ModerationPrace2<=30000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.tv30000);
 
                     }else if(ModerationPrace2>30000&&ModerationPrace2<=50000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.pc50000);
 
                     }else if(ModerationPrace2>50000&&ModerationPrace2<=100000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.bed100000);
 
                     }
                 }catch (JSONException e) {

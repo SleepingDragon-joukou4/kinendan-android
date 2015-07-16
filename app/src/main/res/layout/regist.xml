@@ -1,8 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@drawable/kemuri1"
+    android:layout_height="match_parent"
     tools:context=".FullscreenActivity"
-    android:id="@+id/body">
+    android:id="@+id/body"
+    android:background="@drawable/regist_kemuri">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -15,8 +16,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#96000000"
-        android:id="@+id/reg_body">
+        android:id="@+id/reg_body"
+        android:background="#64000000">
 
         <TextView
             android:layout_width="match_parent"
