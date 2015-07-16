@@ -87,7 +87,7 @@ public class HomeActivity extends Activity {
         String userID = sPreferences.getString("UserID", "なし");
         String teamID = sPreferences.getString("TeamID", "なし");
         
-        service = new HomeSelectConnectionService(userID, teamID);
+        service = new HomeSelectConnectionService(this,userID, teamID);
         service.settingHome();
     }
 

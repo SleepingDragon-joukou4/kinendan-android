@@ -116,6 +116,8 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            //再起動!
+                            System.exit(0);
                         }
                     });
             // アラートダイアログのキャンセルが可能かどうかを設定します
