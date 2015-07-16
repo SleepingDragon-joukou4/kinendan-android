@@ -56,7 +56,7 @@ public class SyohinActivity extends Activity {
 
                 if(ModerationPrace2<=0){
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.mame);
+                    imageView1.setImageResource(R.drawable.zeroen);
 
 
 
@@ -73,40 +73,41 @@ public class SyohinActivity extends Activity {
                     }else if(ModerationPrace2>1000&&ModerationPrace2<=3000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.eiga3000);
 
                     }else if(ModerationPrace2>3000&&ModerationPrace2<=5000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.yakiniku5000);
 
                     }else if(ModerationPrace2>5000&&ModerationPrace2<=7500){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.soft7500);
 
                     }else if(ModerationPrace2>7500&&ModerationPrace2<=10000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.kaisen10000);
 
                     }else if(ModerationPrace2>10000&&ModerationPrace2<=12500){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.itunes12500);
 
                     }else if(ModerationPrace2>12500&&ModerationPrace2<=15000){
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.mediaplayer15000);
+
                     }else if(ModerationPrace2>15000&&ModerationPrace2<=20000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.psp20000);
 
                     }else if(ModerationPrace2>20000&&ModerationPrace2<=25000){
 
                     ImageView imageView1 = (ImageView)findViewById(R.id.ImageView);
-                    imageView1.setImageResource(R.drawable.a);
+                    imageView1.setImageResource(R.drawable.tokei25000);
 
                     }else if(ModerationPrace2>25000&&ModerationPrace2<=30000){
 
