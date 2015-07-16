@@ -1,5 +1,7 @@
 package com.sleepingdragon.joko4nen.nosmoke;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -59,6 +61,7 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
         //HttpURLConnectionを使用して接続を行います。
         HttpURLConnection connection = null;
         StringBuilder src = new StringBuilder();
+        ByteArrayOutputStream responseArray = null;
         try {
             URL url = new URL(arg[0]);
             connection = (HttpURLConnection) url.openConnection();
@@ -69,12 +72,15 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
             connection.connect();
             InputStream is = connection.getInputStream();
             //取得したテキストデータを、src変数に入れていきます
-            while (true) {
-                byte[] line = new byte[1024];
-                int size = is.read(line);
-                if (size <= 0)
-                    break;
-                src.append(new String(line, "UTF-8"));
+            // レスポンス文字列取得
+            BufferedInputStream inputStream = new BufferedInputStream(is);
+            responseArray = new ByteArrayOutputStream();
+            byte[] buff = new byte[1024];
+            int length;
+            while((length = inputStream.read(buff)) != -1) {
+                if(length > 0) {
+                    responseArray.write(buff, 0, length);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,7 +89,7 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
             connection.disconnect();
         }
         //String型に変換
-        String strsrc = new String(src);
+        String strsrc = new String(responseArray.toByteArray());
         //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
         // JSONObject に変換します
         JSONArray json = null;

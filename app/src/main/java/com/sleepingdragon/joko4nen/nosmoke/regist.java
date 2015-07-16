@@ -123,7 +123,7 @@ public class regist extends Activity implements OnClickListener {
             tabakohonsu =(EditText)findViewById(R.id.reg_tabakotext);
             syokihonsu =tabakohonsu.getText().toString();
             tabakosyurui = (Spinner) findViewById(R.id.tabakospn);
-            sigarettebrand = (int)tabakosyurui.getSelectedItemId();
+            sigarettebrand = (int)tabakosyurui.getSelectedItemId()+1;
             //登録します
             SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = Savedata.edit();
