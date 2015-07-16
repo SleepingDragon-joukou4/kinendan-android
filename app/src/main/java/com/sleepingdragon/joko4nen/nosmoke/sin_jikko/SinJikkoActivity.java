@@ -50,7 +50,7 @@ public class SinJikkoActivity extends Activity {
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         String TeamID = Savedata.getString("TeamID", "なし");
         String UserID = Savedata.getString("UserID", "なし");
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this) {
         @Override
         protected void onPostExecute(JSONArray result) {
             try {

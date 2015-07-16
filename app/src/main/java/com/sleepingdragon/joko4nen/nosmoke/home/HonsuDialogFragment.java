@@ -67,8 +67,7 @@ public class HonsuDialogFragment extends DialogFragment {
 
                         SharedPreferences sPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
                         String userID = sPreferences.getString("UserID", "なし");
-
-                        service = new SmokingUpsertConnectionService(userID,"",value.toString(),mhonsu);
+                        service = new SmokingUpsertConnectionService(getActivity(),userID,"",value.toString(),mhonsu);
                         service.upsert();
 
                     }

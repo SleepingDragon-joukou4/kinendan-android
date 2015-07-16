@@ -42,7 +42,7 @@ public class SyohinActivity extends Activity {
         String TeamID = Savedata.getString("TeamID", "なし");
         //sample用のUserID
         String UserID = "User20150528s4KV2d";
-        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+        URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {

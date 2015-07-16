@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -29,8 +33,9 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //コンストラクタ
     //Activityを使うためここで紐づけします
     //useActivity変数に使用するActivityを設定
-    public URLConnectionAsyncTask() {
-
+    Activity ac;
+    public URLConnectionAsyncTask(Activity ac) {
+    this.ac=ac;
     }
     //ここでOverrideして使用できるメゾット一覧
     //onPreExecute() :
@@ -99,6 +104,28 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //ここの部分の振る舞いを変更したい時は、extendを使って個別に拡張すればいいです
     @Override
     protected void onPostExecute(JSONArray result) {
+        if(result==null){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ac);
+            // アラートダイアログのタイトルを設定します
+            alertDialogBuilder.setTitle("Error!");
+            // アラートダイアログのメッセージを設定します
+            alertDialogBuilder.setMessage("ネットワーク接続エラー");
+            // アラートダイアログの肯定ボタンがクリックされた時に呼び出されるコールバックリスナーを登録します
+            alertDialogBuilder.setPositiveButton("OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //再起動!
+                            System.exit(0);
+                        }
+                    });
+            // アラートダイアログのキャンセルが可能かどうかを設定します
+            alertDialogBuilder.setCancelable(false);
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            // アラートダイアログを表示します
+            alertDialog.show();
+            return;
+        }
         //try{
         //    result.getString("TeamName");
         //} catch (JSONException e) {

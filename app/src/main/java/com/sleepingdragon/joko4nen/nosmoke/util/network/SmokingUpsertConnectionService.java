@@ -1,5 +1,6 @@
 package com.sleepingdragon.joko4nen.nosmoke.util.network;
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.sleepingdragon.joko4nen.nosmoke.home.SmokingUpsertEvent;
@@ -23,20 +24,21 @@ public class SmokingUpsertConnectionService extends APIConnectionService {
     private final EventBus eventBus;
     private String url;
     private JSONObject jsonObject;
-
+    public Activity ac;
 
     public SmokingUpsertConnectionService() {
         this.eventBus = EventBus.getDefault();
     }
 
-    public SmokingUpsertConnectionService(String userId, String teamId, String performanceNum, String objNum) {
+    public SmokingUpsertConnectionService(Activity ac,String userId, String teamId, String performanceNum, String objNum) {
+        this.ac=ac;
         this.eventBus = EventBus.getDefault();
         url = HOME_SELECT_URL + QUERY_USERID + userId + QUERY_TEAMID + teamId + QUERY_PERFORMANCE + performanceNum + QUERY_OBJ_NUM + objNum;
     }
 
     public void upsert() {
         Log.d("smokingupsert",url);
-        request(url, new ConnectionListener() {
+        request(ac,url, new ConnectionListener() {
             @Override
             public void onSuccess(JSONArray jsonArray) throws JSONException {
                 jsonObject = jsonArray.getJSONObject(0);

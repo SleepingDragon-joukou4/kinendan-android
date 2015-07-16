@@ -1,6 +1,8 @@
 package com.sleepingdragon.joko4nen.nosmoke.util.network;
 
 
+import android.app.Activity;
+
 import com.sleepingdragon.joko4nen.nosmoke.URLConnectionAsyncTask;
 
 import org.json.JSONArray;
@@ -47,8 +49,8 @@ abstract class APIConnectionService implements Serializable {
      * @param url 利用するAPI URL
      * @param listener 受け取った結果を操作する。
      */
-    protected void request(String url, final ConnectionListener listener){
-        URLConnectionAsyncTask urlConnectionAsyncTask = new URLConnectionAsyncTask(){
+    protected void request(Activity ac,String url, final ConnectionListener listener){
+        URLConnectionAsyncTask urlConnectionAsyncTask = new URLConnectionAsyncTask(ac){
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {

@@ -1,6 +1,7 @@
 package com.sleepingdragon.joko4nen.nosmoke.util.network;
 
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.sleepingdragon.joko4nen.nosmoke.home.HomeSelectEvent;
@@ -27,9 +28,11 @@ public class HomeSelectConnectionService extends APIConnectionService {
     private final EventBus eventBus;
     private String url;
     private JSONObject jsonObject;
-
+    public Activity ac;
     public HomeSelectConnectionService() {
+
         eventBus = EventBus.getDefault();
+
     }
 
     /**
@@ -37,8 +40,10 @@ public class HomeSelectConnectionService extends APIConnectionService {
      *
      * @param useId  ユーザーID
      * @param teamId チームID
+     * @param ac Activity
      */
-    public HomeSelectConnectionService(String useId, String teamId) {
+    public HomeSelectConnectionService(Activity ac,String useId, String teamId) {
+        this.ac=ac;
         eventBus = EventBus.getDefault();
         url = HOME_SELECT_URL + QUERY_USERID + useId + QUERY_TEAMID + teamId;
     }
@@ -50,7 +55,7 @@ public class HomeSelectConnectionService extends APIConnectionService {
      */
     public void settingHome() {
         Log.d("URL", url);
-        request(url, new ConnectionListener() {
+        request(ac,url, new ConnectionListener() {
 
             @Override
             public void onSuccess(JSONArray jsonArray) throws JSONException {
