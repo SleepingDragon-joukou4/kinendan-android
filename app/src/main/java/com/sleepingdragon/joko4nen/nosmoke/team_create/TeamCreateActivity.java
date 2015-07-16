@@ -50,7 +50,7 @@ public class TeamCreateActivity extends Activity{
                         return;
                     }
 
-                    URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask() {
+                    URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(TeamCreateActivity.this) {
                         String Invite_TeamID;
                         String Status;
                         protected void onPostExecute(JSONArray result) {

@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -29,8 +33,9 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //コンストラクタ
     //Activityを使うためここで紐づけします
     //useActivity変数に使用するActivityを設定
-    public URLConnectionAsyncTask() {
-
+    Activity ac;
+    public URLConnectionAsyncTask(Activity ac) {
+    this.ac=ac;
     }
     //ここでOverrideして使用できるメゾット一覧
     //onPreExecute() :
@@ -99,8 +104,6 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //ここの部分の振る舞いを変更したい時は、extendを使って個別に拡張すればいいです
     @Override
     protected void onPostExecute(JSONArray result) {
-<<<<<<< HEAD
-=======
         if(result==null){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ac);
             // アラートダイアログのタイトルを設定します
@@ -123,7 +126,6 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
             alertDialog.show();
             return;
         }
->>>>>>> testc
         //try{
         //    result.getString("TeamName");
         //} catch (JSONException e) {

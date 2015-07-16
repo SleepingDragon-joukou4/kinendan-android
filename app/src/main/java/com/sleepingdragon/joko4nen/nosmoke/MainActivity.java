@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
         } else{
             //変更点ここから
             //Teamの誰かが目標本数を超えていた場合,配列型で名前を取得する
-            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(){
+            URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
                 @Override
                 protected void onPostExecute(JSONArray result) {
                     try {
