@@ -99,6 +99,31 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //ここの部分の振る舞いを変更したい時は、extendを使って個別に拡張すればいいです
     @Override
     protected void onPostExecute(JSONArray result) {
+<<<<<<< HEAD
+=======
+        if(result==null){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ac);
+            // アラートダイアログのタイトルを設定します
+            alertDialogBuilder.setTitle("Error!");
+            // アラートダイアログのメッセージを設定します
+            alertDialogBuilder.setMessage("ネットワーク接続エラー");
+            // アラートダイアログの肯定ボタンがクリックされた時に呼び出されるコールバックリスナーを登録します
+            alertDialogBuilder.setPositiveButton("OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //再起動!
+                            System.exit(0);
+                        }
+                    });
+            // アラートダイアログのキャンセルが可能かどうかを設定します
+            alertDialogBuilder.setCancelable(false);
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            // アラートダイアログを表示します
+            alertDialog.show();
+            return;
+        }
+>>>>>>> testc
         //try{
         //    result.getString("TeamName");
         //} catch (JSONException e) {
