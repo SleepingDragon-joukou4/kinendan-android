@@ -66,10 +66,10 @@ public class SinJikkoActivity extends Activity {
             try {
                 //罰ゲーム内容を取得
                 JSONObject ja = result.getJSONObject(0);
-                String Panishment = ja.getString("Panishment");
+                String Punishment = ja.getString("Punishment");
                 //TextView judgement にjudgement（罰ゲーム内容）を挿入
                 TextView judgement = (TextView) findViewById(R.id.judgement);
-                judgement.setText(Panishment);
+                judgement.setText(Punishment);
 
             } catch (JSONException e) {
                 e.printStackTrace();
