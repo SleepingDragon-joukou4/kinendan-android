@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,7 +33,16 @@ public class SinJikkoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sin_jikko);
     }
-
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // 戻るボタンの無効化
+        if (event.getAction()==KeyEvent.ACTION_DOWN) {
+            if(event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                return false;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -56,10 +66,10 @@ public class SinJikkoActivity extends Activity {
             try {
                 //罰ゲーム内容を取得
                 JSONObject ja = result.getJSONObject(0);
-                String Panishment = ja.getString("Panishment");
+                String Punishment = ja.getString("Punishment");
                 //TextView judgement にjudgement（罰ゲーム内容）を挿入
                 TextView judgement = (TextView) findViewById(R.id.judgement);
-                judgement.setText(Panishment);
+                judgement.setText(Punishment);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -69,7 +79,7 @@ public class SinJikkoActivity extends Activity {
         }
     };
     //executeで非同期処理開始
-    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=panishmentselect" +
+    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=punishmentselect" +
             "&UserId=" + UserID + "&TeamId=" + TeamID);
 
 
