@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@drawable/home_gaitou"
+    android:layout_height="match_parent" android:background="@drawable/home_gaitou_edit"
     tools:context=".FullscreenActivity"
     android:id="@+id/body">
 
@@ -288,7 +288,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/menu"
-        android:background="#96000000"
+        android:background="#64000000"
         android:padding="5dp">
 
         <Button
