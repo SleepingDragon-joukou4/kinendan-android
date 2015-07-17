@@ -79,7 +79,7 @@ public class SinJikkoActivity extends Activity {
         }
     };
     //executeで非同期処理開始
-    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=panishmentselect" +
+    URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=punishmentselect" +
             "&UserId=" + UserID + "&TeamId=" + TeamID);
 
 
