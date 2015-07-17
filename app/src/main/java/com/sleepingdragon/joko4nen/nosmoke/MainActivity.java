@@ -48,6 +48,12 @@ public class MainActivity extends Activity {
 
     SharedPreferences Savedata = null;
     String UserID;
+    String TeamID;
+
+    //2次元配列
+    ArrayList<String> Namelist;
+    ArrayList<String> PunishmentNumberlist;
+    ArrayList<String> NowPunishmentNumberlist;
     @Override
     protected void onResume() {
         super.onResume();
@@ -55,8 +61,10 @@ public class MainActivity extends Activity {
         //UserIDがあるか確認
         SharedPreferences Savedata = PreferenceManager.getDefaultSharedPreferences(this);
         UserID = Savedata.getString("UserID", "なし");
+        TeamID = Savedata.getString("TeamID","なし");
         SharedPreferences.Editor editor = Savedata.edit();
         boolean TeamCreated = Savedata.getBoolean("TeamCreated", false);
+        Log.d("TeamCreated",TeamCreated+"");
         if (!TeamCreated) {
             //なければ新しく作る
             //u+日付(月日)+3文字の半角/全角アルファベット(例:u0713dXr)
@@ -85,24 +93,30 @@ public class MainActivity extends Activity {
         } else{
             //変更点ここから
             //Teamの誰かが目標本数を超えていた場合,配列型で名前を取得する
+            Namelist=new ArrayList<String>();
+            PunishmentNumberlist=new ArrayList<String>();
+            NowPunishmentNumberlist=new ArrayList<String>();
             URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this){
                 @Override
                 protected void onPostExecute(JSONArray result) {
                     try {
 
-                        Log.d("", result.toString());
-                        //2次元配列
-                        final ArrayList<String> Namelist=new ArrayList<String>();
-                        final ArrayList<String> PunishmentNumberlist=new ArrayList<String>();
-                        final ArrayList<String> NowPunishmentNumberlist=new ArrayList<String>();
+                        Log.d("result", result.toString());
+
                         if(result!=null && !result.getJSONObject(0).has("response") ) {
                                 for (int i = 0; i < result.length(); i++) {
                                     JSONObject ja = result.getJSONObject(i);
                                     if (ja.has("Name")) //has:値が存在するときtrue,しないときfalse
                                     {
-                                        Namelist.add(ja.getString("Name"));
-                                        PunishmentNumberlist.add(ja.getString("PunishmentNumber"));
-                                        NowPunishmentNumberlist.add(ja.getString("NowPunishmentNumber"));
+                                        //罰ゲーム回数を越した時
+                                        String Namex=ja.getString("Name");
+                                        String PunishmentNumberx=ja.getString("PunishmentNumber");
+                                        String NowPunishmentNumberx=ja.getString("NowPunishmentNumber");
+                                        if(Integer.parseInt(NowPunishmentNumberx)%Integer.parseInt(PunishmentNumberx)==0) {
+                                            Namelist.add(Namex);
+                                            PunishmentNumberlist.add(PunishmentNumberx);
+                                            NowPunishmentNumberlist.add(NowPunishmentNumberx);
+                                        }
                                     }
                                 }
                         }
@@ -151,7 +165,7 @@ public class MainActivity extends Activity {
             };
             //executeで非同期処理開始
             URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=judgement" +
-                    "&UserId="+UserID+"&TeamId=Team");
+                    "&UserId="+UserID+"&TeamId="+TeamID);
 
         }
 
