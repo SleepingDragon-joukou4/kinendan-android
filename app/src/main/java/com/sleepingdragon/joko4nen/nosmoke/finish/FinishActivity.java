@@ -83,7 +83,7 @@ public class FinishActivity extends Activity {
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
-                    if(result!=null) {
+                    if(result==null){onError();return;}
                             JSONObject ja=result.getJSONObject(0);
                             UserName.setText(ja.getString("UserName"));
                             Protect.setText(ja.getString("AcheiveCount"));
@@ -97,9 +97,7 @@ public class FinishActivity extends Activity {
                             FinishText.setText(TextSetting(PercentInt));
 
 
-                    }else{
-                        Log.d("","Error!");
-                    }
+
 
                 }catch (JSONException e) {
                     e.printStackTrace();

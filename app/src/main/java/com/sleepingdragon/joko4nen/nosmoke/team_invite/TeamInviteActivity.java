@@ -139,14 +139,13 @@ public class TeamInviteActivity extends Activity{
                     //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                     //try/catchしないと駄目っぽい
                     try {
-                        if (result != null) {
+                        if(result==null){onError();return;}
                             JSONObject ja = result.getJSONObject(0);
                             String res = ja.getString("response");
                             if (res.equals("success")) {
                                 Log.d("success", "");
                                 UserInsert_success = true;
                             }
-                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -174,7 +173,7 @@ public class TeamInviteActivity extends Activity{
                 //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                 //try/catchしないと駄目っぽい
                 try {
-                    if (result != null) {
+                    if(result==null){onError();return;}
                         JSONObject ja = result.getJSONObject(0);
                         String res = ja.getString("response");
                         if(res.equals("success")){
@@ -186,7 +185,6 @@ public class TeamInviteActivity extends Activity{
                         }else{
                             Log.d("Error","");
                         }
-                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -213,7 +211,7 @@ public class TeamInviteActivity extends Activity{
                                         //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                                         //try/catchしないと駄目っぽい
                                         try {
-                                            if (result != null) {
+                                            if(result==null){onError();return;}
                                                 namelist=new ArrayList<String>();
                                                 Host_dead=true;
                                                 for (int i = 0; i < result.length(); i++) {
@@ -279,7 +277,6 @@ public class TeamInviteActivity extends Activity{
 
 
                                                 }
-                                            }
 
 
                                         } catch (JSONException e) {
@@ -303,6 +300,7 @@ public class TeamInviteActivity extends Activity{
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
+                    if(result==null){onError();return;}
                     Log.d("",result.toString());
                     JSONObject ja=result.getJSONObject(0);
                     String res=ja.getString("response");

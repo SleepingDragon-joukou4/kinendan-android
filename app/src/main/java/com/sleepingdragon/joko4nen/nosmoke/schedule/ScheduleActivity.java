@@ -84,23 +84,24 @@ public class ScheduleActivity extends Activity {
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
-                    Log.d("", result.toString());
-                    LinearLayout li =(LinearLayout)ScheduleActivity.this.findViewById(R.id.schedule_data);
-                    li.removeAllViews();
-                    for(int i=0;i<result.length();i++) {
-                        JSONObject ja = result.getJSONObject(i);
-                        String getd=ja.getString("Date");
-                        String shOn=ja.getString("smokinghistoryObjectiveNumber");
-                        String shPn=ja.getString("smokinghistoryPerformanceNumber");
-                        View scheduleview = getLayoutInflater().inflate(R.layout.scheduleview, null);
-                        li.addView(scheduleview);
-                        TextView scheduledatev = (TextView) scheduleview.findViewById(R.id.schedule_date_v);
-                        scheduledatev.setText(getd);
-                        TextView scheduleobjectivev = (TextView)scheduleview.findViewById(R.id.schedule_objective_v);
-                        scheduleobjectivev.setText(shOn);
-                        TextView scheduleperformancev = (TextView)scheduleview.findViewById(R.id.schedule_performance_v);
-                        scheduleperformancev.setText(shPn);
-                    }
+                    if(result==null){onError();return;}
+                        LinearLayout li = (LinearLayout) ScheduleActivity.this.findViewById(R.id.schedule_data);
+                        li.removeAllViews();
+                        for (int i = 0; i < result.length(); i++) {
+                            JSONObject ja = result.getJSONObject(i);
+                            String getd = ja.getString("Date");
+                            String shOn = ja.getString("smokinghistoryObjectiveNumber");
+                            String shPn = ja.getString("smokinghistoryPerformanceNumber");
+                            View scheduleview = getLayoutInflater().inflate(R.layout.scheduleview, null);
+                            li.addView(scheduleview);
+                            TextView scheduledatev = (TextView) scheduleview.findViewById(R.id.schedule_date_v);
+                            scheduledatev.setText(getd);
+                            TextView scheduleobjectivev = (TextView) scheduleview.findViewById(R.id.schedule_objective_v);
+                            scheduleobjectivev.setText(shOn);
+                            TextView scheduleperformancev = (TextView) scheduleview.findViewById(R.id.schedule_performance_v);
+                            scheduleperformancev.setText(shPn);
+                        }
+
 
 
                 }catch (JSONException e) {

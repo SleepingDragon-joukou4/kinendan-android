@@ -149,6 +149,7 @@ public class TeamSettingActivity extends Activity {
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
+                    if(result==null){onError();return;}
                     Log.d("",result.toString());
                     JSONObject ja=result.getJSONObject(0);
                     String res=ja.getString("response");

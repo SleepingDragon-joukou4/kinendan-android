@@ -63,6 +63,7 @@ public class SinJikkoActivity extends Activity {
         URLConnectionAsyncTask URLConnectionTask = new URLConnectionAsyncTask(this) {
         @Override
         protected void onPostExecute(JSONArray result) {
+            if(result==null){onError();return;}
             try {
                 //罰ゲーム内容を取得
                 JSONObject ja = result.getJSONObject(0);

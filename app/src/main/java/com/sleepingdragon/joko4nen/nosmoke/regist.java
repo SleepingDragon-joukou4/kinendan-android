@@ -90,6 +90,7 @@ public class regist extends Activity implements OnClickListener {
                 @Override
                 protected void onPostExecute(JSONArray result) {
                     try {
+                        if(result==null){onError();return;}
 
                         Log.d("", result.toString());
                         ArrayList<String> list = new ArrayList<String>();

@@ -87,24 +87,23 @@ public class RankingActivity extends Activity{
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
-                    Log.d("", result.toString());
-                    LinearLayout li =(LinearLayout)RankingActivity.this.findViewById(R.id.ranking_bodyline);
-                    li.removeAllViews();
-                    for(int i=0;i<result.length();i++) {
-                        JSONObject ja = result.getJSONObject(i);
-                        String UserName=ja.getString("UserName");
-                        String PercentComplete=ja.getString("PercentComplete");
-                        View rankingview = getLayoutInflater().inflate(R.layout.ranking_view, null);
-                        li.addView(rankingview);
-                        TextView rankrankv = (TextView) rankingview.findViewById(R.id.rank_rank);
-                        rankrankv.setText(((int)i+1)+"");
-                        TextView ranknamev = (TextView)rankingview.findViewById(R.id.rank_name);
-                        ranknamev.setText(UserName);
-                        TextView rankrituv = (TextView)rankingview.findViewById(R.id.rank_ritu);
-                        rankrituv.setText(PercentComplete+"%");
-                    }
-
-
+                    if(result==null){onError();return;}
+                        Log.d("", result.toString());
+                        LinearLayout li = (LinearLayout) RankingActivity.this.findViewById(R.id.ranking_bodyline);
+                        li.removeAllViews();
+                        for (int i = 0; i < result.length(); i++) {
+                            JSONObject ja = result.getJSONObject(i);
+                            String UserName = ja.getString("UserName");
+                            String PercentComplete = ja.getString("PercentComplete");
+                            View rankingview = getLayoutInflater().inflate(R.layout.ranking_view, null);
+                            li.addView(rankingview);
+                            TextView rankrankv = (TextView) rankingview.findViewById(R.id.rank_rank);
+                            rankrankv.setText(((int) i + 1) + "");
+                            TextView ranknamev = (TextView) rankingview.findViewById(R.id.rank_name);
+                            ranknamev.setText(UserName);
+                            TextView rankrituv = (TextView) rankingview.findViewById(R.id.rank_ritu);
+                            rankrituv.setText(PercentComplete + "%");
+                        }
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -112,8 +111,8 @@ public class RankingActivity extends Activity{
             }
         };
         //executeで非同期処理開始
-        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=rankingselect"+
-        "&UserId="+UserID+"&TeamId="+TeamID);
+        URLConnectionTask.execute("http://sleepingdragon.potproject.net/api.php?get=rankingselect" +
+                "&UserId=" + UserID + "&TeamId=" + TeamID);
 
 
     }
