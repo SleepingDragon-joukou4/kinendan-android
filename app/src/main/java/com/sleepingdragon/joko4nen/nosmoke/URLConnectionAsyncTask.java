@@ -10,7 +10,12 @@ import java.net.URL;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,38 +63,25 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //これが後ろ側で見えないところで実行されるってことです
     @Override
     protected JSONArray doInBackground(String... arg) {
-        //HttpURLConnectionを使用して接続を行います。
-        HttpURLConnection connection = null;
-        StringBuilder src = new StringBuilder();
-        ByteArrayOutputStream responseArray = null;
+        String strsrc=null;
+
+        // リクエストオブジェクトを作って
+        Request request = new Request.Builder()
+                .url(arg[0])
+                .get()
+                .build();
+
+        // クライアントオブジェクトを作って
+        OkHttpClient client = new OkHttpClient();
+
+        // リクエストして結果を受け取って
         try {
-            URL url = new URL(arg[0]);
-            connection = (HttpURLConnection) url.openConnection();
-            //注意!!!
-            //AndroidManifest.xmlでインターネット接続の許可をしないとここでRuntimeExceptionが発生します！
-            //<uses-permission android:name="android.permission.INTERNET" />
-            //を、AndroidManifest.xmlの最後に記述してください！
-            connection.connect();
-            InputStream is = connection.getInputStream();
-            //取得したテキストデータを、src変数に入れていきます
-            // レスポンス文字列取得
-            BufferedInputStream inputStream = new BufferedInputStream(is);
-            responseArray = new ByteArrayOutputStream();
-            byte[] buff = new byte[1024];
-            int length;
-            while((length = inputStream.read(buff)) != -1) {
-                if(length > 0) {
-                    responseArray.write(buff, 0, length);
-                }
-            }
+            Response response = client.newCall(request).execute();
+            strsrc = response.body().string();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            //接続を終了
-            connection.disconnect();
+            return null;
         }
-        //String型に変換
-        String strsrc = new String(responseArray.toByteArray());
         //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
         // JSONObject に変換します
         JSONArray json = null;
@@ -101,6 +93,7 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
             json=new JSONArray(strsrc);
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
         return json;
     }
@@ -110,7 +103,17 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
     //ここの部分の振る舞いを変更したい時は、extendを使って個別に拡張すればいいです
     @Override
     protected void onPostExecute(JSONArray result) {
-        if(result==null){
+        //try{
+        //    result.getString("TeamName");
+        //} catch (JSONException e) {
+        //    e.printStackTrace();
+        //}
+        // 取得した結果をテキストビューに入れるよ
+        //TextView TeamName = (TextView) SubActivity.this.findViewById(R.id.SubtextTeamName);
+        //TeamName.setText(jsonTeamName);
+        //これで、表示されてるはず！
+    }
+    public void onError(){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ac);
             // アラートダイアログのタイトルを設定します
             alertDialogBuilder.setTitle("Error!");
@@ -122,7 +125,11 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //再起動!
-                            System.exit(0);
+                            //System.exit(0);
+                            ac.startActivity(new Intent(ac, MainActivity.class));
+                            //finishして戻るボタンで戻れなくする
+                            // 画面移動後アクティビティ消去
+                            ac.finish();
                         }
                     });
             // アラートダイアログのキャンセルが可能かどうかを設定します
@@ -130,17 +137,6 @@ public class URLConnectionAsyncTask extends AsyncTask<String, Void, JSONArray> {
             AlertDialog alertDialog = alertDialogBuilder.create();
             // アラートダイアログを表示します
             alertDialog.show();
-            return;
-        }
-        //try{
-        //    result.getString("TeamName");
-        //} catch (JSONException e) {
-        //    e.printStackTrace();
-        //}
-        // 取得した結果をテキストビューに入れるよ
-        //TextView TeamName = (TextView) SubActivity.this.findViewById(R.id.SubtextTeamName);
-        //TeamName.setText(jsonTeamName);
-        //これで、表示されてるはず！
         return;
     }
 }

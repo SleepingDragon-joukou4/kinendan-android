@@ -45,6 +45,7 @@ public class SyohinActivity extends Activity {
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
+                    if(result==null){onError();return;}
                     double ModerationPrace2=0;
                     JSONObject ja=result.getJSONObject(0);
                     if(!ja.has("response")){

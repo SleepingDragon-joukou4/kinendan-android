@@ -57,7 +57,7 @@ public class TeamCreateActivity extends Activity{
                             //ここから、json形式で取得したものをパース(解析)し、適切に取り出します
                             //try/catchしないと駄目っぽい
                             try {
-                                if(result!=null) {
+                                if(result==null){onError();return;}
                                     for (int i=0;i<result.length();i++){
                                         JSONObject ja=result.getJSONObject(i);
                                         //Invite_TeamNameが一致すればチーム名を持ってくる、そうでなければNULL
@@ -66,7 +66,6 @@ public class TeamCreateActivity extends Activity{
                                             Status = ja.getString("Status");
                                         }
                                     }
-                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

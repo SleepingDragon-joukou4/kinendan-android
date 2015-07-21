@@ -54,6 +54,7 @@ abstract class APIConnectionService implements Serializable {
             @Override
             protected void onPostExecute(JSONArray result) {
                 try {
+                    if(result==null){onError();return;}
                     listener.onSuccess(result);
                 }catch (Exception e){
                     listener.onFailed(e.getMessage());
