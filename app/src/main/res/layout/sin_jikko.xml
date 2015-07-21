@@ -20,7 +20,8 @@
         android:scaleType="centerCrop"
         android:id="@+id/regsuccess_body"
         android:gravity="center|top"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:background="#96000000">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
