@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@drawable/kemuri3"
+    android:layout_height="match_parent" android:background="@drawable/home_gaitou_edit"
     tools:context="com.sleepingdragon.joko4nen.nosmoke.ranking.RankingActivity.ranking"
     android:id="@+id/body">
 
@@ -32,8 +32,8 @@
             android:text="現在のチームランキング"
             android:textSize="22sp"
             android:id="@+id/textView2"
-            android:textColor="#000"
-            android:background="#96ffffff" />
+            android:textColor="#ffe1e1e1"
+            android:background="#64000000" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:id="@+id/lay1"
-            android:background="#96ffffff"
+            android:background="#64000000"
             android:layout_marginBottom="3dp">
 
             <TextView
@@ -50,7 +50,7 @@
                 android:text="順位"
                 android:textSize="14dp"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/rank_ranktext"
                 android:layout_marginLeft="15dp" />
             <TextView
@@ -59,7 +59,7 @@
                 android:text="アカウント名"
                 android:textSize="14dp"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/rank_nametext"
                 android:layout_marginLeft="30dp" />
             <TextView
@@ -68,7 +68,7 @@
                 android:text="達成率"
                 android:textSize="14dp"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/rank_ritutext"
                 android:layout_marginLeft="30dp" />
 
@@ -99,34 +99,33 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/menu"
-        android:background="#96ffffff"
+        android:background="#64000000"
         android:padding="5dp">
 
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/HomeButton"
-            android:background="@drawable/ic_action_home"
+            android:background="@drawable/menu_house"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/RankingButton"
-            android:background="@drawable/ic_action_achievement"
+            android:background="@drawable/menu_crown"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/ScheduleButton"
-            android:background="@drawable/ic_action_calendar_month"
+            android:background="@drawable/menu_calendar"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/SyohinButton"
-            android:background="@drawable/ic_action_mustache"
+            android:background="@drawable/menu_gold"
             android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 
 

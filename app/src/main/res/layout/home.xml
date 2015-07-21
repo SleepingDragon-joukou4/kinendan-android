@@ -295,25 +295,25 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/HomeButton"
-            android:background="@drawable/ic_action_home"
+            android:background="@drawable/menu_house"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/RankingButton"
-            android:background="@drawable/ic_action_achievement"
+            android:background="@drawable/menu_crown"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/ScheduleButton"
-            android:background="@drawable/ic_action_calendar_month"
+            android:background="@drawable/menu_calendar"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/SyohinButton"
-            android:background="@drawable/ic_action_mustache"
+            android:background="@drawable/menu_gold"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 

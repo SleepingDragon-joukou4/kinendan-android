@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@drawable/kemuri3"
+    android:layout_height="match_parent" android:background="@drawable/home_gaitou_edit"
     tools:context=".FullscreenActivity"
     android:id="@+id/body">
 
@@ -28,13 +28,13 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:id="@+id/lay1"
-            android:background="#96ffffff">
+            android:background="#64000000">
 
             <TextView
                 android:layout_width="310dp"
                 android:layout_height="50dp"
                 android:textSize="22dp"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/syouhinkaeru"
                 android:layout_marginLeft="15dp"
                 android:text="タバコを我慢したことで\n以下のモノが買えます･･･"
@@ -52,7 +52,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:id="@+id/lay2"
-            android:background="#96ffffff"
+            android:background="#64000000"
             android:layout_marginBottom="20dp">
 
             <TextView
@@ -61,7 +61,7 @@
                 android:text="節約された金額"
                 android:textSize="14dp"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/setuyaku"
                 android:layout_marginLeft="15dp"
                 android:layout_gravity="center_horizontal" />
@@ -71,7 +71,7 @@
                 android:layout_height="50dp"
                 android:textSize="35sp"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/kingaku"
                 android:layout_marginLeft="15dp"
                 android:textIsSelectable="false"
@@ -84,7 +84,7 @@
                 android:text="円"
                 android:textSize="14dp"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#ffe1e1e1"
                 android:id="@+id/en"
                 android:layout_marginLeft="5dp"
                 android:textIsSelectable="false"
@@ -96,10 +96,11 @@
 
         <ImageView
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="380dp"
                 android:layout_height="300dp"
                 android:scaleType="fitCenter"
-            android:id="@+id/ImageView" /><!-- 画像の読み込み -->
+            android:id="@+id/ImageView"
+            android:layout_gravity="center_horizontal" /><!-- 画像の読み込み -->
 
 
     </LinearLayout>
@@ -109,34 +110,33 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/menu"
-        android:background="#96ffffff"
+        android:background="#64000000"
         android:padding="5dp">
 
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/HomeButton"
-            android:background="@drawable/ic_action_home"
+            android:background="@drawable/menu_house"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/RankingButton"
-            android:background="@drawable/ic_action_achievement"
+            android:background="@drawable/menu_crown"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/ScheduleButton"
-            android:background="@drawable/ic_action_calendar_month"
+            android:background="@drawable/menu_calendar"
             android:layout_gravity="center_horizontal" />
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/SyohinButton"
-            android:background="@drawable/ic_action_mustache"
+            android:background="@drawable/menu_gold"
             android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 
 
