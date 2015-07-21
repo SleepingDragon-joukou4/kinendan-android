@@ -32,12 +32,12 @@
 
             <TextView
                 android:layout_width="310dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:textSize="22dp"
                 android:textColor="#ffe1e1e1"
                 android:id="@+id/syouhinkaeru"
                 android:layout_marginLeft="15dp"
-                android:text="タバコを我慢したことで\n以下のモノが買えます･･･"
+                android:text="おめでとうございます！\n禁煙したことで次のものが\n食べられます！！"
                 android:gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal" />

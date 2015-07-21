@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     tools:context=".FullscreenActivity"
     android:scaleType="centerCrop"
-    android:id="@+id/body">
+    android:id="@+id/body"
+    android:background="@drawable/judge_fire">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -19,8 +20,7 @@
         android:scaleType="centerCrop"
         android:id="@+id/regsuccess_body"
         android:gravity="center|top"
-        android:weightSum="1"
-        android:background="#ff000000">
+        android:weightSum="1">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="目標本数を超過しました\n以下の内容を実行してください"
+            android:text="目標本数を超過しました\n罰ゲームを実行してください"
             android:textSize="14dp"
             android:textColor="#ffff0000"
             android:id="@+id/sin_text2"
@@ -63,29 +63,13 @@
             android:textColor="#ffff0000"
             android:id="@+id/judgement"
             android:maxLength="20"
-            android:text="judgedata"
+            android:text="Loading..."
             android:layout_marginTop="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp" />
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:layout_gravity="bottom"
-        android:background="@drawable/fire">
-        <ImageView
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
 
-            android:id="@+id/regsuccess"
-            android:gravity="center|top"
-            android:weightSum="1"
-            android:background="#96000000">
-        </ImageView>
-    </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
