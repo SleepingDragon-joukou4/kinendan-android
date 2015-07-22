@@ -59,7 +59,7 @@
                 android:layout_weight="0.3"
                 android:textSize="14dp"
                 android:gravity="center"
-                android:text="実績本数"
+                android:text="目標本数"
                 android:id="@+id/schedule_performancetext"
                 android:textColor="#ffe1e1e1" />
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_weight="0.3"
                 android:gravity="center"
                 android:textSize="14dp"
-                android:text="目標本数"
+                android:text="実績本数"
                 android:id="@+id/schedule_objectivetext"
                 android:textColor="#ffe1e1e1" />
 

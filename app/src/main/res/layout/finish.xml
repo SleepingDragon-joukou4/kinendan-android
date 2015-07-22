@@ -200,17 +200,18 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dip"
                 android:layout_weight="0.6"
-                android:textSize="30sp"
+                android:textSize="21sp"
                 android:text="禁煙成功！\nおめでとうございます！"
                 android:id="@+id/finish_text"
                 android:textColor="#000" />
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="0dip"
+                android:layout_weight="0.4"
                 android:layout_gravity="bottom|right"
                 android:textSize="26sp"
                 android:text="最初から"
