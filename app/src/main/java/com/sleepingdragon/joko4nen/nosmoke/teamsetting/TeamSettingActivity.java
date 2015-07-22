@@ -135,7 +135,7 @@ public class TeamSettingActivity extends Activity {
         // 入力データ取得
         
         kikanselectstring = (String)kikanselectspinner.getSelectedItem();
-        sinnumselectstring = (String)kikanselectspinner.getSelectedItem();
+        sinnumselectstring = (String)sinnumselectspinner.getSelectedItem();
         teamname = teamnametext.getText().toString();
         batsugame = batsugametext.getText().toString();
         //UserIDとか取得
